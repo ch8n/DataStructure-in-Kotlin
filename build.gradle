@@ -1,0 +1,15 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
+}
+group = 'me.chetangupta'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+dependencies {
+    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+}
+compileKotlin {
+    kotlinOptions.jvmTarget = '1.8'
+}
