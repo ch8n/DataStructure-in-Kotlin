@@ -5,13 +5,24 @@ class LinkedList<T> : InsertLinkedList<T> {
     data class Node<T>(var value: T? = null, var next: Node<T>? = null)
 
     private var _first: Node<T>? = null
-    private var _last = _first
 
     val firstOrNull: Node<T>?
         get() = _first
 
     val lastOrNull: Node<T>?
-        get() = _last
+        get() {
+            return when (size()) {
+                0 -> null
+                1 -> _first
+                else -> {
+                    var current = _first
+                    while (current?.next != null) {
+                        current = current.next
+                    }
+                    current
+                }
+            }
+        }
 
     override fun toString(): String {
         var current = _first
@@ -35,16 +46,23 @@ class LinkedList<T> : InsertLinkedList<T> {
     }
 
     override fun insertFirst(data: T) {
-        val node = Node(data).apply { next = _first }
-        // if first is null then we are adding new item first time
+        val node = Node(data)
+        node.next = _first
         _first = node
-        if (size() == 1) {
-            _last = _first
-        }
     }
 
     override fun insertEnd(data: T) {
-        TODO("Not yet implemented")
+        val node = Node(data)
+        if (size() == 0) {
+            _first = node
+            return
+        }
+
+        var current = _first
+        while (current?.next != null) {
+            current = current.next
+        }
+        current?.next = node
     }
 
     override fun insertAt(position: Int, data: T) {
