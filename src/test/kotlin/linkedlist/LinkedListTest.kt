@@ -5,6 +5,8 @@ import org.junit.After
 import org.junit.Before
 
 import org.junit.Test
+import java.lang.IndexOutOfBoundsException
+import kotlin.test.assertFailsWith
 import kotlin.test.assertNotNull
 
 
@@ -93,6 +95,59 @@ class LinkedListTest {
         assertEquals(linkedList.firstOrNull?.value, 10)
         assertEquals(linkedList.lastOrNull?.value, 20)
     }
+
+    @Test
+    fun `insert item at position 0 to empty linkedlist first and last should be equal`() {
+        val linkedList = linkedListOf<Int>()
+        linkedList.insertAt(0,10)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 1)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+        assertEquals(linkedList.firstOrNull?.value, 10)
+        assertEquals(linkedList.lastOrNull?.value, 10)
+    }
+
+    @Test
+    fun `insert item at position 1 to empty linkedlist throws exception`() {
+        val linkedList = linkedListOf<Int>()
+
+        assertFailsWith(IndexOutOfBoundsException::class){
+            linkedList.insertAt(1,10)
+        }
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+    }
+
+    @Test
+    fun `insert item at position between two nodes`() {
+        val linkedList = linkedListOf<Int>()
+        linkedList.insertFirst(30)
+        linkedList.insertFirst(10)
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        linkedList.insertAt(1,20)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 3)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+        assertEquals(linkedList.firstOrNull?.value, 10)
+        assertEquals(linkedList.lastOrNull?.value, 30)
+    }
+
+
 
 
     @After

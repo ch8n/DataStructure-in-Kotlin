@@ -2,6 +2,7 @@ package linkedlist
 
 
 class LinkedList<T> : InsertLinkedList<T> {
+
     data class Node<T>(var value: T? = null, var next: Node<T>? = null)
 
     private var _first: Node<T>? = null
@@ -53,6 +54,7 @@ class LinkedList<T> : InsertLinkedList<T> {
 
     override fun insertEnd(data: T) {
         val node = Node(data)
+
         if (size() == 0) {
             _first = node
             return
@@ -66,7 +68,30 @@ class LinkedList<T> : InsertLinkedList<T> {
     }
 
     override fun insertAt(position: Int, data: T) {
-        TODO("Not yet implemented")
+        val size = size()
+        if (position > size) {
+            throw IndexOutOfBoundsException("Invalid Position for Insert")
+        }
+
+        val node = Node(data)
+
+        if (position == 0) {
+            node.next = _first
+            _first = node
+            return
+        }
+
+        var current = _first
+        var tailing = _first
+        var count = 0
+        while (count != position) {
+            tailing = current
+            current = current?.next
+            ++count
+        }
+        tailing?.next = node
+        node.next = current
+        current = node
     }
 
 }

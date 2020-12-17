@@ -5,3 +5,7 @@ interface InsertLinkedList<T> {
     fun insertEnd(data: T)
     fun insertAt(position: Int, data: T)
 }
+
+interface MutableLinkedList<T> : InsertLinkedList<T> {
+
+}
