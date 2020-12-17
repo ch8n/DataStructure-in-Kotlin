@@ -1,6 +1,7 @@
 package linkedlist
 
-fun <T> LinkedList<T>.toStringRecursive() {
+//TODO test
+fun <T> LinkedCollection<T>.toStringRecursive() {
     fun recursive(node: LinkedList.Node<T>?): T? {
         print(node?.value)
         return if (node == null) {
@@ -12,6 +13,22 @@ fun <T> LinkedList<T>.toStringRecursive() {
     recursive(firstOrNull)
 }
 
+//TODO test
 fun <T> linkedListOf(): LinkedList<T> {
-    return LinkedList()
+    return LinkedCollection.newInstance()
+}
+
+//TODO test
+fun <T> mutableLinkedListOf(): MutableLinkedList<T> {
+    return LinkedCollection.newMutableInstance()
+}
+
+//TODO test for mutability
+fun <T> LinkedList<T>.toMutableLinkedList(): MutableLinkedList<T> {
+    return LinkedCollection.mutableFrom(this)
+}
+
+//TODO test for mutability
+fun <T> MutableLinkedList<T>.toLinkedList(): LinkedList<T> {
+    return this
 }

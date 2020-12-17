@@ -10,7 +10,7 @@ import kotlin.test.assertFailsWith
 import kotlin.test.assertNotNull
 
 
-class LinkedListTest {
+class LinkedLinkedImplTest {
 
     @Before
     fun setUp() {
@@ -29,7 +29,7 @@ class LinkedListTest {
 
     @Test
     fun `insert item at first to empty linkedlist first and last should be equal`() {
-        val linkedList = linkedListOf<Int>()
+        val linkedList = mutableLinkedListOf<Int>()
         linkedList.insertFirst(10)
 
         println("LinkedListContent : $linkedList")
@@ -45,7 +45,7 @@ class LinkedListTest {
 
     @Test
     fun `insert item at first to prefilled linkedlist first and last should be different`() {
-        val linkedList = linkedListOf<Int>()
+        val linkedList = mutableLinkedListOf<Int>()
         linkedList.insertFirst(10)
         linkedList.insertFirst(20)
 
@@ -65,8 +65,8 @@ class LinkedListTest {
 
     @Test
     fun `insert item at end to empty linkedlist first and last should be equal`() {
-        val linkedList = linkedListOf<Int>()
-        linkedList.insertEnd(10)
+        val linkedList = mutableLinkedListOf<Int>()
+        linkedList.insertLast(10)
 
         println("LinkedListContent : $linkedList")
         println("first : ${linkedList.firstOrNull}")
@@ -81,9 +81,9 @@ class LinkedListTest {
 
     @Test
     fun `insert item at end to prefilled linkedlist first and last should be different`() {
-        val linkedList = linkedListOf<Int>()
-        linkedList.insertEnd(10)
-        linkedList.insertEnd(20)
+        val linkedList = mutableLinkedListOf<Int>()
+        linkedList.insertLast(10)
+        linkedList.insertLast(20)
 
         println("LinkedListContent : $linkedList")
         println("first : ${linkedList.firstOrNull}")
@@ -98,7 +98,7 @@ class LinkedListTest {
 
     @Test
     fun `insert item at position 0 to empty linkedlist first and last should be equal`() {
-        val linkedList = linkedListOf<Int>()
+        val linkedList = mutableLinkedListOf<Int>()
         linkedList.insertAt(0,10)
 
         println("LinkedListContent : $linkedList")
@@ -114,7 +114,7 @@ class LinkedListTest {
 
     @Test
     fun `insert item at position 1 to empty linkedlist throws exception`() {
-        val linkedList = linkedListOf<Int>()
+        val linkedList = mutableLinkedListOf<Int>()
 
         assertFailsWith(IndexOutOfBoundsException::class){
             linkedList.insertAt(1,10)
@@ -127,7 +127,7 @@ class LinkedListTest {
 
     @Test
     fun `insert item at position between two nodes`() {
-        val linkedList = linkedListOf<Int>()
+        val linkedList = mutableLinkedListOf<Int>()
         linkedList.insertFirst(30)
         linkedList.insertFirst(10)
         println("LinkedListContent : $linkedList")

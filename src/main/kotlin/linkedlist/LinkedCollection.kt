@@ -1,16 +1,18 @@
 package linkedlist
 
 
-class LinkedList<T> : InsertLinkedList<T> {
+class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedList<T> {
 
-    data class Node<T>(var value: T? = null, var next: Node<T>? = null)
+    constructor(list: LinkedList<T>) : this() {
+        _first = list.firstOrNull?.copy()
+    }
 
-    private var _first: Node<T>? = null
+    private var _first: Linked.Node<T>? = null
 
-    val firstOrNull: Node<T>?
+    override val firstOrNull: Linked.Node<T>?
         get() = _first
 
-    val lastOrNull: Node<T>?
+    override val lastOrNull: Linked.Node<T>?
         get() {
             return when (size()) {
                 0 -> null
@@ -36,7 +38,7 @@ class LinkedList<T> : InsertLinkedList<T> {
         return builder.toString()
     }
 
-    fun size(): Int {
+    override fun size(): Int {
         var current = _first
         var size = 0
         while (current != null) {
@@ -47,13 +49,13 @@ class LinkedList<T> : InsertLinkedList<T> {
     }
 
     override fun insertFirst(data: T) {
-        val node = Node(data)
+        val node = Linked.Node(data)
         node.next = _first
         _first = node
     }
 
-    override fun insertEnd(data: T) {
-        val node = Node(data)
+    override fun insertLast(data: T) {
+        val node = Linked.Node(data)
 
         if (size() == 0) {
             _first = node
@@ -73,7 +75,7 @@ class LinkedList<T> : InsertLinkedList<T> {
             throw IndexOutOfBoundsException("Invalid Position for Insert")
         }
 
-        val node = Node(data)
+        val node = Linked.Node(data)
 
         if (position == 0) {
             node.next = _first
@@ -92,6 +94,38 @@ class LinkedList<T> : InsertLinkedList<T> {
         tailing?.next = node
         node.next = current
         current = node
+    }
+
+
+    override fun deleteFirst() {
+        TODO("Not yet implemented")
+    }
+
+    override fun deleteLast() {
+        TODO("Not yet implemented")
+    }
+
+    override fun deleteAt(position: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun delete(element: T) {
+        TODO("Not yet implemented")
+    }
+
+    companion object {
+        fun <T> newInstance(): LinkedList<T> {
+            return LinkedCollection()
+        }
+
+        fun <T> newMutableInstance(): MutableLinkedList<T> {
+            return LinkedCollection()
+        }
+
+        fun <T> mutableFrom(list: LinkedList<T>): LinkedCollection<T> {
+            return LinkedCollection(list)
+        }
+
     }
 
 }
