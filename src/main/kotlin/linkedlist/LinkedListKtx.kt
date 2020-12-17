@@ -2,7 +2,7 @@ package linkedlist
 
 //TODO test
 fun <T> LinkedCollection<T>.toStringRecursive() {
-    fun recursive(node: LinkedList.Node<T>?): T? {
+    fun recursive(node: Linked.Node<T>?): T? {
         print(node?.value)
         return if (node == null) {
             node?.value
