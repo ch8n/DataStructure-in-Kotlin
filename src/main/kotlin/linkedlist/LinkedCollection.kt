@@ -61,45 +61,41 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     override fun insertLast(data: T) {
-        val node = Linked.Node(data)
-
-        if (size() == 0) {
-            _first = node
-            return
+        when (size()) {
+            0 -> insertFirst(data)
+            else -> {
+                val node = Linked.Node(data)
+                var current = _first
+                while (current?.next != null) {
+                    current = current.next
+                }
+                current?.next = node
+            }
         }
-
-        var current = _first
-        while (current?.next != null) {
-            current = current.next
-        }
-        current?.next = node
     }
 
     override fun insertAt(index: Int, data: T) {
         val size = size()
-        if (index > size) {
-            throw IndexOutOfBoundsException("Invalid index for Insert")
+        when {
+            index > size -> throw IndexOutOfBoundsException("Invalid index for Insert")
+            index == 0 -> insertFirst(data)
+            index == size -> insertLast(data)
+            else -> {
+                val node = Linked.Node(data)
+                var current = _first
+                var tailing = _first
+                var count = 0
+                while (count != index) {
+                    tailing = current
+                    current = current?.next
+                    ++count
+                }
+                tailing?.next = node
+                node.next = current
+                current = node
+            }
         }
 
-        val node = Linked.Node(data)
-
-        if (index == 0) {
-            node.next = _first
-            _first = node
-            return
-        }
-
-        var current = _first
-        var tailing = _first
-        var count = 0
-        while (count != index) {
-            tailing = current
-            current = current?.next
-            ++count
-        }
-        tailing?.next = node
-        node.next = current
-        current = node
     }
 
 
