@@ -6,6 +6,11 @@ interface InsertLinkedList<T> {
     fun insertAt(position: Int, data: T)
 }
 
+interface UpdateLinkedList<T> {
+    fun replace(position: Int, data: T)
+}
+
+
 interface DeleteLinkedList<T> {
     fun deleteFirst()
     fun deleteLast()

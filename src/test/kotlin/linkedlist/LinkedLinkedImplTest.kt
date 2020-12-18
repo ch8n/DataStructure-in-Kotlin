@@ -1,10 +1,12 @@
 package linkedlist
 
 import junit.framework.TestCase.assertEquals
+import junit.framework.TestCase.assertNull
 import org.junit.After
 import org.junit.Before
 
 import org.junit.Test
+import java.lang.IllegalArgumentException
 import java.lang.IndexOutOfBoundsException
 import kotlin.test.assertFailsWith
 import kotlin.test.assertNotNull
@@ -62,7 +64,6 @@ class LinkedLinkedImplTest {
     }
 
 
-
     @Test
     fun `insert item at end to empty linkedlist first and last should be equal`() {
         val linkedList = mutableLinkedListOf<Int>()
@@ -99,7 +100,7 @@ class LinkedLinkedImplTest {
     @Test
     fun `insert item at position 0 to empty linkedlist first and last should be equal`() {
         val linkedList = mutableLinkedListOf<Int>()
-        linkedList.insertAt(0,10)
+        linkedList.insertAt(0, 10)
 
         println("LinkedListContent : $linkedList")
         println("first : ${linkedList.firstOrNull}")
@@ -116,8 +117,8 @@ class LinkedLinkedImplTest {
     fun `insert item at position 1 to empty linkedlist throws exception`() {
         val linkedList = mutableLinkedListOf<Int>()
 
-        assertFailsWith(IndexOutOfBoundsException::class){
-            linkedList.insertAt(1,10)
+        assertFailsWith(IndexOutOfBoundsException::class) {
+            linkedList.insertAt(1, 10)
         }
 
         println("LinkedListContent : $linkedList")
@@ -134,7 +135,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        linkedList.insertAt(1,20)
+        linkedList.insertAt(1, 20)
 
         println("LinkedListContent : $linkedList")
         println("first : ${linkedList.firstOrNull}")
@@ -147,6 +148,148 @@ class LinkedLinkedImplTest {
         assertEquals(linkedList.lastOrNull?.value, 30)
     }
 
+
+    @Test
+    fun `delete first item of linked list with multiple items`() {
+        val linkedList = mutableLinkedListOf<Int>()
+        linkedList.insertAt(0, 1)
+        linkedList.insertAt(1, 2)
+        linkedList.insertAt(2, 3)
+        linkedList.deleteFirst()
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 2)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+
+        assertEquals(linkedList.firstOrNull?.value, 2)
+        assertEquals(linkedList.lastOrNull?.value, 3)
+    }
+
+    @Test
+    fun `delete first item of linked list no items`() {
+        val linkedList = mutableLinkedListOf<Int>()
+
+        linkedList.deleteFirst()
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 0)
+        assertNull(linkedList.firstOrNull)
+        assertNull(linkedList.lastOrNull)
+
+    }
+
+    @Test
+    fun `delete last item of linked list with multiple items`() {
+        val linkedList = mutableLinkedListOf<Int>().also {
+            it.insertAt(0,1)
+            it.insertAt(1,2)
+            it.insertAt(2,3)
+        }
+
+        linkedList.deleteLast()
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 2)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+        assertEquals(linkedList.firstOrNull?.value,1)
+        assertEquals(linkedList.lastOrNull?.value,2)
+
+    }
+
+
+    @Test
+    fun `delete item at 0 of linked list with multiple items`() {
+        val linkedList = mutableLinkedListOf<Int>().also {
+            it.insertAt(0,1)
+            it.insertAt(1,2)
+            it.insertAt(2,3)
+        }
+
+        linkedList.deleteAt(0)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 2)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+        assertEquals(linkedList.firstOrNull?.value,2)
+        assertEquals(linkedList.lastOrNull?.value,3)
+
+    }
+
+    @Test
+    fun `delete item at 1 of linked list with multiple items`() {
+        val linkedList = mutableLinkedListOf<Int>().also {
+            it.insertAt(0,1)
+            it.insertAt(1,2)
+            it.insertAt(2,3)
+        }
+
+        linkedList.deleteAt(1)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 2)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+        assertEquals(linkedList.firstOrNull?.value,1)
+        assertEquals(linkedList.lastOrNull?.value,3)
+
+    }
+
+    @Test
+    fun `delete item at 3 of linked list with multiple items`() {
+        val linkedList = mutableLinkedListOf<Int>().also {
+            it.insertAt(0,1)
+            it.insertAt(1,2)
+            it.insertAt(2,3)
+        }
+
+        linkedList.deleteAt(3)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 2)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+        assertEquals(linkedList.firstOrNull?.value,1)
+        assertEquals(linkedList.lastOrNull?.value,2)
+
+    }
+
+    @Test
+    fun `delete item at invalid index of linked list with multiple items`() {
+
+        val linkedList = mutableLinkedListOf<Int>().also {
+            it.insertAt(0,1)
+            it.insertAt(1,2)
+            it.insertAt(2,3)
+        }
+
+        assertFailsWith(IllegalArgumentException::class){
+            linkedList.deleteAt(5)
+        }
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+    }
 
 
 

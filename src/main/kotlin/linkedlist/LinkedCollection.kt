@@ -1,5 +1,7 @@
 package linkedlist
 
+import java.lang.IllegalArgumentException
+
 
 class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedList<T> {
 
@@ -73,15 +75,15 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
         current?.next = node
     }
 
-    override fun insertAt(position: Int, data: T) {
+    override fun insertAt(index: Int, data: T) {
         val size = size()
-        if (position > size) {
-            throw IndexOutOfBoundsException("Invalid Position for Insert")
+        if (index > size) {
+            throw IndexOutOfBoundsException("Invalid index for Insert")
         }
 
         val node = Linked.Node(data)
 
-        if (position == 0) {
+        if (index == 0) {
             node.next = _first
             _first = node
             return
@@ -90,7 +92,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
         var current = _first
         var tailing = _first
         var count = 0
-        while (count != position) {
+        while (count != index) {
             tailing = current
             current = current?.next
             ++count
@@ -102,15 +104,47 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
 
 
     override fun deleteFirst() {
-        TODO("Not yet implemented")
+        val current = _first ?: return
+        val next = current.next
+        _first = next
     }
 
     override fun deleteLast() {
-        TODO("Not yet implemented")
+        when (size()) {
+            0, 1 -> deleteFirst()
+            else -> {
+                var current = _first
+                var prev = _first
+                while (current?.next != null) {
+                    prev = current
+                    current = current.next
+                }
+                prev?.next = null
+            }
+        }
     }
 
-    override fun deleteAt(position: Int) {
-        TODO("Not yet implemented")
+    override fun deleteAt(index: Int) {
+        val size = size()
+        when {
+            index > size -> throw IllegalArgumentException("Invalid index for Deletion")
+            index == 0 -> deleteFirst()
+            index == size -> deleteLast()
+            else -> {
+                var current = _first
+                var prev = _first
+                var position = 0
+                while (position != index) {
+                    ++position
+                    prev = current
+                    current = current?.next
+                }
+                val next = current?.next
+                prev?.next = next
+                current = null
+            }
+        }
+
     }
 
     override fun delete(element: T) {
