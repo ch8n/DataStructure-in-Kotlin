@@ -13,22 +13,26 @@ fun <T> LinkedCollection<T>.toStringRecursive() {
     recursive(firstOrNull)
 }
 
-//TODO test
 fun <T> linkedListOf(): LinkedList<T> {
     return LinkedCollection.newInstance()
 }
 
-//TODO test
+fun <T> linkedListOf(first: Linked.Node<T>): LinkedList<T> {
+    return LinkedCollection.from(first)
+}
+
+fun <T> mutableLinkedListOf(first: Linked.Node<T>): MutableLinkedList<T> {
+    return LinkedCollection.mutableFrom(first)
+}
+
 fun <T> mutableLinkedListOf(): MutableLinkedList<T> {
     return LinkedCollection.newMutableInstance()
 }
 
-//TODO test for mutability
 fun <T> LinkedList<T>.toMutableLinkedList(): MutableLinkedList<T> {
     return LinkedCollection.mutableFrom(this)
 }
 
-//TODO test for mutability
 fun <T> MutableLinkedList<T>.toLinkedList(): LinkedList<T> {
-    return this
+    return LinkedCollection.from(this)
 }

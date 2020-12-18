@@ -3,8 +3,12 @@ package linkedlist
 
 class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedList<T> {
 
-    constructor(list: LinkedList<T>) : this() {
+    private constructor(list: LinkedList<T>) : this() {
         _first = list.firstOrNull?.copy()
+    }
+
+    private constructor(first: Linked.Node<T>) : this() {
+        _first = first.copy()
     }
 
     private var _first: Linked.Node<T>? = null
@@ -114,6 +118,15 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     companion object {
+
+        fun <T> from(first: Linked.Node<T>): LinkedList<T> {
+            return LinkedCollection(first)
+        }
+
+        fun <T> from(mutableList: MutableLinkedList<T>): LinkedList<T> {
+            return LinkedCollection(mutableList)
+        }
+
         fun <T> newInstance(): LinkedList<T> {
             return LinkedCollection()
         }
@@ -122,8 +135,12 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
             return LinkedCollection()
         }
 
-        fun <T> mutableFrom(list: LinkedList<T>): LinkedCollection<T> {
+        fun <T> mutableFrom(list: LinkedList<T>): MutableLinkedList<T> {
             return LinkedCollection(list)
+        }
+
+        fun <T> mutableFrom(first: Linked.Node<T>): MutableLinkedList<T> {
+            return LinkedCollection(first)
         }
 
     }
