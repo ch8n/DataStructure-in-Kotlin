@@ -291,6 +291,71 @@ class LinkedLinkedImplTest {
         println("last : ${linkedList.lastOrNull}")
     }
 
+    @Test
+    fun `delete item with value 2 from linked list with multiple items`() {
+        val linkedList = mutableLinkedListOf<Int>().also {
+            it.insertAt(0,1)
+            it.insertAt(1,2)
+            it.insertAt(2,3)
+        }
+
+        linkedList.delete(2)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 2)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+        assertEquals(linkedList.firstOrNull?.value,1)
+        assertEquals(linkedList.lastOrNull?.value,3)
+
+    }
+
+    @Test
+    fun `delete item with value 1 from linked list with multiple items`() {
+        val linkedList = mutableLinkedListOf<Int>().also {
+            it.insertAt(0,1)
+            it.insertAt(1,2)
+            it.insertAt(2,3)
+        }
+
+        linkedList.delete(1)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 2)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+        assertEquals(linkedList.firstOrNull?.value,2)
+        assertEquals(linkedList.lastOrNull?.value,3)
+
+    }
+
+    @Test
+    fun `delete item with value 3 from linked list with multiple items`() {
+        val linkedList = mutableLinkedListOf<Int>().also {
+            it.insertAt(0,1)
+            it.insertAt(1,2)
+            it.insertAt(2,3)
+        }
+
+        linkedList.delete(3)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 2)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+        assertEquals(linkedList.firstOrNull?.value,1)
+        assertEquals(linkedList.lastOrNull?.value,2)
+
+    }
 
 
     @After

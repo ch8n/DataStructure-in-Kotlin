@@ -144,7 +144,25 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     override fun delete(element: T) {
-        TODO("Not yet implemented")
+        var current = _first
+
+        if (current?.value == element){
+            deleteFirst()
+            return
+        }
+
+        var prev = _first
+        while (current?.next != null) {
+            if (current.value == element) {
+                break
+            }
+            prev = current
+            current = current.next
+        }
+
+        val next = current?.next
+        prev?.next = next
+        current = null
     }
 
     companion object {
