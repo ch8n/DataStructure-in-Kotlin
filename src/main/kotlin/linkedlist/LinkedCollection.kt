@@ -1,6 +1,7 @@
 package linkedlist
 
 import java.lang.IllegalArgumentException
+import java.lang.IllegalStateException
 
 
 class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedList<T> {
@@ -146,7 +147,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     override fun delete(element: T) {
         var current = _first
 
-        if (current?.value == element){
+        if (current?.value == element) {
             deleteFirst()
             return
         }
@@ -163,6 +164,25 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
         val next = current?.next
         prev?.next = next
         current = null
+    }
+
+    override fun replace(index: Int, data: T) {
+        val size = size()
+        when {
+            size == 0 -> throw IllegalStateException("Cannot update an empty list")
+            index > size -> throw IllegalArgumentException("Invalid index for update")
+            index == 0 -> _first?.value = data
+            else -> {
+                var current = _first
+                var count = 0
+                while (count != index) {
+                    ++count
+                    current = current?.next
+                }
+                current?.value = data
+            }
+        }
+
     }
 
     companion object {

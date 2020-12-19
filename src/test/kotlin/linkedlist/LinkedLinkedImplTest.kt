@@ -7,6 +7,7 @@ import org.junit.Before
 
 import org.junit.Test
 import java.lang.IllegalArgumentException
+import java.lang.IllegalStateException
 import java.lang.IndexOutOfBoundsException
 import kotlin.test.assertFailsWith
 import kotlin.test.assertNotNull
@@ -187,9 +188,9 @@ class LinkedLinkedImplTest {
     @Test
     fun `delete last item of linked list with multiple items`() {
         val linkedList = mutableLinkedListOf<Int>().also {
-            it.insertAt(0,1)
-            it.insertAt(1,2)
-            it.insertAt(2,3)
+            it.insertAt(0, 1)
+            it.insertAt(1, 2)
+            it.insertAt(2, 3)
         }
 
         linkedList.deleteLast()
@@ -201,8 +202,8 @@ class LinkedLinkedImplTest {
         assertEquals(linkedList.size(), 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
-        assertEquals(linkedList.firstOrNull?.value,1)
-        assertEquals(linkedList.lastOrNull?.value,2)
+        assertEquals(linkedList.firstOrNull?.value, 1)
+        assertEquals(linkedList.lastOrNull?.value, 2)
 
     }
 
@@ -210,9 +211,9 @@ class LinkedLinkedImplTest {
     @Test
     fun `delete item at 0 of linked list with multiple items`() {
         val linkedList = mutableLinkedListOf<Int>().also {
-            it.insertAt(0,1)
-            it.insertAt(1,2)
-            it.insertAt(2,3)
+            it.insertAt(0, 1)
+            it.insertAt(1, 2)
+            it.insertAt(2, 3)
         }
 
         linkedList.deleteAt(0)
@@ -224,17 +225,17 @@ class LinkedLinkedImplTest {
         assertEquals(linkedList.size(), 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
-        assertEquals(linkedList.firstOrNull?.value,2)
-        assertEquals(linkedList.lastOrNull?.value,3)
+        assertEquals(linkedList.firstOrNull?.value, 2)
+        assertEquals(linkedList.lastOrNull?.value, 3)
 
     }
 
     @Test
     fun `delete item at 1 of linked list with multiple items`() {
         val linkedList = mutableLinkedListOf<Int>().also {
-            it.insertAt(0,1)
-            it.insertAt(1,2)
-            it.insertAt(2,3)
+            it.insertAt(0, 1)
+            it.insertAt(1, 2)
+            it.insertAt(2, 3)
         }
 
         linkedList.deleteAt(1)
@@ -246,17 +247,17 @@ class LinkedLinkedImplTest {
         assertEquals(linkedList.size(), 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
-        assertEquals(linkedList.firstOrNull?.value,1)
-        assertEquals(linkedList.lastOrNull?.value,3)
+        assertEquals(linkedList.firstOrNull?.value, 1)
+        assertEquals(linkedList.lastOrNull?.value, 3)
 
     }
 
     @Test
     fun `delete item at 3 of linked list with multiple items`() {
         val linkedList = mutableLinkedListOf<Int>().also {
-            it.insertAt(0,1)
-            it.insertAt(1,2)
-            it.insertAt(2,3)
+            it.insertAt(0, 1)
+            it.insertAt(1, 2)
+            it.insertAt(2, 3)
         }
 
         linkedList.deleteAt(3)
@@ -268,8 +269,8 @@ class LinkedLinkedImplTest {
         assertEquals(linkedList.size(), 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
-        assertEquals(linkedList.firstOrNull?.value,1)
-        assertEquals(linkedList.lastOrNull?.value,2)
+        assertEquals(linkedList.firstOrNull?.value, 1)
+        assertEquals(linkedList.lastOrNull?.value, 2)
 
     }
 
@@ -277,12 +278,12 @@ class LinkedLinkedImplTest {
     fun `delete item at invalid index of linked list with multiple items`() {
 
         val linkedList = mutableLinkedListOf<Int>().also {
-            it.insertAt(0,1)
-            it.insertAt(1,2)
-            it.insertAt(2,3)
+            it.insertAt(0, 1)
+            it.insertAt(1, 2)
+            it.insertAt(2, 3)
         }
 
-        assertFailsWith(IllegalArgumentException::class){
+        assertFailsWith(IllegalArgumentException::class) {
             linkedList.deleteAt(5)
         }
 
@@ -294,9 +295,9 @@ class LinkedLinkedImplTest {
     @Test
     fun `delete item with value 2 from linked list with multiple items`() {
         val linkedList = mutableLinkedListOf<Int>().also {
-            it.insertAt(0,1)
-            it.insertAt(1,2)
-            it.insertAt(2,3)
+            it.insertAt(0, 1)
+            it.insertAt(1, 2)
+            it.insertAt(2, 3)
         }
 
         linkedList.delete(2)
@@ -308,17 +309,17 @@ class LinkedLinkedImplTest {
         assertEquals(linkedList.size(), 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
-        assertEquals(linkedList.firstOrNull?.value,1)
-        assertEquals(linkedList.lastOrNull?.value,3)
+        assertEquals(linkedList.firstOrNull?.value, 1)
+        assertEquals(linkedList.lastOrNull?.value, 3)
 
     }
 
     @Test
     fun `delete item with value 1 from linked list with multiple items`() {
         val linkedList = mutableLinkedListOf<Int>().also {
-            it.insertAt(0,1)
-            it.insertAt(1,2)
-            it.insertAt(2,3)
+            it.insertAt(0, 1)
+            it.insertAt(1, 2)
+            it.insertAt(2, 3)
         }
 
         linkedList.delete(1)
@@ -330,17 +331,17 @@ class LinkedLinkedImplTest {
         assertEquals(linkedList.size(), 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
-        assertEquals(linkedList.firstOrNull?.value,2)
-        assertEquals(linkedList.lastOrNull?.value,3)
+        assertEquals(linkedList.firstOrNull?.value, 2)
+        assertEquals(linkedList.lastOrNull?.value, 3)
 
     }
 
     @Test
     fun `delete item with value 3 from linked list with multiple items`() {
         val linkedList = mutableLinkedListOf<Int>().also {
-            it.insertAt(0,1)
-            it.insertAt(1,2)
-            it.insertAt(2,3)
+            it.insertAt(0, 1)
+            it.insertAt(1, 2)
+            it.insertAt(2, 3)
         }
 
         linkedList.delete(3)
@@ -352,9 +353,120 @@ class LinkedLinkedImplTest {
         assertEquals(linkedList.size(), 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
-        assertEquals(linkedList.firstOrNull?.value,1)
-        assertEquals(linkedList.lastOrNull?.value,2)
+        assertEquals(linkedList.firstOrNull?.value, 1)
+        assertEquals(linkedList.lastOrNull?.value, 2)
 
+    }
+
+    @Test
+    fun `delete item with value 3 from empty linked list `() {
+        val linkedList = mutableLinkedListOf<Int>()
+
+        linkedList.delete(3)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 0)
+        assertNull(linkedList.firstOrNull)
+        assertNull(linkedList.lastOrNull)
+    }
+
+    @Test
+    fun `replace item at first index, with value 5 when list has multiple item`() {
+        val linkedList = mutableLinkedListOf<Int>().also {
+            it.insertAt(0, 1)
+            it.insertAt(1, 2)
+            it.insertAt(2, 3)
+        }
+
+        linkedList.replace(0, 5)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 3)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+        assertEquals(linkedList.firstOrNull?.value, 5)
+        assertEquals(linkedList.lastOrNull?.value, 3)
+    }
+
+    @Test
+    fun `replace item at middle index, with value 5 when list has multiple item`() {
+        val linkedList = mutableLinkedListOf<Int>().also {
+            it.insertAt(0, 1)
+            it.insertAt(1, 2)
+            it.insertAt(2, 3)
+        }
+
+        linkedList.replace(1, 5)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 3)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+        assertEquals(linkedList.firstOrNull?.value, 1)
+        assertEquals(linkedList.lastOrNull?.value, 3)
+    }
+
+
+    @Test
+    fun `replace item at last index, with value 5 when list has multiple item`() {
+        val linkedList = mutableLinkedListOf<Int>().also {
+            it.insertAt(0, 1)
+            it.insertAt(1, 2)
+            it.insertAt(2, 3)
+        }
+
+        linkedList.replace(2, 5)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+        assertEquals(linkedList.size(), 3)
+        assertNotNull(linkedList.firstOrNull)
+        assertNotNull(linkedList.lastOrNull)
+        assertEquals(linkedList.firstOrNull?.value, 1)
+        assertEquals(linkedList.lastOrNull?.value, 5)
+    }
+
+    @Test
+    fun `replace item at in empty list throws exception`() {
+
+        val linkedList = mutableLinkedListOf<Int>().also {
+            it.insertAt(0, 1)
+            it.insertAt(1, 2)
+            it.insertAt(2, 3)
+        }
+
+        assertFailsWith(IllegalArgumentException::class) {
+            linkedList.replace(5,5)
+        }
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+    }
+
+    @Test
+    fun `replace item at invalid index in list throws exception`() {
+
+        val linkedList = mutableLinkedListOf<Int>()
+
+        assertFailsWith(IllegalStateException::class) {
+            linkedList.replace(0,2)
+        }
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
     }
 
 
