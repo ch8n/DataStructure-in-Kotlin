@@ -32,4 +32,3 @@ interface MutableLinkedList<T> :
     DeleteLinkedList<T>,
     LinkedList<T>,
     ReplaceLinkedList<T>
-

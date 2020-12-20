@@ -1,7 +1,7 @@
 package linkedlist
 
-
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.Test
 
 class LinkedListKtxKtTest {
@@ -118,8 +118,5 @@ class LinkedListKtxKtTest {
         println(linked)
 
         assertEquals(list.size, linked.size)
-
     }
-
-
 }

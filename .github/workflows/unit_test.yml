@@ -38,7 +38,7 @@ jobs:
           path: '**/build/reports/tests/'
 
   lint_job:
-    name: kLint
+    name: kLint task
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
@@ -54,9 +54,9 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-      
-      - name: GitHub Action for ktlint
-        uses: yutailang0119/action-ktlint@v1.0.0
-        with:
-          xml_path: '**/build/reports/lint'
-        
+
+      - name: KtLint task
+          run: bash ./gradlew ktlint --stacktrace
+
+      - name: Ktlint format
+        run: bash ./gradlew ktlintFormat --stacktrace

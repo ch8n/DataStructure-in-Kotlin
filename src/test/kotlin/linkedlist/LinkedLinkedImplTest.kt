@@ -1,17 +1,15 @@
 package linkedlist
 
-
 import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
+import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeEach
-
-
 import org.junit.jupiter.api.Test
 import java.lang.IllegalArgumentException
 import java.lang.IllegalStateException
 import java.lang.IndexOutOfBoundsException
-
-
 
 class LinkedLinkedImplTest {
 
@@ -63,7 +61,6 @@ class LinkedLinkedImplTest {
         assertEquals(linkedList.firstOrNull?.value, 20)
         assertEquals(linkedList.lastOrNull?.value, 10)
     }
-
 
     @Test
     fun `insert item at end to empty linkedlist first and last should be equal`() {
@@ -149,7 +146,6 @@ class LinkedLinkedImplTest {
         assertEquals(linkedList.lastOrNull?.value, 30)
     }
 
-
     @Test
     fun `delete first item of linked list with multiple items`() {
         val linkedList = mutableLinkedListOf<Int>()
@@ -182,7 +178,6 @@ class LinkedLinkedImplTest {
         assertEquals(linkedList.size, 0)
         assertNull(linkedList.firstOrNull)
         assertNull(linkedList.lastOrNull)
-
     }
 
     @Test
@@ -204,9 +199,7 @@ class LinkedLinkedImplTest {
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 1)
         assertEquals(linkedList.lastOrNull?.value, 2)
-
     }
-
 
     @Test
     fun `delete item at 0 of linked list with multiple items`() {
@@ -227,7 +220,6 @@ class LinkedLinkedImplTest {
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 2)
         assertEquals(linkedList.lastOrNull?.value, 3)
-
     }
 
     @Test
@@ -249,7 +241,6 @@ class LinkedLinkedImplTest {
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 1)
         assertEquals(linkedList.lastOrNull?.value, 3)
-
     }
 
     @Test
@@ -271,7 +262,6 @@ class LinkedLinkedImplTest {
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 1)
         assertEquals(linkedList.lastOrNull?.value, 2)
-
     }
 
     @Test
@@ -311,7 +301,6 @@ class LinkedLinkedImplTest {
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 1)
         assertEquals(linkedList.lastOrNull?.value, 3)
-
     }
 
     @Test
@@ -333,7 +322,6 @@ class LinkedLinkedImplTest {
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 2)
         assertEquals(linkedList.lastOrNull?.value, 3)
-
     }
 
     @Test
@@ -355,7 +343,6 @@ class LinkedLinkedImplTest {
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 1)
         assertEquals(linkedList.lastOrNull?.value, 2)
-
     }
 
     @Test
@@ -415,7 +402,6 @@ class LinkedLinkedImplTest {
         assertEquals(linkedList.lastOrNull?.value, 3)
     }
 
-
     @Test
     fun `replace item at last index, with value 5 when list has multiple item`() {
         val linkedList = mutableLinkedListOf<Int>().also {
@@ -447,7 +433,7 @@ class LinkedLinkedImplTest {
         }
 
         assertThrows(IllegalArgumentException::class.java) {
-            linkedList.replace(5,5)
+            linkedList.replace(5, 5)
         }
 
         println("LinkedListContent : $linkedList")
@@ -461,14 +447,13 @@ class LinkedLinkedImplTest {
         val linkedList = mutableLinkedListOf<Int>()
 
         assertThrows(IllegalStateException::class.java) {
-            linkedList.replace(0,2)
+            linkedList.replace(0, 2)
         }
 
         println("LinkedListContent : $linkedList")
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
     }
-
 
     @AfterEach
     fun tearDown() {

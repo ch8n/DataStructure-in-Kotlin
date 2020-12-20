@@ -3,7 +3,6 @@ package linkedlist
 import java.lang.IllegalArgumentException
 import java.lang.IllegalStateException
 
-
 class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedList<T> {
 
     private constructor(list: LinkedList<T>) : this() {
@@ -97,9 +96,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
                 current = node
             }
         }
-
     }
-
 
     override fun deleteFirst() {
         val current = _first ?: return
@@ -142,7 +139,6 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
                 current = null
             }
         }
-
     }
 
     override fun delete(element: T) {
@@ -183,7 +179,6 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
                 current?.value = data
             }
         }
-
     }
 
     companion object {
@@ -211,8 +206,5 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
         fun <T> mutableFrom(first: Linked.Node<T>): MutableLinkedList<T> {
             return LinkedCollection(first)
         }
-
     }
-
 }
-
