@@ -37,22 +37,6 @@ jobs:
           name: test-reports
           path: '**/build/reports/tests/'
 
-  check_dependeny_updates_job:
-    name: Check Dependency Updates
-    runs-on: ubuntu-latest
-    continue-on-error: true
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Checking Dependency Versions
-        run: ./gradlew dependencyUpdates
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: dependencies-report
-          path: build/dependencyUpdates/report.txt
-
   lint_job:
     name: kLint
     runs-on: ubuntu-latest
@@ -74,5 +58,5 @@ jobs:
       - name: GitHub Action for ktlint
         uses: yutailang0119/action-ktlint@v1.0.0
         with:
-          xml_path: '**/build/reports/lint-results-*'
+          xml_path: '**/build/reports/lint'
         
