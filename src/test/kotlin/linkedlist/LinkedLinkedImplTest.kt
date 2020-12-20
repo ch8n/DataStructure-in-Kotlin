@@ -1,21 +1,21 @@
 package linkedlist
 
-import junit.framework.TestCase.assertEquals
-import junit.framework.TestCase.assertNull
-import org.junit.After
-import org.junit.Before
 
-import org.junit.Test
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.BeforeEach
+
+
+import org.junit.jupiter.api.Test
 import java.lang.IllegalArgumentException
 import java.lang.IllegalStateException
 import java.lang.IndexOutOfBoundsException
-import kotlin.test.assertFailsWith
-import kotlin.test.assertNotNull
+
 
 
 class LinkedLinkedImplTest {
 
-    @Before
+    @BeforeEach
     fun setUp() {
     }
 
@@ -118,7 +118,7 @@ class LinkedLinkedImplTest {
     fun `insert item at position 1 to empty linkedlist throws exception`() {
         val linkedList = mutableLinkedListOf<Int>()
 
-        assertFailsWith(IndexOutOfBoundsException::class) {
+        assertThrows(IndexOutOfBoundsException::class.java) {
             linkedList.insertAt(1, 10)
         }
 
@@ -283,7 +283,7 @@ class LinkedLinkedImplTest {
             it.insertAt(2, 3)
         }
 
-        assertFailsWith(IllegalArgumentException::class) {
+        assertThrows(IllegalArgumentException::class.java) {
             linkedList.deleteAt(5)
         }
 
@@ -446,7 +446,7 @@ class LinkedLinkedImplTest {
             it.insertAt(2, 3)
         }
 
-        assertFailsWith(IllegalArgumentException::class) {
+        assertThrows(IllegalArgumentException::class.java) {
             linkedList.replace(5,5)
         }
 
@@ -460,7 +460,7 @@ class LinkedLinkedImplTest {
 
         val linkedList = mutableLinkedListOf<Int>()
 
-        assertFailsWith(IllegalStateException::class) {
+        assertThrows(IllegalStateException::class.java) {
             linkedList.replace(0,2)
         }
 
@@ -470,7 +470,7 @@ class LinkedLinkedImplTest {
     }
 
 
-    @After
+    @AfterEach
     fun tearDown() {
     }
 }

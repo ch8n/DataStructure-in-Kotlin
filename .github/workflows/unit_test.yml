@@ -6,12 +6,10 @@ on:
     branches:
       - 'main'
 
-
 jobs:
   running_test:
     name: Running Unit Tests
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
       - name: set up JDK 1.8

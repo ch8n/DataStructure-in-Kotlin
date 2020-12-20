@@ -6,13 +6,17 @@ version = '1.0-SNAPSHOT'
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 repositories {
     mavenCentral()
 }
 dependencies {
-    testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+    //testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.5.2'
 }
 compileKotlin {
     kotlinOptions.jvmTarget = '1.8'

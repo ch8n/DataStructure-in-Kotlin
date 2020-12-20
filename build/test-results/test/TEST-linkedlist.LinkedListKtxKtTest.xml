@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="linkedlist.LinkedListKtxKtTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2020-12-20T17:00:42" hostname="chetan.gupta" time="0.019">
+  <properties/>
+  <testcase name="convert list to Linked List have same size()" classname="linkedlist.LinkedListKtxKtTest" time="0.009"/>
+  <testcase name="linkedListOf(node) returns new instance with one item()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
+  <testcase name="linkedList of 1 item to mutable list always return new object 1 item()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
+  <testcase name="linkedListOf() returns new instance on each invoke()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
+  <testcase name="mutableLinkedListOf() returns new instance on each invoke()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
+  <testcase name="linkedList to mutable list always return new object()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
+  <testcase name="mutable linked list to list is immutable instance()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
+  <testcase name="mutableLinkedListOf(node) returns new instance with one item()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
+  <testcase name="linkedList when converted to mutable item is object then it is mutable()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
+  <testcase name="linkedList when converted to mutable item stays immutable()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
+  <system-out><![CDATA[[1, 2, 3, 4, 5, 6]
+ 1 2 3 4 5 6
+ 1
+ 1
+ 1
+ 1
+ Dummy(data=5)
+ Dummy(data=5)
+ pokemon
+ pokemon
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
