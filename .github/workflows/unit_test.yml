@@ -56,7 +56,7 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: KtLint task
-          run: bash ./gradlew ktlint --stacktrace
+        run: bash ./gradlew ktlint --stacktrace
 
       - name: Ktlint format
         run: bash ./gradlew ktlintFormat --stacktrace
