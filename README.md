@@ -4,17 +4,21 @@
 ![Big-Brain-Kotlin](./bigBrain.jpg)
 
 ## :hand: About
-Hola Amigos! 🙌, welcome to my problem-solving and Data-structure playground!
-basically I do some of my pratice problem solving in here, you are welcome to explore around 👩‍💻 
+Hola Amigos! 🙌, welcome to my Kotlin Data-structure playground!
+Here I'm doing my research and learning on data structures, you are welcome to explore around 👩‍💻 
 
 Do let me know if you find something useful or want to suggest some improvement
 also don't forget to checkout of blogs at [`chetangupta.net`](https://chetangupta.net/)
 
-I also have special [`Big-Brain-Kotlin Series`](https://chetangupta.net/bbk-main) on going which teaches Kotlin stdlib, for solving these
-problems.
+I also have special [`Big-Brain-Kotlin Series`](https://chetangupta.net/bbk-main) on going which teaches Kotlin stdlib, 
+for solving problems.
 
 ## :book: Content
-* [DataStructure](./src/main/kotlin) : List of DataStructure Using Kotlin
+* [Collection-Home](./src/main/kotlin) : Project Home
+* [Collection-Test-Home](./src/test/kotlin) : Project Home
+* Linked List
+    * [Linked-List](./src/main/kotlin/linkedlist)  
+    * [Linked-List-Test](./src/test/kotlin/linkedlist)  
 
 ## :eyes: Social
 [LinkedIn](https://bit.ly/ch8n-linkdIn) | 
