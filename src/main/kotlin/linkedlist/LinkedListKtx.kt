@@ -36,3 +36,10 @@ fun <T> LinkedList<T>.toMutableLinkedList(): MutableLinkedList<T> {
 fun <T> MutableLinkedList<T>.toLinkedList(): LinkedList<T> {
     return LinkedCollection.from(this)
 }
+
+fun <T> Iterable<T>.toLinkedList(): LinkedList<T> {
+    return this.fold(mutableLinkedListOf()) { acc, item ->
+        acc.insertLast(item)
+        return@fold acc
+    }
+}

@@ -16,7 +16,7 @@ class LinkedListKtxKtTest {
     fun `linkedListOf(node) returns new instance with one item`() {
         val first = Linked.Node(1)
         val list1 = linkedListOf<Int>(first)
-        assertEquals(list1.size(), 1)
+        assertEquals(list1.size, 1)
     }
 
     @Test
@@ -30,7 +30,7 @@ class LinkedListKtxKtTest {
     fun `mutableLinkedListOf(node) returns new instance with one item`() {
         val first = Linked.Node(1)
         val list1 = mutableLinkedListOf(first)
-        assertEquals(list1.size(), 1)
+        assertEquals(list1.size, 1)
     }
 
     @Test
@@ -47,8 +47,8 @@ class LinkedListKtxKtTest {
         val list2 = list1.toMutableLinkedList()
         println(list1)
         println(list2)
-        assertEquals(list1.size(), 1)
-        assertEquals(list2.size(), 1)
+        assertEquals(list1.size, 1)
+        assertEquals(list2.size, 1)
         assertNotEquals(list1, list2)
     }
 
@@ -63,14 +63,15 @@ class LinkedListKtxKtTest {
         println(list2)
         assertEquals(list1.firstOrNull?.value, "pokemon")
         assertEquals(list2.firstOrNull?.value, "pokemon")
-        assertEquals(list1.size(), 1)
-        assertEquals(list2.size(), 1)
+        assertEquals(list1.size, 1)
+        assertEquals(list2.size, 1)
         assertNotEquals(list1, list2)
     }
 
     @Test
     fun `linkedList when converted to mutable item is object then it is mutable`() {
         data class Dummy(var data: Int = 2)
+
         val dummy = Dummy()
 
         val first = Linked.Node(dummy)
@@ -81,8 +82,8 @@ class LinkedListKtxKtTest {
 
         println(list1)
         println(list2)
-        assertEquals(list1.size(), 1)
-        assertEquals(list2.size(), 1)
+        assertEquals(list1.size, 1)
+        assertEquals(list2.size, 1)
         assertEquals(list1.firstOrNull?.value?.data, 5)
         assertEquals(list2.firstOrNull?.value?.data, 5)
         assertNotEquals(list1, list2)
@@ -90,7 +91,6 @@ class LinkedListKtxKtTest {
 
     @Test
     fun `mutable linked list to list is immutable instance`() {
-
         val first = Linked.Node(1)
         val list1 = mutableLinkedListOf(first)
         val list2 = list1.toLinkedList()
@@ -100,12 +100,24 @@ class LinkedListKtxKtTest {
         println(list1)
         println(list2)
 
-        assertEquals(list1.size(), 1)
-        assertEquals(list2.size(), 1)
+        assertEquals(list1.size, 1)
+        assertEquals(list2.size, 1)
 
         assertEquals(list1.firstOrNull?.value, 1)
         assertEquals(list2.firstOrNull?.value, 1)
         assertNotEquals(list1, list2)
+    }
+
+    @Test
+    fun `convert list to Linked List have same size`() {
+        val list = mutableListOf<Int>(1, 2, 3, 4, 5, 6)
+        val linked = list.toLinkedList()
+
+        println(list)
+        println(linked)
+
+        assertEquals(list.size, linked.size)
+
     }
 
 

@@ -5,7 +5,7 @@
 
 ## :hand: About
 Hola Amigos! 🙌, welcome to my Kotlin Data-structure playground!
-Here I'm doing my research and learning on data structures, you are welcome to explore around 👩‍💻 
+Here I'm doing my learning and research on data structures and implementing them myself using Kotlin, you are welcome to explore around 👩‍💻 
 
 Do let me know if you find something useful or want to suggest some improvement
 also don't forget to checkout of blogs at [`chetangupta.net`](https://chetangupta.net/)
@@ -13,7 +13,7 @@ also don't forget to checkout of blogs at [`chetangupta.net`](https://chetangupt
 I also have special [`Big-Brain-Kotlin Series`](https://chetangupta.net/bbk-main) on going which teaches Kotlin stdlib, 
 for solving problems.
 
-## :book: Content : LinkedList
+## :book: Content : Self Implemented LinkedList
 Test Code for Implementation
 * [Linked-List-Test](../../../../src/test/kotlin/linkedlist)
 

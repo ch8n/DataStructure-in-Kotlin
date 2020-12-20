@@ -6,11 +6,9 @@ interface InsertLinkedList<T> {
     fun insertAt(index: Int, data: T)
 }
 
-
 interface ReplaceLinkedList<T> {
     fun replace(index: Int, data: T)
 }
-
 
 interface DeleteLinkedList<T> {
     fun deleteFirst()
@@ -26,7 +24,7 @@ abstract class Linked<T> {
 interface LinkedList<T> {
     val firstOrNull: Linked.Node<T>?
     val lastOrNull: Linked.Node<T>?
-    fun size(): Int
+    val size: Int
 }
 
 interface MutableLinkedList<T> :

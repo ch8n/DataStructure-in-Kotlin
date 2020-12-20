@@ -25,7 +25,7 @@ class LinkedLinkedImplTest {
         println("LinkedListContent : $linkedList")
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
-        assertEquals(linkedList.size(), 0)
+        assertEquals(linkedList.size, 0)
         assertEquals(linkedList.firstOrNull, null)
         assertEquals(linkedList.lastOrNull, null)
     }
@@ -39,7 +39,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 1)
+        assertEquals(linkedList.size, 1)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 10)
@@ -56,7 +56,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 2)
+        assertEquals(linkedList.size, 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
 
@@ -74,7 +74,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 1)
+        assertEquals(linkedList.size, 1)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 10)
@@ -91,7 +91,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 2)
+        assertEquals(linkedList.size, 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 10)
@@ -107,7 +107,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 1)
+        assertEquals(linkedList.size, 1)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 10)
@@ -142,7 +142,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 3)
+        assertEquals(linkedList.size, 3)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 10)
@@ -161,7 +161,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 2)
+        assertEquals(linkedList.size, 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
 
@@ -179,7 +179,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 0)
+        assertEquals(linkedList.size, 0)
         assertNull(linkedList.firstOrNull)
         assertNull(linkedList.lastOrNull)
 
@@ -199,7 +199,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 2)
+        assertEquals(linkedList.size, 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 1)
@@ -222,7 +222,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 2)
+        assertEquals(linkedList.size, 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 2)
@@ -244,7 +244,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 2)
+        assertEquals(linkedList.size, 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 1)
@@ -266,7 +266,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 2)
+        assertEquals(linkedList.size, 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 1)
@@ -306,7 +306,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 2)
+        assertEquals(linkedList.size, 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 1)
@@ -328,7 +328,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 2)
+        assertEquals(linkedList.size, 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 2)
@@ -350,7 +350,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 2)
+        assertEquals(linkedList.size, 2)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 1)
@@ -368,7 +368,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 0)
+        assertEquals(linkedList.size, 0)
         assertNull(linkedList.firstOrNull)
         assertNull(linkedList.lastOrNull)
     }
@@ -387,7 +387,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 3)
+        assertEquals(linkedList.size, 3)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 5)
@@ -408,7 +408,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 3)
+        assertEquals(linkedList.size, 3)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 1)
@@ -430,7 +430,7 @@ class LinkedLinkedImplTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
 
-        assertEquals(linkedList.size(), 3)
+        assertEquals(linkedList.size, 3)
         assertNotNull(linkedList.firstOrNull)
         assertNotNull(linkedList.lastOrNull)
         assertEquals(linkedList.firstOrNull?.value, 1)

@@ -21,7 +21,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
 
     override val lastOrNull: Linked.Node<T>?
         get() {
-            return when (size()) {
+            return when (size) {
                 0 -> null
                 1 -> _first
                 else -> {
@@ -45,15 +45,16 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
         return builder.toString()
     }
 
-    override fun size(): Int {
-        var current = _first
-        var size = 0
-        while (current != null) {
-            ++size
-            current = current.next
+    override val size: Int
+        get() {
+            var current = _first
+            var size = 0
+            while (current != null) {
+                ++size
+                current = current.next
+            }
+            return size
         }
-        return size
-    }
 
     override fun insertFirst(data: T) {
         val node = Linked.Node(data)
@@ -62,7 +63,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     override fun insertLast(data: T) {
-        when (size()) {
+        when (size) {
             0 -> insertFirst(data)
             else -> {
                 val node = Linked.Node(data)
@@ -76,7 +77,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     override fun insertAt(index: Int, data: T) {
-        val size = size()
+        val size = size
         when {
             index > size -> throw IndexOutOfBoundsException("Invalid index for Insert")
             index == 0 -> insertFirst(data)
@@ -107,7 +108,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     override fun deleteLast() {
-        when (size()) {
+        when (size) {
             0, 1 -> deleteFirst()
             else -> {
                 var current = _first
@@ -122,7 +123,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     override fun deleteAt(index: Int) {
-        val size = size()
+        val size = size
         when {
             index > size -> throw IllegalArgumentException("Invalid index for Deletion")
             index == 0 -> deleteFirst()
@@ -167,7 +168,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     override fun replace(index: Int, data: T) {
-        val size = size()
+        val size = size
         when {
             size == 0 -> throw IllegalStateException("Cannot update an empty list")
             index > size -> throw IllegalArgumentException("Invalid index for update")
