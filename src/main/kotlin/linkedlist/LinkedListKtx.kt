@@ -16,14 +16,13 @@ fun <T> LinkedCollection<T>.toStringRecursive() {
 }
 
 fun MutableLinkedList<Int>.insertInAscendingSorted(data: Int) {
-    // todo sorted check?
-    val isSorted = true
+    val isSorted = isSortedAscending
     val size = size
     when {
         !isSorted -> throw IllegalStateException("List is not sorted")
         size == 0 -> insertFirst(data)
         else -> {
-            // head case need to handled seperatly
+            // head case need to handled separately
             val first = firstOrNull
             if ((first?.value ?: -1) > data) {
                 insertFirst(data)
@@ -43,6 +42,21 @@ fun MutableLinkedList<Int>.insertInAscendingSorted(data: Int) {
         }
     }
 }
+
+val LinkedList<Int>.isSortedAscending: Boolean
+    get() {
+        var current = firstOrNull
+        var next = firstOrNull
+        while (current != null && next != null) {
+            val isAscending = (current.value ?: Int.MIN_VALUE) <= (next.value ?: Int.MIN_VALUE)
+            if (!isAscending) {
+                return false
+            }
+            current = next
+            next = current.next
+        }
+        return true
+    }
 
 fun <T> linkedListOf(): LinkedList<T> {
     return LinkedCollection.newInstance()

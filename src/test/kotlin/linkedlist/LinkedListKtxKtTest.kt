@@ -1,8 +1,11 @@
 package linkedlist
 
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.Test
+import java.lang.IllegalArgumentException
+import java.lang.IllegalStateException
 
 class LinkedListKtxKtTest {
 
@@ -136,6 +139,34 @@ class LinkedListKtxKtTest {
     }
 
     @Test
+    fun `159 is ascending sorted linked list`() {
+        val list = mutableLinkedListOf<Int>().apply {
+            insertLast(1)
+            insertLast(5)
+            insertLast(9)
+        }
+        assertEquals(list.size, 3)
+        assertEquals(list.isSortedAscending, true)
+
+        println(list)
+        println("Ascending sorted : ${list.isSortedAscending}")
+    }
+
+    @Test
+    fun `310 is not ascending sorted linked list`() {
+        val list = mutableLinkedListOf<Int>().apply {
+            insertLast(3)
+            insertLast(1)
+            insertLast(0)
+        }
+        assertEquals(list.size, 3)
+        assertEquals(list.isSortedAscending, false)
+
+        println(list)
+        println("Ascending sorted : ${list.isSortedAscending}")
+    }
+
+    @Test
     fun `insert item in end of ascending sorted linked list`() {
         val list = mutableLinkedListOf<Int>().apply {
             insertLast(1)
@@ -174,5 +205,22 @@ class LinkedListKtxKtTest {
         assertEquals(list.size, 4)
         assertEquals(list.firstOrNull?.value, 0)
         assertEquals(list.lastOrNull?.value, 3)
+    }
+
+    @Test
+    fun `no item can be inserted if linked list is not ascending sorted`() {
+        val linkedList = mutableLinkedListOf<Int>().apply {
+            insertLast(1)
+            insertLast(0)
+            insertLast(9)
+        }
+
+        Assertions.assertThrows(IllegalStateException::class.java) {
+            linkedList.insertInAscendingSorted(5)
+        }
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
     }
 }
