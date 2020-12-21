@@ -119,4 +119,60 @@ class LinkedListKtxKtTest {
 
         assertEquals(list.size, linked.size)
     }
+
+    @Test
+    fun `insert item in middle of ascending sorted linked list`() {
+        val list = mutableLinkedListOf<Int>().apply {
+            insertLast(1)
+            insertLast(2)
+            insertLast(4)
+        }
+        list.insertInAscendingSorted(3)
+        println(list)
+
+        assertEquals(list.size, 4)
+        assertEquals(list.firstOrNull?.value, 1)
+        assertEquals(list.lastOrNull?.value, 4)
+    }
+
+    @Test
+    fun `insert item in end of ascending sorted linked list`() {
+        val list = mutableLinkedListOf<Int>().apply {
+            insertLast(1)
+            insertLast(2)
+            insertLast(3)
+        }
+        list.insertInAscendingSorted(5)
+        println(list)
+
+        assertEquals(list.size, 4)
+        assertEquals(list.firstOrNull?.value, 1)
+        assertEquals(list.lastOrNull?.value, 5)
+    }
+
+    @Test
+    fun `insert item in empty ascending sorted linked list`() {
+        val list = mutableLinkedListOf<Int>()
+        list.insertInAscendingSorted(5)
+        println(list)
+
+        assertEquals(list.size, 1)
+        assertEquals(list.firstOrNull?.value, 5)
+        assertEquals(list.lastOrNull?.value, 5)
+    }
+
+    @Test
+    fun `insert item in start of ascending sorted linked list`() {
+        val list = mutableLinkedListOf<Int>().apply {
+            insertLast(1)
+            insertLast(2)
+            insertLast(3)
+        }
+        list.insertInAscendingSorted(0)
+        println(list)
+
+        assertEquals(list.size, 4)
+        assertEquals(list.firstOrNull?.value, 0)
+        assertEquals(list.lastOrNull?.value, 3)
+    }
 }

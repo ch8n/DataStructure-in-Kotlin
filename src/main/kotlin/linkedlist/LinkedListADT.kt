@@ -6,8 +6,11 @@ interface InsertLinkedList<T> {
     fun insertAt(index: Int, data: T)
 }
 
-interface ReplaceLinkedList<T> {
+interface UpdateLinkedList<T> {
     fun replace(index: Int, data: T)
+    fun sortAscending()
+    fun sortDescending()
+    fun reverse()
 }
 
 interface DeleteLinkedList<T> {
@@ -31,4 +34,4 @@ interface MutableLinkedList<T> :
     InsertLinkedList<T>,
     DeleteLinkedList<T>,
     LinkedList<T>,
-    ReplaceLinkedList<T>
+    UpdateLinkedList<T>

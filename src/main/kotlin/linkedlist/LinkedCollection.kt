@@ -5,6 +5,33 @@ import java.lang.IllegalStateException
 
 class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedList<T> {
 
+    companion object {
+
+        fun <T> from(first: Linked.Node<T>): LinkedList<T> {
+            return LinkedCollection(first)
+        }
+
+        fun <T> from(mutableList: MutableLinkedList<T>): LinkedList<T> {
+            return LinkedCollection(mutableList)
+        }
+
+        fun <T> newInstance(): LinkedList<T> {
+            return LinkedCollection()
+        }
+
+        fun <T> newMutableInstance(): MutableLinkedList<T> {
+            return LinkedCollection()
+        }
+
+        fun <T> mutableFrom(list: LinkedList<T>): MutableLinkedList<T> {
+            return LinkedCollection(list)
+        }
+
+        fun <T> mutableFrom(first: Linked.Node<T>): MutableLinkedList<T> {
+            return LinkedCollection(first)
+        }
+    }
+
     private constructor(list: LinkedList<T>) : this() {
         _first = list.firstOrNull?.copy()
     }
@@ -19,29 +46,27 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
         get() = _first
 
     override val lastOrNull: Linked.Node<T>?
-        get() {
-            return when (size) {
-                0 -> null
-                1 -> _first
-                else -> {
-                    var current = _first
-                    while (current?.next != null) {
-                        current = current.next
-                    }
-                    current
+        get() = when (size) {
+            0 -> null
+            1 -> _first
+            else -> {
+                var current = _first
+                while (current?.next != null) {
+                    current = current.next
                 }
+                current
             }
         }
 
     override fun toString(): String {
         var current = _first
-        val builder = StringBuilder("")
+        var builder = ""
         while (current != null) {
             val value = current.value ?: ""
-            builder.append(" $value")
+            builder = "$builder $value"
             current = current.next
         }
-        return builder.toString()
+        return builder
     }
 
     override val size: Int
@@ -54,6 +79,8 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
             }
             return size
         }
+
+    // --------------- Insert --------------------
 
     override fun insertFirst(data: T) {
         val node = Linked.Node(data)
@@ -97,6 +124,9 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
             }
         }
     }
+
+
+    // --------------- Delete --------------------
 
     override fun deleteFirst() {
         val current = _first ?: return
@@ -163,6 +193,8 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
         current = null
     }
 
+    // --------------- Update --------------------
+
     override fun replace(index: Int, data: T) {
         val size = size
         when {
@@ -181,30 +213,15 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
         }
     }
 
-    companion object {
+    override fun sortAscending() {
+        TODO("Not yet implemented")
+    }
 
-        fun <T> from(first: Linked.Node<T>): LinkedList<T> {
-            return LinkedCollection(first)
-        }
+    override fun sortDescending() {
+        TODO("Not yet implemented")
+    }
 
-        fun <T> from(mutableList: MutableLinkedList<T>): LinkedList<T> {
-            return LinkedCollection(mutableList)
-        }
-
-        fun <T> newInstance(): LinkedList<T> {
-            return LinkedCollection()
-        }
-
-        fun <T> newMutableInstance(): MutableLinkedList<T> {
-            return LinkedCollection()
-        }
-
-        fun <T> mutableFrom(list: LinkedList<T>): MutableLinkedList<T> {
-            return LinkedCollection(list)
-        }
-
-        fun <T> mutableFrom(first: Linked.Node<T>): MutableLinkedList<T> {
-            return LinkedCollection(first)
-        }
+    override fun reverse() {
+        TODO("Not yet implemented")
     }
 }

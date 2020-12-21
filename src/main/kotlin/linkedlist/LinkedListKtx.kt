@@ -1,5 +1,7 @@
 package linkedlist
 
+import java.lang.IllegalStateException
+
 // TODO test
 fun <T> LinkedCollection<T>.toStringRecursive() {
     fun recursive(node: Linked.Node<T>?): T? {
@@ -11,6 +13,35 @@ fun <T> LinkedCollection<T>.toStringRecursive() {
         }
     }
     recursive(firstOrNull)
+}
+
+fun MutableLinkedList<Int>.insertInAscendingSorted(data: Int) {
+    // todo sorted check?
+    val isSorted = true
+    val size = size
+    when {
+        !isSorted -> throw IllegalStateException("List is not sorted")
+        size == 0 -> insertFirst(data)
+        else -> {
+            // head case need to handled seperatly
+            val first = firstOrNull
+            if ((first?.value ?: -1) > data) {
+                insertFirst(data)
+                return
+            }
+
+            // remaining cases
+            val node = Linked.Node(data)
+            var current = firstOrNull?.next
+            var tailing = firstOrNull
+            while (current != null && data > (current.value ?: -1)) {
+                tailing = current
+                current = current.next
+            }
+            node.next = current
+            tailing?.next = node
+        }
+    }
 }
 
 fun <T> linkedListOf(): LinkedList<T> {
