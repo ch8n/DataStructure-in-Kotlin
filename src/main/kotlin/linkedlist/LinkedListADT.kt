@@ -11,6 +11,7 @@ interface UpdateLinkedList<T> {
     fun sortAscending()
     fun sortDescending()
     fun reverse()
+    fun distinct()
 }
 
 interface DeleteLinkedList<T> {

@@ -455,6 +455,36 @@ class LinkedLinkedImplTest {
         println("last : ${linkedList.lastOrNull}")
     }
 
+    @Test
+    fun `linked list have unique values on distinct`() {
+
+        val linkedList = mutableLinkedListOf<Int>().apply {
+            insertLast(1)
+            insertLast(2)
+            insertLast(3)
+            insertLast(4)
+            insertLast(3)
+        }
+
+        assertEquals(linkedList.size,5)
+
+        linkedList.distinct()
+
+        assertEquals(linkedList.size,4)
+        assertEquals(linkedList.firstOrNull?.value,1)
+        assertEquals(linkedList.lastOrNull?.value,4)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+
+    }
+
+
+
+
+
     @AfterEach
     fun tearDown() {
     }

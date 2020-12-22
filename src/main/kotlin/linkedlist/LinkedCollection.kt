@@ -125,7 +125,6 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
         }
     }
 
-
     // --------------- Delete --------------------
 
     override fun deleteFirst() {
@@ -210,6 +209,26 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
                 }
                 current?.value = data
             }
+        }
+    }
+
+    override fun distinct() {
+        var node = _first
+
+        while (node != null) {
+
+            var current = node.next
+            var tailing = node
+
+            while (current != null) {
+                if (node.value == current.value) {
+                    tailing?.next = current.next
+                }
+                tailing = current
+                current = current.next
+            }
+
+            node = node.next
         }
     }
 
