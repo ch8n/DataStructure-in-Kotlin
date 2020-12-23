@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
 import java.lang.IllegalArgumentException
 import java.lang.IllegalStateException
 
@@ -224,8 +225,6 @@ class LinkedListKtxKtTest {
         println("last : ${linkedList.lastOrNull}")
     }
 
-
-
     @Test
     fun `321 is descending sorted linked list`() {
         val list = mutableLinkedListOf<Int>().apply {
@@ -252,6 +251,65 @@ class LinkedListKtxKtTest {
 
         println(list)
         println("Descending sorted : ${list.isSortedDescending}")
+    }
+
+    @Test
+    fun `231144 is not sorted thus can't be distinct sorted`() {
+        val list = mutableLinkedListOf<Int>().apply {
+            insertLast(2)
+            insertLast(3)
+            insertLast(1)
+            insertLast(1)
+            insertLast(4)
+            insertLast(4)
+        }
+        assertEquals(list.size, 6)
+        assertEquals(list.isSortedDescending, false)
+        assertEquals(list.isSortedAscending, false)
+
+        Assertions.assertThrows(IllegalStateException::class.java) {
+            list.distinctSorted()
+        }
+
+        println(list)
+
+    }
+
+
+    @Test
+    fun `forEach elements emit every data in linkedList`() {
+        val linked = mutableLinkedListOf<Int>().apply {
+            insertLast(2)
+            insertLast(3)
+            insertLast(1)
+            insertLast(1)
+            insertLast(4)
+            insertLast(4)
+        }
+
+        val list = mutableListOf<Int?>()
+        linked.forEach { list.add(it) }
+
+        assertEquals(linked.size, 6)
+        assertEquals(list.size, 6)
+        println(linked)
+        println(list)
+
+    }
+
+    @Test
+    fun `reverse linked list elements `() {
+        val linked = mutableLinkedListOf<Int>().apply {
+            insertLast(1)
+            insertLast(2)
+            insertLast(3)
+            insertLast(4)
+        }
+        println(linked)
+        linked.reverseElements()
+        println(linked)
+        assertEquals(linked.size, 4)
+        assertEquals(linked.toString(), " 4 3 2 1")
     }
 
 }

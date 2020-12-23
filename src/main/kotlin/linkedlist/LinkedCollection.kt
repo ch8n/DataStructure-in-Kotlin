@@ -194,7 +194,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
 
     // --------------- Update --------------------
 
-    override fun replace(index: Int, data: T) {
+    override fun replace(index: Int, data: T?) {
         val size = size
         when {
             size == 0 -> throw IllegalStateException("Cannot update an empty list")

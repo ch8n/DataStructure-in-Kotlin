@@ -91,6 +91,27 @@ fun MutableLinkedList<Int>.distinctSorted() {
     }
 }
 
+fun <T> LinkedList<T>.forEach(iteration: (element: T?) -> Unit) {
+    var current = firstOrNull
+    while (current != null) {
+        iteration.invoke(current.value)
+        current = current.next
+    }
+}
+
+fun <T> MutableLinkedList<T>.reverseElements() {
+    val buffer = mutableListOf<T?>()
+    this.forEach { buffer.add(it) }
+    var end = buffer.lastIndex
+    var current = 0
+    while (end != -1) {
+        val data = buffer[end]
+        replace(current, data)
+        ++current
+        --end
+    }
+}
+
 fun <T> linkedListOf(): LinkedList<T> {
     return LinkedCollection.newInstance()
 }

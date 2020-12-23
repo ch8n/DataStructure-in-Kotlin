@@ -7,7 +7,7 @@ interface InsertLinkedList<T> {
 }
 
 interface UpdateLinkedList<T> {
-    fun replace(index: Int, data: T)
+    fun replace(index: Int, data: T?)
     fun sortAscending()
     fun sortDescending()
     fun reverse()
