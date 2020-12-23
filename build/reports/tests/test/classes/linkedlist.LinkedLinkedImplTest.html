@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">24</div>
+<div class="counter">27</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.054s</div>
+<div class="counter">0.042s</div>
 <p>duration</p>
 </div>
 </td>
@@ -78,18 +78,28 @@
 </tr>
 </thead>
 <tr>
-<td class="success">delete first item of linked list no items()</td>
-<td class="success">0s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">delete first item of linked list with multiple items()</td>
+<td class="success">Asending sorted linked list have unique values on distinct()</td>
 <td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">delete item at 0 of linked list with multiple items()</td>
+<td class="success">Descending sorted linked list have unique values on distinct()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">delete first item of linked list no items()</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">delete first item of linked list with multiple items()</td>
 <td class="success">0s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">delete item at 0 of linked list with multiple items()</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -99,7 +109,7 @@
 </tr>
 <tr>
 <td class="success">delete item at 3 of linked list with multiple items()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -114,7 +124,7 @@
 </tr>
 <tr>
 <td class="success">delete item with value 2 from linked list with multiple items()</td>
-<td class="success">0.001s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -134,27 +144,27 @@
 </tr>
 <tr>
 <td class="success">insert item at end to empty linkedlist first and last should be equal()</td>
-<td class="success">0.002s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">insert item at end to prefilled linkedlist first and last should be different()</td>
-<td class="success">0.027s</td>
+<td class="success">0.016s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
-<td class="success">insert item at first to empty linkedlist first and last should be equal()</td>
+<td class="success">insert item at first to empty linked list first and last should be equal()</td>
 <td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">insert item at first to prefilled linkedlist first and last should be different()</td>
-<td class="success">0.002s</td>
+<td class="success">0s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">insert item at position 0 to empty linkedlist first and last should be equal()</td>
-<td class="success">0.001s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -164,7 +174,12 @@
 </tr>
 <tr>
 <td class="success">insert item at position between two nodes()</td>
-<td class="success">0.003s</td>
+<td class="success">0.001s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">linked list have unique values on distinct()</td>
+<td class="success">0.001s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -184,7 +199,7 @@
 </tr>
 <tr>
 <td class="success">replace item at invalid index in list throws exception()</td>
-<td class="success">0.001s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
@@ -205,6 +220,12 @@
 <pre>LinkedListContent :  10 20
 first : Node(value=10, next=Node(value=20, next=null))
 last : Node(value=20, next=null)
+LinkedListContent :  4 3 2 1
+first : Node(value=4, next=Node(value=3, next=Node(value=2, next=Node(value=1, next=null))))
+last : Node(value=1, next=null)
+LinkedListContent :  10
+first : Node(value=10, next=null)
+last : Node(value=10, next=null)
 LinkedListContent :  1 2 3
 first : Node(value=1, next=Node(value=2, next=Node(value=3, next=null)))
 last : Node(value=3, next=null)
@@ -238,12 +259,12 @@ last : Node(value=30, next=null)
 LinkedListContent :  10 20 30
 first : Node(value=10, next=Node(value=20, next=Node(value=30, next=null)))
 last : Node(value=30, next=null)
-LinkedListContent :  10
-first : Node(value=10, next=null)
-last : Node(value=10, next=null)
 LinkedListContent : 
 first : null
 last : null
+LinkedListContent :  1 2 3 4
+first : Node(value=1, next=Node(value=2, next=Node(value=3, next=Node(value=4, next=null))))
+last : Node(value=4, next=null)
 LinkedListContent :  10
 first : Node(value=10, next=null)
 last : Node(value=10, next=null)
@@ -253,6 +274,9 @@ last : Node(value=2, next=null)
 LinkedListContent :  1 2
 first : Node(value=1, next=Node(value=2, next=null))
 last : Node(value=2, next=null)
+LinkedListContent :  1 2 3 4
+first : Node(value=1, next=Node(value=2, next=Node(value=3, next=Node(value=4, next=null))))
+last : Node(value=4, next=null)
 LinkedListContent :  5 2 3
 first : Node(value=5, next=Node(value=2, next=Node(value=3, next=null)))
 last : Node(value=3, next=null)
@@ -288,7 +312,7 @@ last : null
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.3</a> at 21-Dec-2020, 1:44:03 am</p>
+<a href="http://www.gradle.org">Gradle 6.3</a> at 23-Dec-2020, 10:10:47 am</p>
 </div>
 </div>
 </body>

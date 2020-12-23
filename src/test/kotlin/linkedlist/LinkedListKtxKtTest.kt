@@ -223,4 +223,35 @@ class LinkedListKtxKtTest {
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
     }
+
+
+
+    @Test
+    fun `321 is descending sorted linked list`() {
+        val list = mutableLinkedListOf<Int>().apply {
+            insertLast(3)
+            insertLast(2)
+            insertLast(1)
+        }
+        assertEquals(list.size, 3)
+        assertEquals(list.isSortedDescending, true)
+
+        println(list)
+        println("Descending sorted : ${list.isSortedDescending}")
+    }
+
+    @Test
+    fun `356 is not descending sorted linked list`() {
+        val list = mutableLinkedListOf<Int>().apply {
+            insertLast(3)
+            insertLast(5)
+            insertLast(6)
+        }
+        assertEquals(list.size, 3)
+        assertEquals(list.isSortedDescending, false)
+
+        println(list)
+        println("Descending sorted : ${list.isSortedDescending}")
+    }
+
 }

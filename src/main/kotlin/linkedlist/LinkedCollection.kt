@@ -213,6 +213,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     override fun distinct() {
+
         var node = _first
 
         while (node != null) {

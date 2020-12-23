@@ -29,7 +29,7 @@ class LinkedLinkedImplTest {
     }
 
     @Test
-    fun `insert item at first to empty linkedlist first and last should be equal`() {
+    fun `insert item at first to empty linked list first and last should be equal`() {
         val linkedList = mutableLinkedListOf<Int>()
         linkedList.insertFirst(10)
 
@@ -477,6 +477,62 @@ class LinkedLinkedImplTest {
         println("LinkedListContent : $linkedList")
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
+
+    }
+
+    @Test
+    fun `Asending sorted linked list have unique values on distinct`() {
+
+        val linkedList = mutableLinkedListOf<Int>().apply {
+            insertLast(1)
+            insertLast(2)
+            insertLast(3)
+            insertLast(3)
+            insertLast(4)
+        }
+
+        assertEquals(linkedList.size,5)
+        assertEquals(linkedList.isSortedAscending,true)
+
+        linkedList.distinctSorted()
+
+        assertEquals(linkedList.size,4)
+        assertEquals(linkedList.firstOrNull?.value,1)
+        assertEquals(linkedList.lastOrNull?.value,4)
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+    }
+
+    @Test
+    fun `Descending sorted linked list have unique values on distinct`() {
+
+        val linkedList = mutableLinkedListOf<Int>().apply {
+            insertLast(4)
+            insertLast(3)
+            insertLast(3)
+            insertLast(3)
+            insertLast(3)
+            insertLast(2)
+            insertLast(2)
+            insertLast(1)
+        }
+
+        assertEquals(linkedList.size,8)
+        assertEquals(linkedList.isSortedDescending,true)
+
+        linkedList.distinctSorted()
+
+        println("LinkedListContent : $linkedList")
+        println("first : ${linkedList.firstOrNull}")
+        println("last : ${linkedList.lastOrNull}")
+
+
+        assertEquals(linkedList.size,4)
+        assertEquals(linkedList.firstOrNull?.value,4)
+        assertEquals(linkedList.lastOrNull?.value,1)
 
 
     }

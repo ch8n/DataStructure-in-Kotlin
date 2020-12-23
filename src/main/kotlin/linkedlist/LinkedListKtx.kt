@@ -58,6 +58,39 @@ val LinkedList<Int>.isSortedAscending: Boolean
         return true
     }
 
+val LinkedList<Int>.isSortedDescending: Boolean
+    get() {
+        var current = firstOrNull
+        var next = firstOrNull
+        while (current != null && next != null) {
+            val isDescending = (current.value ?: Int.MIN_VALUE) >= (next.value ?: Int.MIN_VALUE)
+            if (!isDescending) {
+                return false
+            }
+            current = next
+            next = current.next
+        }
+        return true
+    }
+
+fun MutableLinkedList<Int>.distinctSorted() {
+    val isSortedAscending = isSortedAscending
+    val isSortedDescending = isSortedDescending
+    if (!isSortedAscending && !isSortedDescending) {
+        throw IllegalStateException("List isn't sorted")
+    }
+    var tailing = firstOrNull
+    var current = firstOrNull?.next
+    while (current != null && tailing != null) {
+        if (current.value == tailing.value) {
+            tailing.next = current.next
+        } else {
+            tailing = current
+        }
+        current = current.next
+    }
+}
+
 fun <T> linkedListOf(): LinkedList<T> {
     return LinkedCollection.newInstance()
 }
