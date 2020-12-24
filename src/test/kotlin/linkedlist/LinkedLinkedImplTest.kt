@@ -486,6 +486,8 @@ class LinkedLinkedImplTest {
         linkedList.reverse()
 
         assertEquals(linkedList.size,5)
+        assertEquals(linkedList.firstOrNull?.value,5)
+        assertEquals(linkedList.lastOrNull?.value,1)
 
     }
 
