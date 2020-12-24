@@ -475,15 +475,16 @@ class LinkedLinkedImplTest {
     fun `reverse nodes or pointers of linked list `() {
 
         val linkedList = mutableLinkedListOf<Int>().apply {
-            insertLast(5)
-            insertLast(4)
-            insertLast(3)
-            insertLast(2)
             insertLast(1)
+            insertLast(2)
+            insertLast(3)
+            insertLast(4)
+            insertLast(5)
         }
+        println(linkedList)
 
         linkedList.reverse()
-        println(linkedList)
+
         assertEquals(linkedList.size,5)
 
     }

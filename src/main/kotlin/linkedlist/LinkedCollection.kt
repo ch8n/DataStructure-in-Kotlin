@@ -240,25 +240,19 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
 
     override fun reverse() {
         var prev: Linked.Node<T>? = null
-        var next: Linked.Node<T>? = null
 
         var current: Linked.Node<T>? = _first
+        var next: Linked.Node<T>? = null
 
         while (current != null) {
-            //12345
             next = current.next
-
-            //break current pointer
-            current.next = null
-
-            // revers it
             current.next = prev
-
-            // proceed the loop previous
             prev = current
+
+            // proceed loop
             current = next
         }
 
-
+        _first = prev
     }
 }
