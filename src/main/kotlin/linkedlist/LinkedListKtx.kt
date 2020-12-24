@@ -34,6 +34,11 @@ val LinkedList<Int>.isSortedDescending: Boolean
         return true
     }
 
+val <T> LinkedList<T>.isCyclic:Boolean
+    get() {
+        TODO()
+    }
+
 fun <T> LinkedList<T>.forEach(iteration: (element: T?) -> Unit) {
     var current = firstOrNull
     while (current != null) {
@@ -45,3 +50,4 @@ fun <T> LinkedList<T>.forEach(iteration: (element: T?) -> Unit) {
 fun <T> LinkedList<T>.toMutableLinkedList(): MutableLinkedList<T> {
     return LinkedCollection.mutableFrom(this)
 }
+

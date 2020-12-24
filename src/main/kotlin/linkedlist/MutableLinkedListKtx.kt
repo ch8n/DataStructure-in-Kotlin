@@ -65,3 +65,8 @@ fun <T> MutableLinkedList<T>.reverseElements() {
 fun <T> MutableLinkedList<T>.toLinkedList(): LinkedList<T> {
     return LinkedCollection.from(this)
 }
+
+fun <T> MutableLinkedList<T>.mergedSorted(linkedList: LinkedList<T>): MutableLinkedList<T> {
+      TODO("implement")
+}
+

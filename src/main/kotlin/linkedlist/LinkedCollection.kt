@@ -122,6 +122,10 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
         }
     }
 
+    override fun insertAll(linkedList: LinkedList<T>) {
+        TODO("Not yet implemented")
+    }
+
     // --------------- Delete --------------------
 
     override fun deleteFirst() {
@@ -237,6 +241,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     override fun sortDescending() {
         TODO("Not yet implemented")
     }
+
 
     override fun reverse() {
         var prev: Linked.Node<T>? = null

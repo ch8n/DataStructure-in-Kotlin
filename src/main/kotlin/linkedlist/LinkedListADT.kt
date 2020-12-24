@@ -4,6 +4,7 @@ interface InsertLinkedList<T> {
     fun insertFirst(data: T)
     fun insertLast(data: T)
     fun insertAt(index: Int, data: T)
+    fun insertAll(linkedList: LinkedList<T>)
 }
 
 interface UpdateLinkedList<T> {
