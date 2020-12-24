@@ -1,8 +1,5 @@
 package linkedlist
 
-import java.lang.IllegalArgumentException
-import java.lang.IllegalStateException
-
 class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedList<T> {
 
     companion object {
@@ -242,6 +239,26 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     override fun reverse() {
-        TODO("Not yet implemented")
+        var prev: Linked.Node<T>? = null
+        var next: Linked.Node<T>? = null
+
+        var current: Linked.Node<T>? = _first
+
+        while (current != null) {
+            //12345
+            next = current.next
+
+            //break current pointer
+            current.next = null
+
+            // revers it
+            current.next = prev
+
+            // proceed the loop previous
+            prev = current
+            current = next
+        }
+
+
     }
 }

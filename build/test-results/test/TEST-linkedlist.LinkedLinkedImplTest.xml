@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="linkedlist.LinkedLinkedImplTest" tests="27" skipped="0" failures="0" errors="0" timestamp="2020-12-23T04:40:46" hostname="chetan.gupta" time="0.059">
+<testsuite name="linkedlist.LinkedLinkedImplTest" tests="27" skipped="0" failures="0" errors="0" timestamp="2020-12-23T19:33:56" hostname="chetan.gupta" time="0.139">
   <properties/>
-  <testcase name="insert item at end to prefilled linkedlist first and last should be different()" classname="linkedlist.LinkedLinkedImplTest" time="0.016"/>
-  <testcase name="Descending sorted linked list have unique values on distinct()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
-  <testcase name="insert item at first to empty linked list first and last should be equal()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
-  <testcase name="delete item at invalid index of linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
-  <testcase name="delete item with value 3 from empty linked list ()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
-  <testcase name="insert item at first to prefilled linkedlist first and last should be different()" classname="linkedlist.LinkedLinkedImplTest" time="0.0"/>
-  <testcase name="delete first item of linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.0"/>
-  <testcase name="delete item with value 2 from linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.0"/>
-  <testcase name="delete item at 3 of linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.0"/>
-  <testcase name="replace item at in empty list throws exception()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
-  <testcase name="delete item at 1 of linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
-  <testcase name="insert item at end to empty linkedlist first and last should be equal()" classname="linkedlist.LinkedLinkedImplTest" time="0.0"/>
-  <testcase name="insert item at position between two nodes()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
-  <testcase name="new list has 0 size and null first last nodes()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
-  <testcase name="linked list have unique values on distinct()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
-  <testcase name="insert item at position 0 to empty linkedlist first and last should be equal()" classname="linkedlist.LinkedLinkedImplTest" time="0.003"/>
+  <testcase name="insert item at end to prefilled linkedlist first and last should be different()" classname="linkedlist.LinkedLinkedImplTest" time="0.053"/>
+  <testcase name="Descending sorted linked list have unique values on distinct()" classname="linkedlist.LinkedLinkedImplTest" time="0.004"/>
+  <testcase name="insert item at first to empty linked list first and last should be equal()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
+  <testcase name="delete item at invalid index of linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.003"/>
+  <testcase name="delete item with value 3 from empty linked list ()" classname="linkedlist.LinkedLinkedImplTest" time="0.003"/>
+  <testcase name="insert item at first to prefilled linkedlist first and last should be different()" classname="linkedlist.LinkedLinkedImplTest" time="0.003"/>
+  <testcase name="delete first item of linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
+  <testcase name="delete item with value 2 from linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
+  <testcase name="delete item at 3 of linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
+  <testcase name="replace item at in empty list throws exception()" classname="linkedlist.LinkedLinkedImplTest" time="0.003"/>
+  <testcase name="delete item at 1 of linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
+  <testcase name="insert item at end to empty linkedlist first and last should be equal()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
+  <testcase name="insert item at position between two nodes()" classname="linkedlist.LinkedLinkedImplTest" time="0.003"/>
+  <testcase name="new list has 0 size and null first last nodes()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
+  <testcase name="linked list have unique values on distinct()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
+  <testcase name="insert item at position 0 to empty linkedlist first and last should be equal()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
   <testcase name="delete item with value 3 from linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
   <testcase name="delete last item of linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
   <testcase name="Asending sorted linked list have unique values on distinct()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
   <testcase name="replace item at first index, with value 5 when list has multiple item()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
   <testcase name="delete item with value 1 from linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
   <testcase name="delete item at 0 of linked list with multiple items()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
-  <testcase name="replace item at last index, with value 5 when list has multiple item()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
-  <testcase name="insert item at position 1 to empty linkedlist throws exception()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
-  <testcase name="replace item at middle index, with value 5 when list has multiple item()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
+  <testcase name="replace item at last index, with value 5 when list has multiple item()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
+  <testcase name="insert item at position 1 to empty linkedlist throws exception()" classname="linkedlist.LinkedLinkedImplTest" time="0.003"/>
+  <testcase name="replace item at middle index, with value 5 when list has multiple item()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
   <testcase name="replace item at invalid index in list throws exception()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
-  <testcase name="delete first item of linked list no items()" classname="linkedlist.LinkedLinkedImplTest" time="0.001"/>
+  <testcase name="delete first item of linked list no items()" classname="linkedlist.LinkedLinkedImplTest" time="0.002"/>
   <system-out><![CDATA[LinkedListContent :  10 20
 first : Node(value=10, next=Node(value=20, next=null))
 last : Node(value=20, next=null)

@@ -10,33 +10,9 @@ import java.lang.IllegalStateException
 
 class LinkedListKtxKtTest {
 
-    @Test
-    fun `linkedListOf() returns new instance on each invoke`() {
-        val list1 = linkedListOf<Int>()
-        val list2 = linkedListOf<Int>()
-        assertNotEquals(list1, list2)
-    }
 
-    @Test
-    fun `linkedListOf(node) returns new instance with one item`() {
-        val first = Linked.Node(1)
-        val list1 = linkedListOf<Int>(first)
-        assertEquals(list1.size, 1)
-    }
 
-    @Test
-    fun `mutableLinkedListOf() returns new instance on each invoke`() {
-        val list1 = mutableLinkedListOf<Int>()
-        val list2 = mutableLinkedListOf<Int>()
-        assertNotEquals(list1, list2)
-    }
 
-    @Test
-    fun `mutableLinkedListOf(node) returns new instance with one item`() {
-        val first = Linked.Node(1)
-        val list1 = mutableLinkedListOf(first)
-        assertEquals(list1.size, 1)
-    }
 
     @Test
     fun `linkedList to mutable list always return new object`() {
@@ -94,50 +70,11 @@ class LinkedListKtxKtTest {
         assertNotEquals(list1, list2)
     }
 
-    @Test
-    fun `mutable linked list to list is immutable instance`() {
-        val first = Linked.Node(1)
-        val list1 = mutableLinkedListOf(first)
-        val list2 = list1.toLinkedList()
 
-        first.value = 2
 
-        println(list1)
-        println(list2)
 
-        assertEquals(list1.size, 1)
-        assertEquals(list2.size, 1)
 
-        assertEquals(list1.firstOrNull?.value, 1)
-        assertEquals(list2.firstOrNull?.value, 1)
-        assertNotEquals(list1, list2)
-    }
 
-    @Test
-    fun `convert list to Linked List have same size`() {
-        val list = mutableListOf<Int>(1, 2, 3, 4, 5, 6)
-        val linked = list.toLinkedList()
-
-        println(list)
-        println(linked)
-
-        assertEquals(list.size, linked.size)
-    }
-
-    @Test
-    fun `insert item in middle of ascending sorted linked list`() {
-        val list = mutableLinkedListOf<Int>().apply {
-            insertLast(1)
-            insertLast(2)
-            insertLast(4)
-        }
-        list.insertInAscendingSorted(3)
-        println(list)
-
-        assertEquals(list.size, 4)
-        assertEquals(list.firstOrNull?.value, 1)
-        assertEquals(list.lastOrNull?.value, 4)
-    }
 
     @Test
     fun `159 is ascending sorted linked list`() {
@@ -167,63 +104,10 @@ class LinkedListKtxKtTest {
         println("Ascending sorted : ${list.isSortedAscending}")
     }
 
-    @Test
-    fun `insert item in end of ascending sorted linked list`() {
-        val list = mutableLinkedListOf<Int>().apply {
-            insertLast(1)
-            insertLast(2)
-            insertLast(3)
-        }
-        list.insertInAscendingSorted(5)
-        println(list)
 
-        assertEquals(list.size, 4)
-        assertEquals(list.firstOrNull?.value, 1)
-        assertEquals(list.lastOrNull?.value, 5)
-    }
 
-    @Test
-    fun `insert item in empty ascending sorted linked list`() {
-        val list = mutableLinkedListOf<Int>()
-        list.insertInAscendingSorted(5)
-        println(list)
 
-        assertEquals(list.size, 1)
-        assertEquals(list.firstOrNull?.value, 5)
-        assertEquals(list.lastOrNull?.value, 5)
-    }
 
-    @Test
-    fun `insert item in start of ascending sorted linked list`() {
-        val list = mutableLinkedListOf<Int>().apply {
-            insertLast(1)
-            insertLast(2)
-            insertLast(3)
-        }
-        list.insertInAscendingSorted(0)
-        println(list)
-
-        assertEquals(list.size, 4)
-        assertEquals(list.firstOrNull?.value, 0)
-        assertEquals(list.lastOrNull?.value, 3)
-    }
-
-    @Test
-    fun `no item can be inserted if linked list is not ascending sorted`() {
-        val linkedList = mutableLinkedListOf<Int>().apply {
-            insertLast(1)
-            insertLast(0)
-            insertLast(9)
-        }
-
-        Assertions.assertThrows(IllegalStateException::class.java) {
-            linkedList.insertInAscendingSorted(5)
-        }
-
-        println("LinkedListContent : $linkedList")
-        println("first : ${linkedList.firstOrNull}")
-        println("last : ${linkedList.lastOrNull}")
-    }
 
     @Test
     fun `321 is descending sorted linked list`() {
@@ -253,28 +137,6 @@ class LinkedListKtxKtTest {
         println("Descending sorted : ${list.isSortedDescending}")
     }
 
-    @Test
-    fun `231144 is not sorted thus can't be distinct sorted`() {
-        val list = mutableLinkedListOf<Int>().apply {
-            insertLast(2)
-            insertLast(3)
-            insertLast(1)
-            insertLast(1)
-            insertLast(4)
-            insertLast(4)
-        }
-        assertEquals(list.size, 6)
-        assertEquals(list.isSortedDescending, false)
-        assertEquals(list.isSortedAscending, false)
-
-        Assertions.assertThrows(IllegalStateException::class.java) {
-            list.distinctSorted()
-        }
-
-        println(list)
-
-    }
-
 
     @Test
     fun `forEach elements emit every data in linkedList`() {
@@ -297,19 +159,6 @@ class LinkedListKtxKtTest {
 
     }
 
-    @Test
-    fun `reverse linked list elements `() {
-        val linked = mutableLinkedListOf<Int>().apply {
-            insertLast(1)
-            insertLast(2)
-            insertLast(3)
-            insertLast(4)
-        }
-        println(linked)
-        linked.reverseElements()
-        println(linked)
-        assertEquals(linked.size, 4)
-        assertEquals(linked.toString(), " 4 3 2 1")
-    }
+
 
 }

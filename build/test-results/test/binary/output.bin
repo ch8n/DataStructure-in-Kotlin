@@ -88,25 +88,30 @@
 [1, 2, 3, 4, 5, 6]
  1 2 3 4 5 6
  	 1 2 3 5
-!	 0 1 2 3
-"	 1 2 3 4
-# 3 2 1
-#Descending sorted : true
-$ 1
-$ 1
-%LinkedListContent :  1 0 9
-%Ifirst : Node(value=1, next=Node(value=0, next=Node(value=9, next=null)))
-% last : Node(value=9, next=null)
-' 3 5 6
-'Descending sorted : false
-* 1
-* 1
-+ 3 1 0
-+Ascending sorted : false
-- 5
-. Dummy(data=5)
-. Dummy(data=5)
-/ 1 5 9
-/Ascending sorted : true
-0	 pokemon
-0	 pokemon
+! 2 3 1 1 4 4
+"	 0 1 2 3
+#	 1 2 3 4
+$ 3 2 1
+$Descending sorted : true
+% 1
+% 1
+&LinkedListContent :  1 0 9
+&Ifirst : Node(value=1, next=Node(value=0, next=Node(value=9, next=null)))
+& last : Node(value=9, next=null)
+( 3 5 6
+(Descending sorted : false
+) 2 3 1 1 4 4
+)[2, 3, 1, 1, 4, 4]
+,	 1 2 3 4
+,	 4 3 2 1
+- 1
+- 1
+. 3 1 0
+.Ascending sorted : false
+0 5
+1 Dummy(data=5)
+1 Dummy(data=5)
+2 1 5 9
+2Ascending sorted : true
+3	 pokemon
+3	 pokemon

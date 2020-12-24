@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="linkedlist.LinkedListKtxKtTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2020-12-23T04:40:47" hostname="chetan.gupta" time="0.025">
+<testsuite name="linkedlist.LinkedListKtxKtTest" tests="22" skipped="0" failures="0" errors="0" timestamp="2020-12-23T19:33:56" hostname="chetan.gupta" time="0.111">
   <properties/>
-  <testcase name="convert list to Linked List have same size()" classname="linkedlist.LinkedListKtxKtTest" time="0.007"/>
+  <testcase name="convert list to Linked List have same size()" classname="linkedlist.LinkedListKtxKtTest" time="0.032"/>
   <testcase name="linkedListOf(node) returns new instance with one item()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
-  <testcase name="insert item in end of ascending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
+  <testcase name="insert item in end of ascending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.002"/>
+  <testcase name="231144 is not sorted thus can't be distinct sorted()" classname="linkedlist.LinkedListKtxKtTest" time="0.002"/>
   <testcase name="insert item in start of ascending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
   <testcase name="insert item in middle of ascending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
-  <testcase name="321 is descending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
-  <testcase name="linkedList of 1 item to mutable list always return new object 1 item()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
-  <testcase name="no item can be inserted if linked list is not ascending sorted()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
+  <testcase name="321 is descending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
+  <testcase name="linkedList of 1 item to mutable list always return new object 1 item()" classname="linkedlist.LinkedListKtxKtTest" time="0.004"/>
+  <testcase name="no item can be inserted if linked list is not ascending sorted()" classname="linkedlist.LinkedListKtxKtTest" time="0.004"/>
   <testcase name="linkedListOf() returns new instance on each invoke()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
-  <testcase name="356 is not descending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
-  <testcase name="mutableLinkedListOf() returns new instance on each invoke()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
-  <testcase name="linkedList to mutable list always return new object()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
-  <testcase name="mutable linked list to list is immutable instance()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
-  <testcase name="310 is not ascending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
-  <testcase name="mutableLinkedListOf(node) returns new instance with one item()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
-  <testcase name="insert item in empty ascending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
-  <testcase name="linkedList when converted to mutable item is object then it is mutable()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
-  <testcase name="159 is ascending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
-  <testcase name="linkedList when converted to mutable item stays immutable()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
+  <testcase name="356 is not descending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.005"/>
+  <testcase name="forEach elements emit every data in linkedList()" classname="linkedlist.LinkedListKtxKtTest" time="0.005"/>
+  <testcase name="mutableLinkedListOf() returns new instance on each invoke()" classname="linkedlist.LinkedListKtxKtTest" time="0.0"/>
+  <testcase name="linkedList to mutable list always return new object()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
+  <testcase name="reverse linked list elements ()" classname="linkedlist.LinkedListKtxKtTest" time="0.01"/>
+  <testcase name="mutable linked list to list is immutable instance()" classname="linkedlist.LinkedListKtxKtTest" time="0.002"/>
+  <testcase name="310 is not ascending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.002"/>
+  <testcase name="mutableLinkedListOf(node) returns new instance with one item()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
+  <testcase name="insert item in empty ascending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.002"/>
+  <testcase name="linkedList when converted to mutable item is object then it is mutable()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
+  <testcase name="159 is ascending sorted linked list()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
+  <testcase name="linkedList when converted to mutable item stays immutable()" classname="linkedlist.LinkedListKtxKtTest" time="0.001"/>
   <system-out><![CDATA[[1, 2, 3, 4, 5, 6]
  1 2 3 4 5 6
  1 2 3 5
+ 2 3 1 1 4 4
  0 1 2 3
  1 2 3 4
  3 2 1
@@ -34,6 +38,10 @@ first : Node(value=1, next=Node(value=0, next=Node(value=9, next=null)))
 last : Node(value=9, next=null)
  3 5 6
 Descending sorted : false
+ 2 3 1 1 4 4
+[2, 3, 1, 1, 4, 4]
+ 1 2 3 4
+ 4 3 2 1
  1
  1
  3 1 0
