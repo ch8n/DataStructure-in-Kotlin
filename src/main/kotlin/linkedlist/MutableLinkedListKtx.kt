@@ -66,7 +66,23 @@ fun <T> MutableLinkedList<T>.toLinkedList(): LinkedList<T> {
     return LinkedCollection.from(this)
 }
 
-fun <T> MutableLinkedList<T>.mergedSorted(linkedList: LinkedList<T>): MutableLinkedList<T> {
-      TODO("implement")
+//TODO
+fun MutableLinkedList<Int>.mergedSorted(linkedList: LinkedList<Int>): MutableLinkedList<Int> {
+
+    val isThisSortedAscending = isSortedAscending
+    val isThatSortedAscending = linkedList.isSortedAscending
+    if (isThisSortedAscending && isThatSortedAscending) {
+        // todo insert item sortingly asecending
+        return this
+    }
+
+    val isThisSortedDescending = isSortedDescending
+    val isThatSortedDescending = linkedList.isSortedDescending
+    if (isThisSortedDescending && isThatSortedDescending) {
+        // todo insert item sortingly decdending
+        return this
+    }
+
+    throw IllegalStateException("list are not sorted in same order")
 }
 

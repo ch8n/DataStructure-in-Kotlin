@@ -8,7 +8,7 @@ interface InsertLinkedList<T> {
 }
 
 interface UpdateLinkedList<T> {
-    fun replace(index: Int, data: T?)
+    fun replace(index: Int, data: T)
     fun sortAscending()
     fun sortDescending()
     fun reverse()
@@ -23,7 +23,7 @@ interface DeleteLinkedList<T> {
 }
 
 abstract class Linked<T> {
-    data class Node<T>(var value: T? = null, var next: Node<T>? = null)
+    data class Node<T>(var value: T, var next: Node<T>? = null)
 }
 
 interface LinkedList<T> {

@@ -1,7 +1,5 @@
 package linkedlist
 
-import java.lang.IllegalStateException
-
 // ---------- Linked List ---------------
 val LinkedList<Int>.isSortedAscending: Boolean
     get() {
@@ -38,7 +36,7 @@ val <T> LinkedList<T>.isCyclic: Boolean
         TODO()
     }
 
-fun <T> LinkedList<T>.forEach(iteration: (element: T?) -> Unit) {
+fun <T> LinkedList<T>.forEach(iteration: (element: T) -> Unit) {
     var current = firstOrNull
     while (current != null) {
         iteration.invoke(current.value)
@@ -57,4 +55,15 @@ fun <T> LinkedList<T>.forEachNode(iteration: (node: Linked.Node<T>?) -> Unit) {
 fun <T> LinkedList<T>.toMutableLinkedList(): MutableLinkedList<T> {
     return LinkedCollection.mutableFrom(this)
 }
+
+//TODO test
+fun <T, R> LinkedList<T>.map(emmit: (T) -> R): MutableLinkedList<R> {
+    val mapped = mutableLinkedListOf<R>()
+    forEach {
+        val value = emmit.invoke(it)
+        mapped.insertLast(value)
+    }
+    return mapped
+}
+
 

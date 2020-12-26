@@ -66,12 +66,6 @@ class LinkedListKtxKtTest {
         assertNotEquals(list1, list2)
     }
 
-
-
-
-
-
-
     @Test
     fun `159 is ascending sorted linked list`() {
         val list = mutableLinkedListOf<Int>().apply {
@@ -99,11 +93,6 @@ class LinkedListKtxKtTest {
         println(list)
         println("Ascending sorted : ${list.isSortedAscending}")
     }
-
-
-
-
-
 
     @Test
     fun `321 is descending sorted linked list`() {
@@ -133,7 +122,6 @@ class LinkedListKtxKtTest {
         println("Descending sorted : ${list.isSortedDescending}")
     }
 
-
     @Test
     fun `forEach elements emit every data in linkedList`() {
         val linked = mutableLinkedListOf<Int>().apply {
@@ -152,9 +140,6 @@ class LinkedListKtxKtTest {
         assertEquals(list.size, 6)
         println(linked)
         println(list)
-
     }
-
-
 
 }
