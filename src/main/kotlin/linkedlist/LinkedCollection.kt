@@ -33,9 +33,9 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
         var item = list.firstOrNull
         var current = _first
         while (item != null) {
-            if (current == null){
+            if (current == null) {
                 _first = item.copy()
-            }else{
+            } else {
                 current.next = item.copy()
                 current = current.next
             }
@@ -45,6 +45,13 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
 
     private constructor(first: Linked.Node<T>) : this() {
         _first = first.copy()
+        var current = _first
+        var other = first.next
+        while (other != null) {
+            current?.next = other.copy()
+            current = current?.next
+            other = other.next
+        }
     }
 
     private var _first: Linked.Node<T>? = null
