@@ -491,6 +491,65 @@ class LinkedLinkedImplTest {
 
     }
 
+    @Test
+    fun `merge two linked list`() {
+
+        val linked1 = mutableLinkedListOf<Int>().apply {
+            insertLast(1)
+            insertLast(2)
+            insertLast(3)
+            insertLast(4)
+            insertLast(5)
+        }
+
+        val linked2 = mutableLinkedListOf<Int>().apply {
+            insertLast(6)
+            insertLast(7)
+            insertLast(8)
+            insertLast(9)
+            insertLast(10)
+        }
+
+        linked1.insertAll(linked2)
+
+        assertEquals(linked1.size,10)
+        assertEquals(linked1.firstOrNull?.value,1)
+        assertEquals(linked1.lastOrNull?.value,10)
+
+    }
+
+    @Test
+    fun `change in one of the two merged linked list doesn't effect merged list`() {
+
+        val linked1 = mutableLinkedListOf<Int>().apply {
+            insertLast(1)
+            insertLast(2)
+            insertLast(3)
+            insertLast(4)
+            insertLast(5)
+        }
+
+        val linked2 = mutableLinkedListOf<Int>().apply {
+            insertLast(6)
+            insertLast(7)
+            insertLast(8)
+            insertLast(9)
+            insertLast(10)
+        }
+
+        linked1.insertAll(linked2)
+
+        linked2.deleteAt(5)
+
+        assertEquals(linked2.size, 4)
+        assertEquals(linked2.lastOrNull?.value, 9)
+
+        assertEquals(linked1.size, 10)
+
+        assertEquals(linked1.firstOrNull?.value, 1)
+        assertEquals(linked1.lastOrNull?.value, 10)
+    }
+
 
     @AfterEach
     fun tearDown() {

@@ -2,7 +2,6 @@ package linkedlist
 
 import java.lang.IllegalStateException
 
-
 // ---------- Linked List ---------------
 val LinkedList<Int>.isSortedAscending: Boolean
     get() {
@@ -34,7 +33,7 @@ val LinkedList<Int>.isSortedDescending: Boolean
         return true
     }
 
-val <T> LinkedList<T>.isCyclic:Boolean
+val <T> LinkedList<T>.isCyclic: Boolean
     get() {
         TODO()
     }
@@ -43,6 +42,14 @@ fun <T> LinkedList<T>.forEach(iteration: (element: T?) -> Unit) {
     var current = firstOrNull
     while (current != null) {
         iteration.invoke(current.value)
+        current = current.next
+    }
+}
+
+fun <T> LinkedList<T>.forEachNode(iteration: (node: Linked.Node<T>?) -> Unit) {
+    var current = firstOrNull
+    while (current != null) {
+        iteration.invoke(current)
         current = current.next
     }
 }

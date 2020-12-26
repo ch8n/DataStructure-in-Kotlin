@@ -10,10 +10,6 @@ import java.lang.IllegalStateException
 
 class LinkedListKtxKtTest {
 
-
-
-
-
     @Test
     fun `linkedList to mutable list always return new object`() {
         val list1 = mutableLinkedListOf<Int>()

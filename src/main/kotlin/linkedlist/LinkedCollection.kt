@@ -30,7 +30,17 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     private constructor(list: LinkedList<T>) : this() {
-        _first = list.firstOrNull?.copy()
+        var item = list.firstOrNull
+        var current = _first
+        while (item != null) {
+            if (current == null){
+                _first = item.copy()
+            }else{
+                current.next = item.copy()
+                current = current.next
+            }
+            item = item.next
+        }
     }
 
     private constructor(first: Linked.Node<T>) : this() {
@@ -123,7 +133,11 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     override fun insertAll(linkedList: LinkedList<T>) {
-        TODO("Not yet implemented")
+        var last = lastOrNull
+        linkedList.forEachNode {
+            last?.next = it?.copy()
+            last = last?.next
+        }
     }
 
     // --------------- Delete --------------------
@@ -241,7 +255,6 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     override fun sortDescending() {
         TODO("Not yet implemented")
     }
-
 
     override fun reverse() {
         var prev: Linked.Node<T>? = null
