@@ -6,7 +6,9 @@ import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertAll
 import java.lang.IllegalArgumentException
 import java.lang.IllegalStateException
 import java.lang.IndexOutOfBoundsException
@@ -17,22 +19,29 @@ class LinkedLinkedImplTest {
     fun setUp() {
     }
 
+    @Nested
+    inner class InsertLinkedListTest {
+
+        @Nested
+        inner class Allowed {
+
+            @Test
+            fun `item get successfully inserted`() {
+                val linkedList = mutableLinkedListOf<Int>()
+                linkedList.insertFirst(10)
+                assertAll(
+                    { assertEquals(linkedList.size, 1) },
+                    { assertNotNull(linkedList.firstOrNull) },
+                    { assertNotNull(linkedList.lastOrNull) },
+                    { assertEquals(linkedList.firstOrNull?.value, 10) },
+                    { assertEquals(linkedList.lastOrNull?.value, 10) }
+                )
+
+                val linked = mutableLinkedListOf<Int>()
 
 
-    @Test
-    fun `insert item at first to empty linked list first and last should be equal`() {
-        val linkedList = mutableLinkedListOf<Int>()
-        linkedList.insertFirst(10)
-
-        println("LinkedListContent : $linkedList")
-        println("first : ${linkedList.firstOrNull}")
-        println("last : ${linkedList.lastOrNull}")
-
-        assertEquals(linkedList.size, 1)
-        assertNotNull(linkedList.firstOrNull)
-        assertNotNull(linkedList.lastOrNull)
-        assertEquals(linkedList.firstOrNull?.value, 10)
-        assertEquals(linkedList.lastOrNull?.value, 10)
+            }
+        }
     }
 
     @Test
@@ -457,18 +466,17 @@ class LinkedLinkedImplTest {
             insertLast(3)
         }
 
-        assertEquals(linkedList.size,5)
+        assertEquals(linkedList.size, 5)
 
         linkedList.distinct()
 
-        assertEquals(linkedList.size,4)
-        assertEquals(linkedList.firstOrNull?.value,1)
-        assertEquals(linkedList.lastOrNull?.value,4)
+        assertEquals(linkedList.size, 4)
+        assertEquals(linkedList.firstOrNull?.value, 1)
+        assertEquals(linkedList.lastOrNull?.value, 4)
 
         println("LinkedListContent : $linkedList")
         println("first : ${linkedList.firstOrNull}")
         println("last : ${linkedList.lastOrNull}")
-
     }
 
     @Test
@@ -485,10 +493,9 @@ class LinkedLinkedImplTest {
 
         linkedList.reverse()
 
-        assertEquals(linkedList.size,5)
-        assertEquals(linkedList.firstOrNull?.value,5)
-        assertEquals(linkedList.lastOrNull?.value,1)
-
+        assertEquals(linkedList.size, 5)
+        assertEquals(linkedList.firstOrNull?.value, 5)
+        assertEquals(linkedList.lastOrNull?.value, 1)
     }
 
     @Test
@@ -512,10 +519,9 @@ class LinkedLinkedImplTest {
 
         linked1.insertAll(linked2)
 
-        assertEquals(linked1.size,10)
-        assertEquals(linked1.firstOrNull?.value,1)
-        assertEquals(linked1.lastOrNull?.value,10)
-
+        assertEquals(linked1.size, 10)
+        assertEquals(linked1.firstOrNull?.value, 1)
+        assertEquals(linked1.lastOrNull?.value, 10)
     }
 
     @Test
@@ -549,7 +555,6 @@ class LinkedLinkedImplTest {
         assertEquals(linked1.firstOrNull?.value, 1)
         assertEquals(linked1.lastOrNull?.value, 10)
     }
-
 
     @AfterEach
     fun tearDown() {

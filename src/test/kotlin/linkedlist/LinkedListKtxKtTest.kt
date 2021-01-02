@@ -1,12 +1,8 @@
 package linkedlist
 
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotEquals
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
-import java.lang.IllegalArgumentException
-import java.lang.IllegalStateException
 
 class LinkedListKtxKtTest {
 
@@ -29,42 +25,42 @@ class LinkedListKtxKtTest {
         assertNotEquals(list1, list2)
     }
 
-    @Test
-    fun `linkedList when converted to mutable item stays immutable`() {
-        val first = Linked.Node("pokemon")
-        val list1 = mutableLinkedListOf(first)
-        val list2 = list1.toMutableLinkedList()
-        first.value = "test"
+    // @Test
+    // fun `linkedList when converted to mutable item stays immutable`() {
+    //     val first = Linked.Node("pokemon")
+    //     val list1 = mutableLinkedListOf(first)
+    //     val list2 = list1.toMutableLinkedList()
+    //     first.value = "test"
+    //
+    //     println(list1)
+    //     println(list2)
+    //     assertEquals(list1.firstOrNull?.value, "pokemon")
+    //     assertEquals(list2.firstOrNull?.value, "pokemon")
+    //     assertEquals(list1.size, 1)
+    //     assertEquals(list2.size, 1)
+    //     assertNotEquals(list1, list2)
+    // }
 
-        println(list1)
-        println(list2)
-        assertEquals(list1.firstOrNull?.value, "pokemon")
-        assertEquals(list2.firstOrNull?.value, "pokemon")
-        assertEquals(list1.size, 1)
-        assertEquals(list2.size, 1)
-        assertNotEquals(list1, list2)
-    }
-
-    @Test
-    fun `linkedList when converted to mutable item is object then it is mutable`() {
-        data class Dummy(var data: Int = 2)
-
-        val dummy = Dummy()
-
-        val first = Linked.Node(dummy)
-        val list1 = mutableLinkedListOf(first)
-        val list2 = list1.toMutableLinkedList()
-
-        dummy.data = 5
-
-        println(list1)
-        println(list2)
-        assertEquals(list1.size, 1)
-        assertEquals(list2.size, 1)
-        assertEquals(list1.firstOrNull?.value?.data, 5)
-        assertEquals(list2.firstOrNull?.value?.data, 5)
-        assertNotEquals(list1, list2)
-    }
+    // @Test
+    // fun `linkedList when converted to mutable item is object then it is mutable`() {
+    //     data class Dummy(var data: Int = 2)
+    //
+    //     val dummy = Dummy()
+    //
+    //     val first = Linked.Node(dummy)
+    //     val list1 = mutableLinkedListOf(first)
+    //     val list2 = list1.toMutableLinkedList()
+    //
+    //     dummy.data = 5
+    //
+    //     println(list1)
+    //     println(list2)
+    //     assertEquals(list1.size, 1)
+    //     assertEquals(list2.size, 1)
+    //     assertEquals(list1.firstOrNull?.value?.data, 5)
+    //     assertEquals(list2.firstOrNull?.value?.data, 5)
+    //     assertNotEquals(list1, list2)
+    // }
 
     @Test
     fun `159 is ascending sorted linked list`() {

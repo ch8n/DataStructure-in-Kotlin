@@ -5,12 +5,13 @@ interface InsertLinkedList<T> {
     fun insertLast(data: T)
     fun insertAt(index: Int, data: T)
     fun insertAll(linkedList: LinkedList<T>)
+    fun insertAll(list: List<T>)
 }
+
 
 interface UpdateLinkedList<T> {
     fun replace(index: Int, data: T)
-    fun sortAscending()
-    fun sortDescending()
+    fun sort(isDescending: Boolean = false)
     fun reverse()
     fun distinct()
 }
@@ -23,7 +24,7 @@ interface DeleteLinkedList<T> {
 }
 
 abstract class Linked<T> {
-    data class Node<T>(var value: T, var next: Node<T>? = null)
+    data class Node<T>(val value: T, var next: Node<T>? = null)
 }
 
 interface LinkedList<T> {

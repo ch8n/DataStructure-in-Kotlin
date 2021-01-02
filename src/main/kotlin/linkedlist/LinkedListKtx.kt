@@ -37,31 +37,26 @@ val <T> LinkedList<T>.isCyclic: Boolean
     }
 
 fun <T> LinkedList<T>.forEach(iteration: (element: T) -> Unit) {
-    var current = firstOrNull
-    while (current != null) {
-        iteration.invoke(current.value)
-        current = current.next
-    }
-}
-
-fun <T> LinkedList<T>.forEachNode(iteration: (node: Linked.Node<T>?) -> Unit) {
-    var current = firstOrNull
-    while (current != null) {
-        iteration.invoke(current)
-        current = current.next
+    var iterator = firstOrNull
+    while (iterator != null) {
+        iteration.invoke(iterator.value)
+        iterator = iterator.next
     }
 }
 
 fun <T> LinkedList<T>.toMutableLinkedList(): MutableLinkedList<T> {
-    return LinkedCollection.mutableFrom(this)
+    return LinkedCollection.fromMutable(this)
 }
 
 //TODO test
 fun <T, R> LinkedList<T>.map(emmit: (T) -> R): MutableLinkedList<R> {
     val mapped = mutableLinkedListOf<R>()
-    forEach {
-        val value = emmit.invoke(it)
-        mapped.insertLast(value)
+    var iterator = firstOrNull
+    while (iterator != null) {
+        val value = iterator.value
+        val result = emmit.invoke(value)
+        mapped.insertLast(result)
+        iterator = iterator.next
     }
     return mapped
 }

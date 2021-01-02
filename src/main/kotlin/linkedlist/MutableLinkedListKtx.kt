@@ -55,7 +55,7 @@ fun <T> MutableLinkedList<T>.reverseElements() {
     var end = buffer.lastIndex
     var current = 0
     while (end != -1) {
-        val data = buffer[end]
+        val data = requireNotNull(buffer[end])
         replace(current, data)
         ++current
         --end

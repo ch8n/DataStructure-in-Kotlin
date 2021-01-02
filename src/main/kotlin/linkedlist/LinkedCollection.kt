@@ -1,8 +1,23 @@
 package linkedlist
 
-class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedList<T> {
+class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
 
     companion object {
+
+        // ----- new instances ----
+        fun <T> newInstance(): LinkedList<T> {
+            return LinkedCollection()
+        }
+
+        fun <T> newMutableInstance(): MutableLinkedList<T> {
+            return LinkedCollection()
+        }
+
+        // ----- from default values  ----
+        fun <T> from(first: T): LinkedList<T> {
+            val firstNode = Linked.Node(first)
+            return LinkedCollection(firstNode)
+        }
 
         fun <T> from(first: Linked.Node<T>): LinkedList<T> {
             return LinkedCollection(first)
@@ -12,19 +27,16 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
             return LinkedCollection(mutableList)
         }
 
-        fun <T> newInstance(): LinkedList<T> {
-            return LinkedCollection()
+        fun <T> fromMutable(first: T): MutableLinkedList<T> {
+            val firstNode = Linked.Node(first)
+            return LinkedCollection(firstNode)
         }
 
-        fun <T> newMutableInstance(): MutableLinkedList<T> {
-            return LinkedCollection()
-        }
-
-        fun <T> mutableFrom(list: LinkedList<T>): MutableLinkedList<T> {
+        fun <T> fromMutable(list: LinkedList<T>): MutableLinkedList<T> {
             return LinkedCollection(list)
         }
 
-        fun <T> mutableFrom(first: Linked.Node<T>): MutableLinkedList<T> {
+        fun <T> fromMutable(first: Linked.Node<T>): MutableLinkedList<T> {
             return LinkedCollection(first)
         }
     }
@@ -65,7 +77,7 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
             1 -> _first
             else -> {
                 var current = _first
-                while (current?.next != null) {
+                while (current != null) {
                     current = current.next
                 }
                 current
@@ -117,175 +129,175 @@ class LinkedCollection<T> private constructor() : LinkedList<T>, MutableLinkedLi
     }
 
     override fun insertAt(index: Int, data: T) {
-        val size = size
-        when {
-            index > size -> throw IndexOutOfBoundsException("Invalid index for Insert")
-            index == 0 -> insertFirst(data)
-            index == size -> insertLast(data)
-            else -> {
-                val node = Linked.Node(data)
-                var current = _first
-                var tailing = _first
-                var count = 0
-                while (count != index) {
-                    tailing = current
-                    current = current?.next
-                    ++count
-                }
-                tailing?.next = node
-                node.next = current
-                current = node
-            }
-        }
+        // val size = size
+        // when {
+        //     index > size -> throw IndexOutOfBoundsException("Invalid index for Insert")
+        //     index == 0 -> insertFirst(data)
+        //     index == size -> insertLast(data)
+        //     else -> {
+        //         val node = Linked.Node(data)
+        //         var current = _first
+        //         var tailing = _first
+        //         var count = 0
+        //         while (count != index) {
+        //             tailing = current
+        //             current = current?.next
+        //             ++count
+        //         }
+        //         tailing?.next = node
+        //         node.next = current
+        //         current = node
+        //     }
+        // }
     }
 
     override fun insertAll(linkedList: LinkedList<T>) {
-        var last = lastOrNull
-        linkedList.forEachNode {
-            last?.next = it?.copy()
-            last = last?.next
-        }
+        // var last = lastOrNull
+        // linkedList.forEachNode {
+        //     last?.next = it?.copy()
+        //     last = last?.next
+        // }
+    }
+
+    override fun insertAll(list: List<T>) {
+        TODO("Not yet implemented")
     }
 
     // --------------- Delete --------------------
 
     override fun deleteFirst() {
-        val current = _first ?: return
-        val next = current.next
-        _first = next
+        // val current = _first ?: return
+        // val next = current.next
+        // _first = next
     }
 
     override fun deleteLast() {
-        when (size) {
-            0, 1 -> deleteFirst()
-            else -> {
-                var current = _first
-                var prev = _first
-                while (current?.next != null) {
-                    prev = current
-                    current = current.next
-                }
-                prev?.next = null
-            }
-        }
+        // when (size) {
+        //     0, 1 -> deleteFirst()
+        //     else -> {
+        //         var current = _first
+        //         var prev = _first
+        //         while (current?.next != null) {
+        //             prev = current
+        //             current = current.next
+        //         }
+        //         prev?.next = null
+        //     }
+        // }
     }
 
     override fun deleteAt(index: Int) {
-        val size = size
-        when {
-            index > size -> throw IllegalArgumentException("Invalid index for Deletion")
-            index == 0 -> deleteFirst()
-            index == size -> deleteLast()
-            else -> {
-                var current = _first
-                var prev = _first
-                var position = 0
-                while (position != index) {
-                    ++position
-                    prev = current
-                    current = current?.next
-                }
-                val next = current?.next
-                prev?.next = next
-                current = null
-            }
-        }
+        // val size = size
+        // when {
+        //     index > size -> throw IllegalArgumentException("Invalid index for Deletion")
+        //     index == 0 -> deleteFirst()
+        //     index == size -> deleteLast()
+        //     else -> {
+        //         var current = _first
+        //         var prev = _first
+        //         var position = 0
+        //         while (position != index) {
+        //             ++position
+        //             prev = current
+        //             current = current?.next
+        //         }
+        //         val next = current?.next
+        //         prev?.next = next
+        //         current = null
+        //     }
+        // }
     }
 
     override fun delete(element: T) {
-        var current = _first
-
-        if (current?.value == element) {
-            deleteFirst()
-            return
-        }
-
-        var prev = _first
-        while (current?.next != null) {
-            if (current.value == element) {
-                break
-            }
-            prev = current
-            current = current.next
-        }
-
-        val next = current?.next
-        prev?.next = next
-        current = null
+        // var current = _first
+        //
+        // if (current?.value == element) {
+        //     deleteFirst()
+        //     return
+        // }
+        //
+        // var prev = _first
+        // while (current?.next != null) {
+        //     if (current.value == element) {
+        //         break
+        //     }
+        //     prev = current
+        //     current = current.next
+        // }
+        //
+        // val next = current?.next
+        // prev?.next = next
+        // current = null
     }
 
     // --------------- Update --------------------
 
     override fun replace(index: Int, data: T) {
-        val size = size
-        when {
-            size == 0 -> throw IllegalStateException("Cannot update an empty list")
-            index > size -> throw IllegalArgumentException("Invalid index for update")
-            index == 0 -> _first?.value = data
-            else -> {
-                var current = _first
-                var count = 0
-                while (count != index) {
-                    ++count
-                    current = current?.next
-                }
-                current?.value = data
-            }
-        }
+        // val size = size
+        // when {
+        //     size == 0 -> throw IllegalStateException("Cannot update an empty list")
+        //     index > size -> throw IllegalArgumentException("Invalid index for update")
+        //     index == 0 -> _first?.value = data
+        //     else -> {
+        //         var current = _first
+        //         var count = 0
+        //         while (count != index) {
+        //             ++count
+        //             current = current?.next
+        //         }
+        //         current?.value = data
+        //     }
+        // }
     }
 
     override fun distinct() {
 
-        var node = _first
-
-        while (node != null) {
-
-            var current = node.next
-            var tailing = node
-
-            while (current != null) {
-                if (node.value == current.value) {
-                    tailing?.next = current.next
-                }
-                tailing = current
-                current = current.next
-            }
-
-            node = node.next
-        }
+        // var node = _first
+        //
+        // while (node != null) {
+        //
+        //     var current = node.next
+        //     var tailing = node
+        //
+        //     while (current != null) {
+        //         if (node.value == current.value) {
+        //             tailing?.next = current.next
+        //         }
+        //         tailing = current
+        //         current = current.next
+        //     }
+        //
+        //     node = node.next
+        // }
     }
 
-    override fun sortAscending() {
-        TODO("Not yet implemented")
-    }
-
-    override fun sortDescending() {
+    override fun sort(isDescending: Boolean) {
         TODO("Not yet implemented")
     }
 
     override fun reverse() {
-        var prev: Linked.Node<T>? = null
-        var current: Linked.Node<T>? = _first
-        var next: Linked.Node<T>? = null
-
-        while (current != null) {
-            // hold next reference
-            next = current.next
-
-            // break link to next
-            current.next = null
-
-            // point current to previous
-            current.next = prev
-
-            // previous pointer point to the address of current node
-            // we can directly use that to assign previous
-            prev = current
-
-            // proceed loop
-            current = next
-        }
-
-        _first = prev
+        // var prev: Linked.Node<T>? = null
+        // var current: Linked.Node<T>? = _first
+        // var next: Linked.Node<T>? = null
+        //
+        // while (current != null) {
+        //     // hold next reference
+        //     next = current.next
+        //
+        //     // break link to next
+        //     current.next = null
+        //
+        //     // point current to previous
+        //     current.next = prev
+        //
+        //     // previous pointer point to the address of current node
+        //     // we can directly use that to assign previous
+        //     prev = current
+        //
+        //     // proceed loop
+        //     current = next
+        // }
+        //
+        // _first = prev
     }
 }
