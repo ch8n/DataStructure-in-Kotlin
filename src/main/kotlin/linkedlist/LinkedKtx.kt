@@ -14,17 +14,20 @@ fun <T> mutableLinkedListOf(): MutableLinkedList<T> {
     return LinkedCollection.newMutableInstance()
 }
 
-fun <T> mutableLinkedListOf(first: T): MutableLinkedList<T> {
-    return LinkedCollection.fromMutable(first)
-}
-
-
+//TODO TEST
 fun <T> Iterable<T>.toLinkedList(): LinkedList<T> {
     return fold(mutableLinkedListOf()) { acc, item ->
         acc.insertLast(item)
         return@fold acc
     }
 }
+
+fun <T> mutableLinkedListOf(first: T): MutableLinkedList<T> {
+    return LinkedCollection.mutableFrom(first)
+}
+
+
+
 
 fun <T> Iterable<T>.toMutableLinkedList(): MutableLinkedList<T> {
     return fold(mutableLinkedListOf()) { acc, item ->

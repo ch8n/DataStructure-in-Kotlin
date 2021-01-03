@@ -5,9 +5,7 @@ interface InsertLinkedList<T> {
     fun insertLast(data: T)
     fun insertAt(index: Int, data: T)
     fun insertAll(linkedList: LinkedList<T>)
-    fun insertAll(list: List<T>)
 }
-
 
 interface UpdateLinkedList<T> {
     fun replace(index: Int, data: T)
@@ -24,12 +22,12 @@ interface DeleteLinkedList<T> {
 }
 
 abstract class Linked<T> {
-    data class Node<T>(val value: T, var next: Node<T>? = null)
+    data class Node<T>(var value: T, var next: Node<T>? = null)
 }
 
-interface LinkedList<T> {
-    val firstOrNull: Linked.Node<T>?
-    val lastOrNull: Linked.Node<T>?
+interface LinkedList<T> : Iterable<T> {
+    val firstOrNull: T?
+    val lastOrNull: T?
     val size: Int
 }
 

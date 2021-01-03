@@ -15,11 +15,6 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
 
         // ----- from default values  ----
         fun <T> from(first: T): LinkedList<T> {
-            val firstNode = Linked.Node(first)
-            return LinkedCollection(firstNode)
-        }
-
-        fun <T> from(first: Linked.Node<T>): LinkedList<T> {
             return LinkedCollection(first)
         }
 
@@ -27,69 +22,51 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
             return LinkedCollection(mutableList)
         }
 
-        fun <T> fromMutable(first: T): MutableLinkedList<T> {
-            val firstNode = Linked.Node(first)
-            return LinkedCollection(firstNode)
-        }
-
-        fun <T> fromMutable(list: LinkedList<T>): MutableLinkedList<T> {
-            return LinkedCollection(list)
-        }
-
-        fun <T> fromMutable(first: Linked.Node<T>): MutableLinkedList<T> {
+        fun <T> mutableFrom(first: T): MutableLinkedList<T> {
             return LinkedCollection(first)
+        }
+
+        fun <T> mutableFrom(list: LinkedList<T>): MutableLinkedList<T> {
+            return LinkedCollection(list)
         }
     }
 
     private constructor(list: LinkedList<T>) : this() {
-        var item = list.firstOrNull
         var current = _first
-        while (item != null) {
+        for (item in list) {
             if (current == null) {
-                _first = item.copy()
+                _first = Linked.Node(item)
             } else {
-                current.next = item.copy()
+                current.next = Linked.Node(item)
                 current = current.next
             }
-            item = item.next
         }
     }
 
-    private constructor(first: Linked.Node<T>) : this() {
-        _first = first.copy()
-        var current = _first
-        var other = first.next
-        while (other != null) {
-            current?.next = other.copy()
-            current = current?.next
-            other = other.next
-        }
+    private constructor(first: T) : this() {
+        _first = Linked.Node(first)
     }
 
     private var _first: Linked.Node<T>? = null
 
-    override val firstOrNull: Linked.Node<T>?
-        get() = _first
+    override val firstOrNull: T?
+        get() = _first?.value
 
-    override val lastOrNull: Linked.Node<T>?
-        get() = when (size) {
-            0 -> null
-            1 -> _first
-            else -> {
-                var current = _first
-                while (current != null) {
-                    current = current.next
-                }
-                current
+    override val lastOrNull: T?
+        get() {
+            val iterator = iterator()
+            var last: T? = null
+            while (iterator.hasNext()) {
+                last = iterator.next()
             }
+            return last
         }
 
     override fun toString(): String {
         var current = _first
         var builder = ""
         while (current != null) {
-            val value = current.value ?: ""
-            builder = "$builder $value"
+            builder = "$builder ${current.value}"
             current = current.next
         }
         return builder
@@ -97,12 +74,9 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
 
     override val size: Int
         get() {
-            var current = _first
+            val iterator = iterator()
             var size = 0
-            while (current != null) {
-                ++size
-                current = current.next
-            }
+            iterator.forEach { ++size }
             return size
         }
 
@@ -115,17 +89,17 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
     }
 
     override fun insertLast(data: T) {
-        when (size) {
-            0 -> insertFirst(data)
-            else -> {
-                val node = Linked.Node(data)
-                var current = _first
-                while (current?.next != null) {
-                    current = current.next
-                }
-                current?.next = node
-            }
-        }
+        // when (size) {
+        //     0 -> insertFirst(data)
+        //     else -> {
+        //         val node = Linked.Node(data)
+        //         var current = _first
+        //         while (current?.next != null) {
+        //             current = current.next
+        //         }
+        //         current?.next = node
+        //     }
+        // }
     }
 
     override fun insertAt(index: Int, data: T) {
@@ -157,10 +131,6 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
         //     last?.next = it?.copy()
         //     last = last?.next
         // }
-    }
-
-    override fun insertAll(list: List<T>) {
-        TODO("Not yet implemented")
     }
 
     // --------------- Delete --------------------
@@ -299,5 +269,18 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
         // }
         //
         // _first = prev
+    }
+
+    override fun iterator(): Iterator<T> {
+        var current: Linked.Node<T>? = _first
+        return object : Iterator<T> {
+            override fun hasNext(): Boolean = current != null
+
+            override fun next(): T {
+                val value = current?.value
+                current = current?.next
+                return requireNotNull(value)
+            }
+        }
     }
 }
