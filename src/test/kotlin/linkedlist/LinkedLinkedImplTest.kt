@@ -1,5 +1,6 @@
 package linkedlist
 
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
@@ -7,6 +8,9 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
+import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.fail
+import java.lang.IndexOutOfBoundsException
 
 class LinkedLinkedImplTest {
 
@@ -25,19 +29,22 @@ class LinkedLinkedImplTest {
         }
 
         @Test
-        fun `default item list has first correct first item`() {
-            val linked = linkedListOf<Int>(10)
-            assertAll(
-                { assertNotNull(linked.firstOrNull) },
-                { assertEquals(linked.firstOrNull, 10) },
-            )
+        fun `empty list has last null`() {
+            val linked = linkedListOf<Int>()
+            assertNull(linked.lastOrNull)
             println(linked.toString())
         }
 
         @Test
-        fun `empty list has last null`() {
-            val linked = linkedListOf<Int>()
-            assertNull(linked.lastOrNull)
+        fun `adding default item list get inserted correctly`() {
+            val linked = linkedListOf<Int>(10, 20, 30, 40, 50)
+            assertAll(
+                { assertEquals(linked.size, 5) },
+                { assertNotNull(linked.firstOrNull) },
+                { assertNotNull(linked.lastOrNull) },
+                { assertEquals(linked.firstOrNull, 10) },
+                { assertEquals(linked.lastOrNull, 50) },
+            )
             println(linked.toString())
         }
 
@@ -64,11 +71,14 @@ class LinkedLinkedImplTest {
         }
 
         @Test
-        fun `default item list has first correct first item`() {
-            val linked = mutableLinkedListOf<Int>(10)
+        fun `adding default item list get inserted correctly`() {
+            val linked = mutableLinkedListOf<Int>(10, 20, 30, 40, 50)
             assertAll(
+                { assertEquals(linked.size, 5) },
                 { assertNotNull(linked.firstOrNull) },
+                { assertNotNull(linked.lastOrNull) },
                 { assertEquals(linked.firstOrNull, 10) },
+                { assertEquals(linked.lastOrNull, 50) },
             )
             println(linked.toString())
         }
@@ -140,9 +150,215 @@ class LinkedLinkedImplTest {
                     { assertEquals(linkedList.lastOrNull, poke) }
                 )
             }
+
+            @Test
+            fun `var in linkedList is free from mutation`() {
+                var number = "test"
+                val linkedList = mutableLinkedListOf(number)
+
+                number = "best"
+                assertAll(
+                    { assertEquals(linkedList.size, 1) },
+                    { assertNotNull(linkedList.firstOrNull) },
+                    { assertNotNull(linkedList.lastOrNull) },
+                    { assertEquals(linkedList.firstOrNull, "test") },
+                    { assertEquals(linkedList.lastOrNull, "test") }
+                )
+            }
         }
 
+        @Nested
+        inner class `InsertLast Test` {
 
+            @Test
+            fun `insert last item to empty list`() {
+                val linkedList = mutableLinkedListOf<Int>()
+                linkedList.insertLast(10)
+                assertAll(
+                    { assertEquals(linkedList.size, 1) },
+                    { assertNotNull(linkedList.firstOrNull) },
+                    { assertNotNull(linkedList.lastOrNull) },
+                    { assertEquals(linkedList.firstOrNull, 10) },
+                    { assertEquals(linkedList.lastOrNull, 10) }
+                )
+            }
+
+            @Test
+            fun `add two item at last of list`() {
+                val linkedList = mutableLinkedListOf(10)
+                linkedList.insertLast(20)
+                assertAll(
+                    { assertEquals(linkedList.size, 2) },
+                    { assertNotNull(linkedList.firstOrNull) },
+                    { assertNotNull(linkedList.lastOrNull) },
+                    { assertEquals(linkedList.firstOrNull, 10) },
+                    { assertEquals(linkedList.lastOrNull, 20) }
+                )
+            }
+
+            @Test
+            fun `add object item to empty list`() {
+                data class Pokemon(val name: String = "pokemon")
+
+                val poke1 = Pokemon()
+                val poke2 = Pokemon(name = "poke2")
+                val linkedList = mutableLinkedListOf<Pokemon>()
+                linkedList.insertLast(poke1)
+                linkedList.insertLast(poke2)
+
+                assertAll(
+                    { assertEquals(linkedList.size, 2) },
+                    { assertNotNull(linkedList.firstOrNull) },
+                    { assertNotNull(linkedList.lastOrNull) },
+                    { assertEquals(linkedList.firstOrNull, poke1) },
+                    { assertEquals(linkedList.lastOrNull, poke2) }
+                )
+            }
+
+            @Test
+            fun `var in linkedList is free from mutation`() {
+                val linkedList = mutableLinkedListOf("ok")
+                var test = "test"
+                linkedList.insertLast(test)
+                test = "best"
+                assertAll(
+                    { assertEquals(linkedList.size, 2) },
+                    { assertNotNull(linkedList.firstOrNull) },
+                    { assertNotNull(linkedList.lastOrNull) },
+                    { assertEquals(linkedList.firstOrNull, "ok") },
+                    { assertEquals(linkedList.lastOrNull, "test") }
+                )
+            }
+        }
+
+        @Nested
+        inner class `InsertAt index Test` {
+
+            @Test
+            fun `insert at pos 0 in empty list`() {
+                val linked = mutableLinkedListOf<Int>()
+                linked.insertAt(0, 10)
+
+                Assertions.assertAll(
+                    { assertEquals(linked.size, 1) },
+                    { assertEquals(linked.firstOrNull, 10) },
+                    { assertEquals(linked.lastOrNull, 10) },
+                )
+                println(linked.toString())
+            }
+
+            @Test
+            fun `insert at pos 0 in filled list`() {
+                val linked = mutableLinkedListOf<Int>(1, 2, 3, 4)
+                linked.insertAt(0, 10)
+
+                Assertions.assertAll(
+                    { assertEquals(linked.size, 5) },
+                    { assertEquals(linked.firstOrNull, 10) },
+                    { assertEquals(linked.lastOrNull, 4) },
+                )
+                println(linked.toString())
+            }
+
+            @Test
+            fun `insert at last in filled list`() {
+                val linked = mutableLinkedListOf<Int>(1, 2, 3, 4)
+                linked.insertAt(linked.size - 1, 10)
+
+                Assertions.assertAll(
+                    { assertEquals(linked.size, 5) },
+                    { assertEquals(linked.firstOrNull, 1) },
+                    { assertEquals(linked.lastOrNull, 10) },
+                )
+                println(linked.toString())
+            }
+
+            @Test
+            fun `insert at pos 1 in empty list throws IndexOutOfBound`() {
+                val linked = mutableLinkedListOf<Int>()
+
+                assertThrows<IndexOutOfBoundsException>() {
+                    linked.insertAt(1, 10)
+                }
+                println(linked.toString())
+            }
+
+            @Test
+            fun `insert at pos invalid position in list throws IndexOutOfBound`() {
+                val linked = mutableLinkedListOf<Int>(2)
+
+                assertThrows<IndexOutOfBoundsException>() {
+                    linked.insertAt(-1, 10)
+                }
+                println(linked.toString())
+            }
+        }
+
+        @Nested
+        inner class `InsertAll Test` {
+
+            @Test
+            fun `insert empty linkedlist into empty linkedList`() {
+                val list1 = mutableLinkedListOf<Int>()
+                val list2 = linkedListOf<Int>()
+                list1.insertAll(list2)
+
+                Assertions.assertAll(
+                    { assertEquals(list1.size, 0) },
+                    { assertNull(list1.firstOrNull) },
+                    { assertNull(list1.lastOrNull) }
+                )
+                println(list1.toString())
+            }
+
+            @Test
+            fun `insert filled linkedlist into empty linkedList`() {
+                val list1 = mutableLinkedListOf<Int>()
+                val list2 = linkedListOf<Int>(1, 2, 3)
+                list1.insertAll(list2)
+
+                Assertions.assertAll(
+                    { assertEquals(list1.size, 3) },
+                    { assertNotNull(list1.firstOrNull) },
+                    { assertNotNull(list1.lastOrNull) },
+                    { assertEquals(list1.firstOrNull, 1) },
+                    { assertEquals(list1.lastOrNull, 3) },
+                )
+                println(list1.toString())
+            }
+
+            @Test
+            fun `insert empty linkedlist into filled linkedList`() {
+                val list1 = linkedListOf<Int>()
+                val list2 = mutableLinkedListOf(1, 2, 3)
+                list2.insertAll(list1)
+
+                Assertions.assertAll(
+                    { assertEquals(list2.size, 3) },
+                    { assertNotNull(list2.firstOrNull) },
+                    { assertNotNull(list2.lastOrNull) },
+                    { assertEquals(list2.firstOrNull, 1) },
+                    { assertEquals(list2.lastOrNull, 3) },
+                )
+                println(list1.toString())
+            }
+
+            @Test
+            fun `insert filled linkedlist into filled linkedList`() {
+                val list1 = linkedListOf<Int>(5, 6, 7)
+                val list2 = mutableLinkedListOf(1, 2, 3)
+                list2.insertAll(list1)
+
+                Assertions.assertAll(
+                    { assertEquals(list2.size, 6) },
+                    { assertNotNull(list2.firstOrNull) },
+                    { assertNotNull(list2.lastOrNull) },
+                    { assertEquals(list2.firstOrNull, 1) },
+                    { assertEquals(list2.lastOrNull, 7) },
+                )
+                println(list2.toString())
+            }
+        }
     }
 
     // @Test

@@ -6,8 +6,8 @@ fun <T> linkedListOf(): LinkedList<T> {
     return LinkedCollection.newInstance()
 }
 
-fun <T> linkedListOf(first: T): LinkedList<T> {
-    return LinkedCollection.from(first)
+fun <T> linkedListOf(vararg many: T): LinkedList<T> {
+    return LinkedCollection.from(*many)
 }
 
 fun <T> mutableLinkedListOf(): MutableLinkedList<T> {
@@ -22,12 +22,9 @@ fun <T> Iterable<T>.toLinkedList(): LinkedList<T> {
     }
 }
 
-fun <T> mutableLinkedListOf(first: T): MutableLinkedList<T> {
-    return LinkedCollection.mutableFrom(first)
+fun <T> mutableLinkedListOf(vararg many: T): MutableLinkedList<T> {
+    return LinkedCollection.mutableFrom(*many)
 }
-
-
-
 
 fun <T> Iterable<T>.toMutableLinkedList(): MutableLinkedList<T> {
     return fold(mutableLinkedListOf()) { acc, item ->

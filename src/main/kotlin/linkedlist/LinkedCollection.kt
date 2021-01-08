@@ -14,16 +14,16 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
         }
 
         // ----- from default values  ----
-        fun <T> from(first: T): LinkedList<T> {
-            return LinkedCollection(first)
+        fun <T> from(vararg many: T): LinkedList<T> {
+            return LinkedCollection(*many)
         }
 
         fun <T> from(mutableList: MutableLinkedList<T>): LinkedList<T> {
             return LinkedCollection(mutableList)
         }
 
-        fun <T> mutableFrom(first: T): MutableLinkedList<T> {
-            return LinkedCollection(first)
+        fun <T> mutableFrom(vararg many: T): MutableLinkedList<T> {
+            return LinkedCollection(*many)
         }
 
         fun <T> mutableFrom(list: LinkedList<T>): MutableLinkedList<T> {
@@ -43,24 +43,31 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
         }
     }
 
-    private constructor(first: T) : this() {
-        _first = Linked.Node(first)
+    private constructor(vararg many: T) : this() {
+        _first = Linked.Node(many[0])
+        val leftovers = many.drop(1)
+        var current = _first
+        for (data in leftovers) {
+            current?.next = Linked.Node(data)
+            current = current?.next
+        }
     }
 
     private var _first: Linked.Node<T>? = null
+    private val _last: Linked.Node<T>?
+        get() {
+            var current = _first
+            while (current?.next != null) {
+                current = current.next
+            }
+            return current
+        }
 
     override val firstOrNull: T?
         get() = _first?.value
 
     override val lastOrNull: T?
-        get() {
-            val iterator = iterator()
-            var last: T? = null
-            while (iterator.hasNext()) {
-                last = iterator.next()
-            }
-            return last
-        }
+        get() = _last?.value
 
     override fun toString(): String {
         var current = _first
@@ -80,6 +87,8 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
             return size
         }
 
+    override fun isEmpty(): Boolean = _first == null
+
     // --------------- Insert --------------------
 
     override fun insertFirst(data: T) {
@@ -89,48 +98,70 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
     }
 
     override fun insertLast(data: T) {
-        // when (size) {
-        //     0 -> insertFirst(data)
-        //     else -> {
-        //         val node = Linked.Node(data)
-        //         var current = _first
-        //         while (current?.next != null) {
-        //             current = current.next
-        //         }
-        //         current?.next = node
-        //     }
-        // }
+        when (size) {
+            0 -> insertFirst(data)
+            else -> {
+                val node = Linked.Node(data)
+                var current = _first
+                while (current?.next != null) {
+                    current = current.next
+                }
+                current?.next = node
+            }
+        }
     }
 
     override fun insertAt(index: Int, data: T) {
-        // val size = size
-        // when {
-        //     index > size -> throw IndexOutOfBoundsException("Invalid index for Insert")
-        //     index == 0 -> insertFirst(data)
-        //     index == size -> insertLast(data)
-        //     else -> {
-        //         val node = Linked.Node(data)
-        //         var current = _first
-        //         var tailing = _first
-        //         var count = 0
-        //         while (count != index) {
-        //             tailing = current
-        //             current = current?.next
-        //             ++count
-        //         }
-        //         tailing?.next = node
-        //         node.next = current
-        //         current = node
-        //     }
-        // }
+        val size = size
+        when {
+            index >= size || index < 0 -> throw IndexOutOfBoundsException("Invalid index for Insert")
+            index == 0 -> insertFirst(data)
+            index == size - 1 -> insertLast(data)
+            else -> {
+                val node = Linked.Node(data)
+                var current = _first
+                var tailing = _first
+                var count = 0
+                while (count != index) {
+                    tailing = current
+                    current = current?.next
+                    ++count
+                }
+                tailing?.next = node
+                node.next = current
+            }
+        }
     }
 
     override fun insertAll(linkedList: LinkedList<T>) {
-        // var last = lastOrNull
-        // linkedList.forEachNode {
-        //     last?.next = it?.copy()
-        //     last = last?.next
-        // }
+
+        val isSecondEmpty = linkedList.isEmpty()
+        // no item to enter
+        if (isSecondEmpty) {
+            return
+        }
+
+        val isFirstEmpty = isEmpty()
+        // add item from last
+        if (!isFirstEmpty) {
+            var last = _last
+            linkedList.forEach {
+                val node = Linked.Node(it)
+                last?.next = node
+                last = node
+            }
+            return
+        }
+
+        // add item from first
+        _first = Linked.Node(requireNotNull(linkedList.firstOrNull))
+        val remaining = linkedList.drop(1)
+        var current = _first
+        remaining.forEach {
+            val node = Linked.Node(it)
+            current?.next = node
+            current = node
+        }
     }
 
     // --------------- Delete --------------------
