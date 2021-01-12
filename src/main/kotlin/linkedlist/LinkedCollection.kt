@@ -114,7 +114,7 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
     override fun insertAt(index: Int, data: T) {
         val size = size
         when {
-            index >= size || index < 0 -> throw IndexOutOfBoundsException("Invalid index for Insert")
+            index > size || index < 0 -> throw IndexOutOfBoundsException("Invalid index for Insert")
             index == 0 -> insertFirst(data)
             index == size - 1 -> insertLast(data)
             else -> {
@@ -167,9 +167,9 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
     // --------------- Delete --------------------
 
     override fun deleteFirst() {
-        // val current = _first ?: return
-        // val next = current.next
-        // _first = next
+        val current = _first ?: return
+        val next = current.next
+        _first = next
     }
 
     override fun deleteLast() {
