@@ -401,5 +401,103 @@ class LinkedLinkedImplTest {
                 )
             }
         }
+
+        @Nested
+        inner class `Delete last test` {
+
+            @Test
+            fun `delete last item of empty list`() {
+                val linkedList = mutableLinkedListOf<Int>()
+                linkedList.deleteLast()
+                assertAll(
+                    { assertEquals(linkedList.size, 0) },
+                    { assertNull(linkedList.firstOrNull) },
+                    { assertNull(linkedList.lastOrNull) }
+                )
+            }
+
+
+            @Test
+            fun `delete last item from filled list to make list empty`() {
+                val linkedList = mutableLinkedListOf<Int>(1)
+                linkedList.deleteLast()
+                assertAll(
+                    { assertEquals(linkedList.size, 0) },
+                    { assertNull(linkedList.firstOrNull) },
+                    { assertNull(linkedList.lastOrNull) }
+                )
+            }
+
+            @Test
+            fun `delete last item to filled list`() {
+                val linkedList = mutableLinkedListOf<Int>(1, 2, 3)
+                linkedList.deleteLast()
+                assertAll(
+                    { assertEquals(linkedList.size, 2) },
+                    { assertNotNull(linkedList.firstOrNull) },
+                    { assertNotNull(linkedList.lastOrNull) },
+                    { assertEquals(linkedList.firstOrNull, 1) },
+                    { assertEquals(linkedList.lastOrNull, 2) }
+                )
+            }
+        }
+
+        @Nested
+        inner class `Delete at index test` {
+
+            @Test
+            fun `delete item at 0 of empty list`() {
+                val linkedList = mutableLinkedListOf<Int>()
+                linkedList.deleteAt(0)
+                assertAll(
+                    { assertEquals(linkedList.size, 0) },
+                    { assertNull(linkedList.firstOrNull) },
+                    { assertNull(linkedList.lastOrNull) }
+                )
+            }
+
+            @Test
+            fun `delete item at invalid index -1 of empty list`() {
+                val linkedList = mutableLinkedListOf<Int>()
+                assertThrows<IndexOutOfBoundsException> {
+                    linkedList.deleteAt(-1)
+                }
+            }
+
+            @Test
+            fun `delete item at invalid index 5 of list empty`() {
+                val linkedList = mutableLinkedListOf<Int>(1)
+                assertThrows<IndexOutOfBoundsException> {
+                    linkedList.deleteAt(5)
+                }
+            }
+
+            @Test
+            fun `delete item at index 0 to make list empty`() {
+                val linkedList = mutableLinkedListOf<Int>(1)
+                linkedList.deleteAt(0)
+                assertAll(
+                    { assertEquals(linkedList.size, 0) },
+                    { assertNull(linkedList.firstOrNull) },
+                    { assertNull(linkedList.lastOrNull) },
+                )
+            }
+
+            @Test
+            fun `delete item at index 3 from filled list`() {
+                val linkedList = mutableLinkedListOf<Int>(1,2,3,4,5)
+                linkedList.deleteAt(3)
+                println(linkedList)
+                assertAll(
+                    { assertEquals(linkedList.size, 4) },
+                    { assertNotNull(linkedList.firstOrNull) },
+                    { assertNotNull(linkedList.lastOrNull) },
+                    { assertEquals(linkedList.firstOrNull,1) },
+                    { assertEquals(linkedList.lastOrNull,5) },
+                )
+            }
+
+
+        }
     }
 }

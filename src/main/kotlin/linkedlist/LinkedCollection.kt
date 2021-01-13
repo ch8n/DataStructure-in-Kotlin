@@ -173,40 +173,39 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
     }
 
     override fun deleteLast() {
-        // when (size) {
-        //     0, 1 -> deleteFirst()
-        //     else -> {
-        //         var current = _first
-        //         var prev = _first
-        //         while (current?.next != null) {
-        //             prev = current
-        //             current = current.next
-        //         }
-        //         prev?.next = null
-        //     }
-        // }
+        when (size) {
+            0, 1 -> deleteFirst()
+            else -> {
+                var current = _first
+                var prev = _first
+                while (current?.next != null) {
+                    prev = current
+                    current = current.next
+                }
+                prev?.next = null
+            }
+        }
     }
 
     override fun deleteAt(index: Int) {
-        // val size = size
-        // when {
-        //     index > size -> throw IllegalArgumentException("Invalid index for Deletion")
-        //     index == 0 -> deleteFirst()
-        //     index == size -> deleteLast()
-        //     else -> {
-        //         var current = _first
-        //         var prev = _first
-        //         var position = 0
-        //         while (position != index) {
-        //             ++position
-        //             prev = current
-        //             current = current?.next
-        //         }
-        //         val next = current?.next
-        //         prev?.next = next
-        //         current = null
-        //     }
-        // }
+        val size = size
+        when {
+            index > size || index < 0 -> throw IndexOutOfBoundsException("Invalid index for Deletion")
+            index == 0 -> deleteFirst()
+            index == size - 1 -> deleteLast()
+            else -> {
+                var current = _first
+                var prev = _first
+                var position = 0
+                while (position != index) {
+                    ++position
+                    prev = current
+                    current = current?.next
+                }
+                val next = current?.next
+                prev?.next = next
+            }
+        }
     }
 
     override fun delete(element: T) {
