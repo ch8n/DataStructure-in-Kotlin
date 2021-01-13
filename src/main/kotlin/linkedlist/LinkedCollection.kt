@@ -209,25 +209,24 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
     }
 
     override fun delete(element: T) {
-        // var current = _first
-        //
-        // if (current?.value == element) {
-        //     deleteFirst()
-        //     return
-        // }
-        //
-        // var prev = _first
-        // while (current?.next != null) {
-        //     if (current.value == element) {
-        //         break
-        //     }
-        //     prev = current
-        //     current = current.next
-        // }
-        //
-        // val next = current?.next
-        // prev?.next = next
-        // current = null
+        var current = _first
+
+        if (current?.value == element) {
+            deleteFirst()
+            return
+        }
+
+        var prev = _first
+        while (current?.next != null) {
+            if (current.value == element) {
+                break
+            }
+            prev = current
+            current = current.next
+        }
+
+        val next = current?.next
+        prev?.next = next
     }
 
     // --------------- Update --------------------

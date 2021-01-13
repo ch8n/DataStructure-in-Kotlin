@@ -499,5 +499,48 @@ class LinkedLinkedImplTest {
 
 
         }
+
+        @Nested
+        inner class `Delete element test` {
+
+            @Test
+            fun `delete element from empty list`() {
+                val linkedList = mutableLinkedListOf<Int>()
+                linkedList.delete(0)
+                assertAll(
+                    { assertEquals(linkedList.size, 0) },
+                    { assertNull(linkedList.firstOrNull) },
+                    { assertNull(linkedList.lastOrNull) }
+                )
+            }
+
+            @Test
+            fun `delete element to make filled list empty`() {
+                val linkedList = mutableLinkedListOf<Int>(0)
+                linkedList.delete(0)
+                assertAll(
+                    { assertEquals(linkedList.size, 0) },
+                    { assertNull(linkedList.firstOrNull) },
+                    { assertNull(linkedList.lastOrNull) }
+                )
+            }
+
+
+            @Test
+            fun `delete element from filled list`() {
+                val linkedList = mutableLinkedListOf<Int>(1,2,3,4,5)
+                linkedList.deleteAt(3)
+                println(linkedList)
+                assertAll(
+                    { assertEquals(linkedList.size, 4) },
+                    { assertNotNull(linkedList.firstOrNull) },
+                    { assertNotNull(linkedList.lastOrNull) },
+                    { assertEquals(linkedList.firstOrNull,1) },
+                    { assertEquals(linkedList.lastOrNull,5) },
+                )
+            }
+
+
+        }
     }
 }
