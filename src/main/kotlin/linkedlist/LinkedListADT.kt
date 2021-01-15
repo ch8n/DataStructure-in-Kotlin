@@ -30,6 +30,7 @@ interface LinkedList<T> : Iterable<T> {
     val lastOrNull: T?
     val size: Int
     fun isEmpty(): Boolean
+    fun get(index: Int): T?
 }
 
 interface MutableLinkedList<T> :

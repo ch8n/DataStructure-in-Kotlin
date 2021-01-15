@@ -1,117 +1,23 @@
-LinkedListContent :  10 20
-7first : Node(value=10, next=Node(value=20, next=null))
-!last : Node(value=20, next=null)
-LinkedListContent :  4 3 2 1
-]first : Node(value=4, next=Node(value=3, next=Node(value=2, next=Node(value=1, next=null))))
- last : Node(value=1, next=null)
-LinkedListContent :  10
-"first : Node(value=10, next=null)
-!last : Node(value=10, next=null)
-LinkedListContent :  1 2 3
-Ifirst : Node(value=1, next=Node(value=2, next=Node(value=3, next=null)))
- last : Node(value=3, next=null)
-LinkedListContent : 
-first : null
-last : null
-LinkedListContent :  20 10
-7first : Node(value=20, next=Node(value=10, next=null))
-!last : Node(value=10, next=null)
-LinkedListContent :  2 3
-5first : Node(value=2, next=Node(value=3, next=null))
- last : Node(value=3, next=null)
-	LinkedListContent :  1 3
-	5first : Node(value=1, next=Node(value=3, next=null))
-	 last : Node(value=3, next=null)
-
-LinkedListContent :  1 2
-
-5first : Node(value=1, next=Node(value=2, next=null))
-
- last : Node(value=2, next=null)
-LinkedListContent :  1 2 3
-Ifirst : Node(value=1, next=Node(value=2, next=Node(value=3, next=null)))
- last : Node(value=3, next=null)
-LinkedListContent :  1 3
-5first : Node(value=1, next=Node(value=3, next=null))
- last : Node(value=3, next=null)
-LinkedListContent :  10
-"first : Node(value=10, next=null)
-!last : Node(value=10, next=null)
-LinkedListContent :  10 30
-7first : Node(value=10, next=Node(value=30, next=null))
-!last : Node(value=30, next=null)
-LinkedListContent :  10 20 30
-Lfirst : Node(value=10, next=Node(value=20, next=Node(value=30, next=null)))
-!last : Node(value=30, next=null)
-LinkedListContent : 
-first : null
-last : null
-LinkedListContent :  1 2 3 4
-]first : Node(value=1, next=Node(value=2, next=Node(value=3, next=Node(value=4, next=null))))
- last : Node(value=4, next=null)
-LinkedListContent :  10
-"first : Node(value=10, next=null)
-!last : Node(value=10, next=null)
-LinkedListContent :  1 2
-5first : Node(value=1, next=Node(value=2, next=null))
- last : Node(value=2, next=null)
-LinkedListContent :  1 2
-5first : Node(value=1, next=Node(value=2, next=null))
- last : Node(value=2, next=null)
-LinkedListContent :  1 2 3 4
-]first : Node(value=1, next=Node(value=2, next=Node(value=3, next=Node(value=4, next=null))))
- last : Node(value=4, next=null)
-LinkedListContent :  5 2 3
-Ifirst : Node(value=5, next=Node(value=2, next=Node(value=3, next=null)))
- last : Node(value=3, next=null)
-LinkedListContent :  2 3
-5first : Node(value=2, next=Node(value=3, next=null))
- last : Node(value=3, next=null)
-LinkedListContent :  2 3
-5first : Node(value=2, next=Node(value=3, next=null))
- last : Node(value=3, next=null)
-LinkedListContent :  1 2 5
-Ifirst : Node(value=1, next=Node(value=2, next=Node(value=5, next=null)))
- last : Node(value=5, next=null)
-LinkedListContent : 
-first : null
-last : null
-LinkedListContent :  1 5 3
-Ifirst : Node(value=1, next=Node(value=5, next=Node(value=3, next=null)))
- last : Node(value=3, next=null)
-LinkedListContent : 
-first : null
-last : null
-LinkedListContent : 
-first : null
-last : null
-[1, 2, 3, 4, 5, 6]
- 1 2 3 4 5 6
- 	 1 2 3 5
-! 2 3 1 1 4 4
-"	 0 1 2 3
-#	 1 2 3 4
-$ 3 2 1
-$Descending sorted : true
-% 1
-% 1
-&LinkedListContent :  1 0 9
-&Ifirst : Node(value=1, next=Node(value=0, next=Node(value=9, next=null)))
-& last : Node(value=9, next=null)
-( 3 5 6
-(Descending sorted : false
-) 2 3 1 1 4 4
-)[2, 3, 1, 1, 4, 4]
-,	 1 2 3 4
-,	 4 3 2 1
-- 1
-- 1
-. 3 1 0
-.Ascending sorted : false
-0 5
-1 Dummy(data=5)
-1 Dummy(data=5)
-2 1 5 9
-2Ascending sorted : true
-3	 pokemon
-3	 pokemon
+[1, 2, 3, 4, 5, 6]
+ 1 2 3 4 5 6
+ 10
+
+ 10 20 30 40 50
+
+ 10
+
+ 10 20 30 40 50
+
+ 10
+('
+() 10 1 2 3 4
+(* 10
+(+ 2
+(, 1 2 3 4 10
+.-
+./ 1 2 3 5 6 7
+.0
+.1 1 2 3
+;:	 1 2 3 5
+AB	 1 2 3 5
+EF 5 2 5

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="linkedlist.LinkedLinkedImplTest$LinkedList test" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-01-15T19:23:26" hostname="chetan.gupta" time="0.013">
+  <properties/>
+  <testcase name="empty list has last null()" classname="linkedlist.LinkedLinkedImplTest$LinkedList test" time="0.002"/>
+  <testcase name="adding default item list get inserted correctly()" classname="linkedlist.LinkedLinkedImplTest$LinkedList test" time="0.002"/>
+  <testcase name="linked list get item at index from empty list throws error()" classname="linkedlist.LinkedLinkedImplTest$LinkedList test" time="0.001"/>
+  <testcase name="linked list is empty check()" classname="linkedlist.LinkedLinkedImplTest$LinkedList test" time="0.001"/>
+  <testcase name="empty list has first null()" classname="linkedlist.LinkedLinkedImplTest$LinkedList test" time="0.001"/>
+  <testcase name="default item list has first and last are same()" classname="linkedlist.LinkedLinkedImplTest$LinkedList test" time="0.001"/>
+  <testcase name="linked list get item at index from filled list throws error()" classname="linkedlist.LinkedLinkedImplTest$LinkedList test" time="0.002"/>
+  <system-out><![CDATA[
+ 10 20 30 40 50
+
+ 10
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

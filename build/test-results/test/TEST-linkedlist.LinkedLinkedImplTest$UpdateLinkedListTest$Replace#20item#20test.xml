@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="linkedlist.LinkedLinkedImplTest$UpdateLinkedListTest$Replace item test" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-15T19:23:26" hostname="chetan.gupta" time="0.005">
+  <properties/>
+  <testcase name="replace item at any index from empty list throws error()" classname="linkedlist.LinkedLinkedImplTest$UpdateLinkedListTest$Replace item test" time="0.002"/>
+  <testcase name="replace item in valid position updates the value in filled list()" classname="linkedlist.LinkedLinkedImplTest$UpdateLinkedListTest$Replace item test" time="0.001"/>
+  <testcase name="replace item in filled list at invalid position throw error()" classname="linkedlist.LinkedLinkedImplTest$UpdateLinkedListTest$Replace item test" time="0.002"/>
+  <system-out><![CDATA[ 5 2 5
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

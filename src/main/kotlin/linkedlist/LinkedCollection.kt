@@ -89,6 +89,22 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
 
     override fun isEmpty(): Boolean = _first == null
 
+    override fun get(index: Int): T? {
+        return when {
+            isEmpty() -> throw IndexOutOfBoundsException("Cannot update empty list")
+            index < 0 || index > size -> throw IndexOutOfBoundsException("Invalid Index")
+            else -> {
+                var current = _first
+                var count = 0
+                while (count != index) {
+                    ++count
+                    current = current?.next
+                }
+                current?.value
+            }
+        }
+    }
+
     // --------------- Insert --------------------
 
     override fun insertFirst(data: T) {
@@ -232,24 +248,23 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
     // --------------- Update --------------------
 
     override fun replace(index: Int, data: T) {
-        // val size = size
-        // when {
-        //     size == 0 -> throw IllegalStateException("Cannot update an empty list")
-        //     index > size -> throw IllegalArgumentException("Invalid index for update")
-        //     index == 0 -> _first?.value = data
-        //     else -> {
-        //         var current = _first
-        //         var count = 0
-        //         while (count != index) {
-        //             ++count
-        //             current = current?.next
-        //         }
-        //         current?.value = data
-        //     }
-        // }
+        when {
+            isEmpty() -> throw IndexOutOfBoundsException("Cannot update empty list")
+            index < 0 || index > size -> throw IndexOutOfBoundsException("Invalid Index")
+            else -> {
+                var current = _first
+                var count = 0
+                while (count != index) {
+                    ++count
+                    current = current?.next
+                }
+                current?.value = data
+            }
+        }
     }
 
     override fun distinct() {
+
 
         // var node = _first
         //

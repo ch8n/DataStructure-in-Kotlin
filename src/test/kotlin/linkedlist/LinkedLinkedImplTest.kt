@@ -2,15 +2,15 @@ package linkedlist
 
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 import org.junit.jupiter.api.assertThrows
-import org.junit.jupiter.api.fail
-import java.lang.IndexOutOfBoundsException
 
 class LinkedLinkedImplTest {
 
@@ -57,6 +57,53 @@ class LinkedLinkedImplTest {
                 { assertEquals(linked.lastOrNull, linked.firstOrNull) },
             )
             println(linked.toString())
+        }
+
+        @Test
+        fun `linked list is empty check`() {
+            val emptylist = linkedListOf<Int>()
+            val filledList = linkedListOf<Int>(1, 2, 3)
+            assertAll(
+                { assertEquals(emptylist.size, 0) },
+                { assertEquals(filledList.size, 3) },
+                { assertTrue(emptylist.isEmpty()) },
+                { assertFalse(filledList.isEmpty()) },
+            )
+        }
+
+        @Test
+        fun `linked list get item at index from filled list throws error`() {
+            val filledList = linkedListOf<Int>(1, 2, 3)
+            assertAll(
+                { assertEquals(filledList.size, 3) },
+                { assertEquals(filledList.get(0), 1) },
+                { assertEquals(filledList.get(1), 2) },
+                { assertEquals(filledList.get(2), 3) },
+                {
+                    assertThrows<IndexOutOfBoundsException> {
+                        filledList.get(4)
+                    }
+                },
+                {
+                    assertThrows<IndexOutOfBoundsException> {
+                        filledList.get(-1)
+                    }
+                }
+            )
+        }
+
+        @Test
+        fun `linked list get item at index from empty list throws error`() {
+            val emptylist = linkedListOf<Int>()
+
+            assertAll(
+                { assertEquals(emptylist.size, 0) },
+                {
+                    assertThrows<IndexOutOfBoundsException> {
+                        emptylist.get(0)
+                    }
+                }
+            )
         }
     }
 
@@ -416,7 +463,6 @@ class LinkedLinkedImplTest {
                 )
             }
 
-
             @Test
             fun `delete last item from filled list to make list empty`() {
                 val linkedList = mutableLinkedListOf<Int>(1)
@@ -485,19 +531,17 @@ class LinkedLinkedImplTest {
 
             @Test
             fun `delete item at index 3 from filled list`() {
-                val linkedList = mutableLinkedListOf<Int>(1,2,3,4,5)
+                val linkedList = mutableLinkedListOf<Int>(1, 2, 3, 4, 5)
                 linkedList.deleteAt(3)
                 println(linkedList)
                 assertAll(
                     { assertEquals(linkedList.size, 4) },
                     { assertNotNull(linkedList.firstOrNull) },
                     { assertNotNull(linkedList.lastOrNull) },
-                    { assertEquals(linkedList.firstOrNull,1) },
-                    { assertEquals(linkedList.lastOrNull,5) },
+                    { assertEquals(linkedList.firstOrNull, 1) },
+                    { assertEquals(linkedList.lastOrNull, 5) },
                 )
             }
-
-
         }
 
         @Nested
@@ -525,22 +569,83 @@ class LinkedLinkedImplTest {
                 )
             }
 
-
             @Test
             fun `delete element from filled list`() {
-                val linkedList = mutableLinkedListOf<Int>(1,2,3,4,5)
+                val linkedList = mutableLinkedListOf<Int>(1, 2, 3, 4, 5)
                 linkedList.deleteAt(3)
                 println(linkedList)
                 assertAll(
                     { assertEquals(linkedList.size, 4) },
                     { assertNotNull(linkedList.firstOrNull) },
                     { assertNotNull(linkedList.lastOrNull) },
-                    { assertEquals(linkedList.firstOrNull,1) },
-                    { assertEquals(linkedList.lastOrNull,5) },
+                    { assertEquals(linkedList.firstOrNull, 1) },
+                    { assertEquals(linkedList.lastOrNull, 5) },
+                )
+            }
+        }
+    }
+
+    @Nested
+    inner class UpdateLinkedListTest {
+
+        @Nested
+        inner class `Replace item test` {
+
+            @Test
+            fun `replace item at any index from empty list throws error`() {
+
+                val linked = mutableLinkedListOf<Int>()
+                assertAll(
+                    {
+                        assertThrows<IndexOutOfBoundsException> {
+                            linked.replace(0, 1)
+                        }
+                    },
+                    {
+                        assertThrows<IndexOutOfBoundsException> {
+                            linked.replace(5, 1)
+                        }
+                    },
+                    {
+                        assertThrows<IndexOutOfBoundsException> {
+                            linked.replace(100, 1)
+                        }
+                    },
+                    { assertEquals(linked.size, 0) },
                 )
             }
 
+            @Test
+            fun `replace item in filled list at invalid position throw error`() {
 
+                val linked = mutableLinkedListOf<Int>(1, 2, 3)
+                assertAll(
+                    {
+                        assertThrows<IndexOutOfBoundsException> {
+                            linked.replace(-5, 1)
+                        }
+                    },
+                    {
+                        assertThrows<IndexOutOfBoundsException> {
+                            linked.replace(5, 1)
+                        }
+                    },
+                    { assertEquals(linked.size, 3) },
+                )
+            }
+
+            @Test
+            fun `replace item in valid position updates the value in filled list`() {
+                val linked = mutableLinkedListOf<Int>(1, 2, 3)
+                linked.replace(0, 5)
+                linked.replace(2, 5)
+                println(linked)
+                assertAll(
+                    { assertEquals(linked.size, 3) },
+                    { assertEquals(linked.get(0), 5) },
+                    { assertEquals(linked.get(2), 5) },
+                )
+            }
         }
     }
 }

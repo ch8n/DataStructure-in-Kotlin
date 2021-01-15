@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="linkedlist.LinkedKtxTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-01-15T19:23:26" hostname="chetan.gupta" time="0.035">
+  <properties/>
+  <testcase name="convert list to Linked List have same size()" classname="linkedlist.LinkedKtxTest" time="0.018"/>
+  <testcase name="mutableLinkedListOf(node) returns new instance with one item()" classname="linkedlist.LinkedKtxTest" time="0.017"/>
+  <system-out><![CDATA[[1, 2, 3, 4, 5, 6]
+ 1 2 3 4 5 6
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

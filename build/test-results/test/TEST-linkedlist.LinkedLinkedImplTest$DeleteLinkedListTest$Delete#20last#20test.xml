@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="linkedlist.LinkedLinkedImplTest$DeleteLinkedListTest$Delete last test" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-01-15T19:23:26" hostname="chetan.gupta" time="0.004">
+  <properties/>
+  <testcase name="delete last item to filled list()" classname="linkedlist.LinkedLinkedImplTest$DeleteLinkedListTest$Delete last test" time="0.002"/>
+  <testcase name="delete last item from filled list to make list empty()" classname="linkedlist.LinkedLinkedImplTest$DeleteLinkedListTest$Delete last test" time="0.001"/>
+  <testcase name="delete last item of empty list()" classname="linkedlist.LinkedLinkedImplTest$DeleteLinkedListTest$Delete last test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
