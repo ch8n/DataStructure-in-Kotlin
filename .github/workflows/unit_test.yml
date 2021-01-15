@@ -26,7 +26,7 @@ jobs:
           key: ${{runner.os}}-gradle-${{hashFiles('**/*.gradle*')}}
           restore-keys: |
             ${{runner.os}}-gradle-
-      
+
       - name: Unit tests
         run: bash ./gradlew test --stacktrace
 
@@ -55,8 +55,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      - name: Ktlint format
+          run: bash ./gradlew ktlintFormat --stacktrace
+
       - name: KtLint task
         run: bash ./gradlew ktlint --stacktrace
 
-      - name: Ktlint format
-        run: bash ./gradlew ktlintFormat --stacktrace
+

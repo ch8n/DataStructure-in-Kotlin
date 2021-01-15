@@ -265,7 +265,6 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
 
     override fun distinct() {
 
-
         // var node = _first
         //
         // while (node != null) {

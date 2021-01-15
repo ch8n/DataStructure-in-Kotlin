@@ -14,7 +14,7 @@ fun <T> mutableLinkedListOf(): MutableLinkedList<T> {
     return LinkedCollection.newMutableInstance()
 }
 
-//TODO TEST
+// TODO TEST
 fun <T> Iterable<T>.toLinkedList(): LinkedList<T> {
     return fold(mutableLinkedListOf()) { acc, item ->
         acc.insertLast(item)
