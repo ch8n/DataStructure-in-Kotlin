@@ -17,11 +17,62 @@ for solving problems.
 Test Code for Implementation
 * [Linked-List-Test](../../../../src/test/kotlin/linkedlist)
 
-#### General Points
-* They are not fixed size like an Array DS
-* They don't take contiguous memory space, hence cannot be accessed by index
-* Next item of Linked List can be accessed through a pointer
-* Always occupie heap memory 
+## Design Decisions
+
+### Read Only Linked List
+Checkout test-cases for behaviour understanding
+```Kotlin
+interface LinkedList<T> : Iterable<T> {
+    val firstOrNull: T?
+    val lastOrNull: T?
+    val size: Int
+    fun isEmpty(): Boolean
+    fun get(index: Int): T?
+}
+```
+### Read/Write Linked List i.e MutableLinked List
+Checkout test-cases for behaviour understanding
+```Kotlin
+interface MutableLinkedList<T> :
+    InsertLinkedList<T>,
+    DeleteLinkedList<T>,
+    LinkedList<T>,
+    UpdateLinkedList<T>
+```
+
+### Insert Operations in Linked List
+Checkout test-cases for behaviour understanding
+```Kotlin
+interface InsertLinkedList<T> {
+    fun insertFirst(data: T)
+    fun insertLast(data: T)
+    fun insertAt(index: Int, data: T)
+    fun insertAll(linkedList: LinkedList<T>)
+}
+```
+
+### Delete Operations in Linked List
+Checkout test-cases for behaviour understanding
+```Kotlin
+interface DeleteLinkedList<T> {
+    fun deleteFirst()
+    fun deleteLast()
+    fun deleteAt(index: Int)
+    fun delete(element: T)
+}
+```
+### Update Operations in Linked List
+**WIP**
+Checkout test-cases for behaviour understanding
+```Kotlin
+interface UpdateLinkedList<T> {
+    fun replace(index: Int, data: T)
+    fun sort(isDescending: Boolean = false)
+    fun reverse()
+    fun distinct()
+}
+```
+
 
 ## :eyes: Social
 [LinkedIn](https://bit.ly/ch8n-linkdIn) | 
