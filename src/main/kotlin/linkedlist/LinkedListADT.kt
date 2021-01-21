@@ -9,10 +9,15 @@ interface InsertLinkedList<T> {
 
 interface UpdateLinkedList<T> {
     fun replace(index: Int, data: T)
-    fun sort(isDescending: Boolean = false)
     fun reverse()
     fun distinct()
 }
+
+/**
+ *  TODO
+ *  fun sort(isDescending: Boolean = false)
+ *  fun sum()
+ **/
 
 interface DeleteLinkedList<T> {
     fun deleteFirst()

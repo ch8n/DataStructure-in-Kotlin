@@ -284,34 +284,35 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
         // }
     }
 
-    override fun sort(isDescending: Boolean) {
-        TODO("Not yet implemented")
-    }
-
     override fun reverse() {
-        // var prev: Linked.Node<T>? = null
-        // var current: Linked.Node<T>? = _first
-        // var next: Linked.Node<T>? = null
-        //
-        // while (current != null) {
-        //     // hold next reference
-        //     next = current.next
-        //
-        //     // break link to next
-        //     current.next = null
-        //
-        //     // point current to previous
-        //     current.next = prev
-        //
-        //     // previous pointer point to the address of current node
-        //     // we can directly use that to assign previous
-        //     prev = current
-        //
-        //     // proceed loop
-        //     current = next
-        // }
-        //
-        // _first = prev
+
+        if (isEmpty() || size == 1) {
+            return
+        }
+
+        var prev: Linked.Node<T>? = null
+        var current: Linked.Node<T>? = _first
+        var next: Linked.Node<T>? = null
+
+        while (current != null) {
+            // hold next reference
+            next = current.next
+
+            // break link to next
+            current.next = null
+
+            // point current to previous
+            current.next = prev
+
+            // previous pointer point to the address of current node
+            // we can directly use that to assign previous
+            prev = current
+
+            // proceed loop
+            current = next
+        }
+
+        _first = prev
     }
 
     override fun iterator(): Iterator<T> {

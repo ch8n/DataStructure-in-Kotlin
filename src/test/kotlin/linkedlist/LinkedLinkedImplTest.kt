@@ -647,5 +647,48 @@ class LinkedLinkedImplTest {
                 )
             }
         }
+
+        @Nested
+        inner class `Reverse linked list` {
+            @Test
+            fun `reverse element from empty list`() {
+                val linkedList = mutableLinkedListOf<Int>()
+                linkedList.reverse()
+                assertAll(
+                    { assertEquals(linkedList.size, 0) },
+                    { assertNull(linkedList.firstOrNull) },
+                    { assertNull(linkedList.lastOrNull) }
+                )
+            }
+
+            @Test
+            fun `reverse element of make filled list with 1 item`() {
+                val linkedList = mutableLinkedListOf<Int>(0)
+                linkedList.reverse()
+                assertAll(
+                    { assertEquals(linkedList.size, 1) },
+                    { assertEquals(linkedList.firstOrNull,0) },
+                    { assertEquals(linkedList.lastOrNull,0) },
+                )
+            }
+
+            @Test
+            fun `reverse element from filled list`() {
+                val linkedList = mutableLinkedListOf<Int>(1, 2, 3, 4)
+                linkedList.reverse()
+                println(linkedList)
+                assertAll(
+                    { assertEquals(linkedList.size, 4) },
+                    { assertNotNull(linkedList.firstOrNull) },
+                    { assertNotNull(linkedList.lastOrNull) },
+                    { assertEquals(linkedList.firstOrNull, 4) },
+                    { assertEquals(linkedList.lastOrNull, 1) },
+                    { assertEquals(linkedList.get(3), 1) },
+                    { assertEquals(linkedList.get(2), 2) },
+                    { assertEquals(linkedList.get(1), 3) },
+                    { assertEquals(linkedList.get(0), 4) },
+                )
+            }
+        }
     }
 }
