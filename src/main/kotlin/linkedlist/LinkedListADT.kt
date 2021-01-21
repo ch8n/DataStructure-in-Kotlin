@@ -15,8 +15,10 @@ interface UpdateLinkedList<T> {
 
 /**
  *  TODO
- *  fun sort(isDescending: Boolean = false)
- *  fun sum()
+ *  fun MutableLinkedList<Int>.sort(isDescending: Boolean = false)
+ *  fun LinkedList<Int>.sum()
+ *  fun LinkedList.reversed() returns new list with reversed items
+ *  fun LinkedList.distinct() returns new list with distinct items
  **/
 
 interface DeleteLinkedList<T> {

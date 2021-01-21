@@ -667,8 +667,8 @@ class LinkedLinkedImplTest {
                 linkedList.reverse()
                 assertAll(
                     { assertEquals(linkedList.size, 1) },
-                    { assertEquals(linkedList.firstOrNull,0) },
-                    { assertEquals(linkedList.lastOrNull,0) },
+                    { assertEquals(linkedList.firstOrNull, 0) },
+                    { assertEquals(linkedList.lastOrNull, 0) },
                 )
             }
 
@@ -687,6 +687,48 @@ class LinkedLinkedImplTest {
                     { assertEquals(linkedList.get(2), 2) },
                     { assertEquals(linkedList.get(1), 3) },
                     { assertEquals(linkedList.get(0), 4) },
+                )
+            }
+        }
+
+        @Nested
+        inner class `Distinct linked list` {
+            @Test
+            fun `distinct element from empty list`() {
+                val linkedList = mutableLinkedListOf<Int>()
+                linkedList.distinct()
+                assertAll(
+                    { assertEquals(linkedList.size, 0) },
+                    { assertNull(linkedList.firstOrNull) },
+                    { assertNull(linkedList.lastOrNull) }
+                )
+            }
+
+            @Test
+            fun `distinct element of make filled list with 1 item`() {
+                val linkedList = mutableLinkedListOf<Int>(0)
+                linkedList.distinct()
+                assertAll(
+                    { assertEquals(linkedList.size, 1) },
+                    { assertEquals(linkedList.firstOrNull, 0) },
+                    { assertEquals(linkedList.lastOrNull, 0) },
+                )
+            }
+
+            @Test
+            fun `reverse element from filled list`() {
+                val linkedList = mutableLinkedListOf<Int>(1, 1, 2, 5, 3, 3, 4, 3)
+                linkedList.distinct()
+                println(linkedList)
+                assertAll(
+                    { assertEquals(linkedList.size, 5) },
+                    { assertEquals(linkedList.firstOrNull, 1) },
+                    { assertEquals(linkedList.lastOrNull, 4) },
+                    { assertEquals(linkedList.get(0), 1) },
+                    { assertEquals(linkedList.get(1), 2) },
+                    { assertEquals(linkedList.get(2), 5) },
+                    { assertEquals(linkedList.get(3), 3) },
+                    { assertEquals(linkedList.get(4), 4) },
                 )
             }
         }

@@ -264,24 +264,25 @@ class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
     }
 
     override fun distinct() {
+        if (isEmpty() || size == 1) return
 
-        // var node = _first
-        //
-        // while (node != null) {
-        //
-        //     var current = node.next
-        //     var tailing = node
-        //
-        //     while (current != null) {
-        //         if (node.value == current.value) {
-        //             tailing?.next = current.next
-        //         }
-        //         tailing = current
-        //         current = current.next
-        //     }
-        //
-        //     node = node.next
-        // }
+        var node = _first
+
+        while (node != null) {
+
+            var next = node.next
+            var current = node
+
+            while (next != null) {
+                if (node.value == next.value) {
+                    current?.next = next.next
+                }
+                current = next
+                next = next.next
+            }
+
+            node = node.next
+        }
     }
 
     override fun reverse() {
