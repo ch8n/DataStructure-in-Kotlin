@@ -41,7 +41,6 @@ abstract class Linked<T> {
 }
 
 interface LinkedList<T> :
-    ReadLinkedList<T>,
     Iterable<T> {
     val firstOrNull: T?
     val lastOrNull: T?
