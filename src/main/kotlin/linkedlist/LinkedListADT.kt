@@ -13,12 +13,20 @@ interface UpdateLinkedList<T> {
     fun distinct()
 }
 
+enum class Order {
+    ASCENDING,
+    DESCENDING
+}
+
+
 /**
  *  TODO
  *  fun MutableLinkedList<Int>.sort(isDescending: Boolean = false)
  *  fun LinkedList<Int>.sum()
  *  fun LinkedList.reversed() returns new list with reversed items
  *  fun LinkedList.distinct() returns new list with distinct items
+ *  fun LinkedList.isSorted(Order= Order.ASCENDING)
+ *  fun LinkedList.sort(order: Order = Order.ASCENDING)
  **/
 
 interface DeleteLinkedList<T> {
@@ -32,7 +40,9 @@ abstract class Linked<T> {
     data class Node<T>(var value: T, var next: Node<T>? = null)
 }
 
-interface LinkedList<T> : Iterable<T> {
+interface LinkedList<T> :
+    ReadLinkedList<T>,
+    Iterable<T> {
     val firstOrNull: T?
     val lastOrNull: T?
     val size: Int

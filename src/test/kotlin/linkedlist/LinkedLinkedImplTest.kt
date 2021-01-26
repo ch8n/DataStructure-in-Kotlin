@@ -716,7 +716,7 @@ class LinkedLinkedImplTest {
             }
 
             @Test
-            fun `reverse element from filled list`() {
+            fun `distinct element from filled list`() {
                 val linkedList = mutableLinkedListOf<Int>(1, 1, 2, 5, 3, 3, 4, 3)
                 linkedList.distinct()
                 println(linkedList)

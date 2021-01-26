@@ -22,6 +22,13 @@ fun <T> Iterable<T>.toLinkedList(): LinkedList<T> {
     }
 }
 
+// TODO TEST
+fun <T> LinkedList<T>.reversed(): LinkedList<T> {
+    val contents = mutableListOf<T>()
+    forEach { content -> contents.add(content) }
+    return contents.reversed().toLinkedList()
+}
+
 fun <T> mutableLinkedListOf(vararg many: T): MutableLinkedList<T> {
     return LinkedCollection.mutableFrom(*many)
 }
