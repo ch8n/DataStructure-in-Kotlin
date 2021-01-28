@@ -21,12 +21,10 @@ enum class Order {
 
 /**
  *  TODO
- *  fun MutableLinkedList<Int>.sort(isDescending: Boolean = false)
  *  fun LinkedList<Int>.sum()
- *  fun LinkedList.reversed() returns new list with reversed items
- *  fun LinkedList.distinct() returns new list with distinct items
- *  fun LinkedList.isSorted(Order= Order.ASCENDING)
- *  fun LinkedList.sort(order: Order = Order.ASCENDING)
+ *  fun LinkedList<Int>.distinct() returns new list with distinct items
+ *  fun LinkedList<Int>.isSorted(Order= Order.ASCENDING)
+ *  fun LinkedList<Int>.sort(order: Order = Order.ASCENDING)
  **/
 
 interface DeleteLinkedList<T> {

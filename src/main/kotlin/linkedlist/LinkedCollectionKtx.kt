@@ -1,6 +1,12 @@
 package linkedlist
+
+// ---------- Linked Collection KTX ---------------
+
+
+
+
 //
-// // ---------- Linked List ---------------
+
 // val LinkedList<Int>.isSortedAscending: Boolean
 //     get() {
 //         var current = firstOrNull
