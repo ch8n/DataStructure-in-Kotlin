@@ -1,4 +1,4 @@
-package linkedlist
+package linkedlist.linear
 
 class LinkedCollection<T> private constructor() : MutableLinkedList<T> {
 

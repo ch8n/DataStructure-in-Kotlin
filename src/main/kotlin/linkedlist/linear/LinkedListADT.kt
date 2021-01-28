@@ -1,4 +1,4 @@
-package linkedlist
+package linkedlist.linear
 
 interface InsertLinkedList<T> {
     fun insertFirst(data: T)
@@ -18,12 +18,19 @@ enum class Order {
     DESCENDING
 }
 
-
 /**
  *  TODO
  *  fun LinkedList<Int>.sum()
- *  fun LinkedList<Int>.distinct() returns new list with distinct items
- *  fun LinkedList<Int>.isSorted(Order= Order.ASCENDING)
+ *  fun LinkedList<Int>.maxOrNull()
+ *  fun LinkedList<Int>.minOrNull()
+ *  fun LinkedList.indexOf(data:T)
+ *  fun LinkedList.distinct() returns new list with distinct items
+ *  fun LinkedList<Int>.distinctSorted(Order= Order.ASCENDING) returns new list with distinct items
+ *  fun LinkedList<Int>.isSorted(Order= Order.ASCENDING) << Test
+ *  fun LinkedList<Int>.insertSorted(data:Int, order= Order.ASCENDING)
+ *  fun LinkedList<T>.merge(list:LinkedList<T>)
+ *  fun LinkedList<T>.merge(list:LinkedList<T>,order= Order.ASCENDING)
+ *  val LinkedList<T>.isCyclic
  *  fun LinkedList<Int>.sort(order: Order = Order.ASCENDING)
  **/
 

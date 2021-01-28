@@ -1,5 +1,7 @@
 package linkedlist
 
+import linkedlist.linear.linkedListOf
+import linkedlist.linear.mutableLinkedListOf
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertFalse

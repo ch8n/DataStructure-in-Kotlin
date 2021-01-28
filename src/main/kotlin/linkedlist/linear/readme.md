@@ -1,7 +1,7 @@
 <h1 align="center">Self Implemented DataStructure-in-Kotlin <a href="https://chetangupta.net/bbk-main" target="_blank">BigBrainKotlin</a>
 </h1>
 
-![Big-Brain-Kotlin](../../../../bigBrain.jpg)
+![Big-Brain-Kotlin](../../../../../bigBrain.jpg)
 
 ## :hand: About
 Hola Amigos! 🙌, welcome to my Kotlin Data-structure playground!
@@ -15,7 +15,7 @@ for solving problems.
 
 ## :book: Content : Self Implemented LinkedList
 Test Code for Implementation
-* [Linked-List-Test](../../../../src/test/kotlin/linkedlist)
+* [Linked-List-Test](../../../../test/kotlin/linkedlist)
 
 ## Design Decisions
 

@@ -1,4 +1,4 @@
-package linkedlist
+package linkedlist.linear
 
 // import java.lang.IllegalStateException
 //
