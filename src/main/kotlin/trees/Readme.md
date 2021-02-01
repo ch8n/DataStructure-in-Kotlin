@@ -7,6 +7,7 @@
 
 
 # Tress Data Structure
+## Intro
 - Collection of `nodes` + `edge`
     - one of node is `root node`
     - rest of nodes are `dis-joint subset`
@@ -21,13 +22,18 @@
 - Internal/External nodes `|` non-leaf/leaf `|` terminal/non-terminal nodes 
     - node with `degree 0` are external/leaf/terminal node
     - node with `degree > 0` are interal/non-leaf/non-terminal node
+- levels - horizontal nodes/floor of nodes [starts with 1] - count path to reach a node
+- height - floor of node [starts with 0] - number of edges
+- forest - collection of trees
     
 ```
-                              (A)  <- root node 
-                              / \
-             child node ->  (B) (C)  <- child node
-                            / \
-            child node -> (D) (F) <- child node
+                                                    | Levels    |   Height
+                              (A)  <- root node     |   1       |     0
+                              / \                   |           |
+             child node ->  (B) (C)  <- child node  |   2       |     1
+                            / \                     |           |
+            child node -> (D) (F) <- child node     |   3       |     2
+                                                    |           |
 --------------------------------------------------------------------------------
  [Root]
    A
