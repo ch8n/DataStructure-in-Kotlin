@@ -7,11 +7,15 @@
 
 
 # Tress Data Structure
-## Intro
-- Collection of `nodes` + `edge`
+- Tree is Collection of `nodes` + `edge`
     - one of node is `root node`
     - rest of nodes are `dis-joint subset`
         - each subset is tree again
+- if `n` nodes then `n-1` edges 
+        - cause `root node` have `2` edges not `3` 
+    - each subset is a tree or sub-tree   
+    
+## Terminology of Trees    
 - Root - topmost node of tree
 - Parent - node is parent to the descendants nodes
 - Child - node which have a parent
@@ -25,7 +29,8 @@
 - levels - horizontal nodes/floor of nodes [starts with 1] - count path to reach a node
 - height - floor of node [starts with 0] - number of edges
 - forest - collection of trees
-    
+
+
 ```
                                                     | Levels    |   Height
                               (A)  <- root node     |   1       |     0
@@ -58,6 +63,10 @@ C - ancestors -> A      |   D - degree -> 0     |     D - external/leaf
 
 ```
 
-- if `n` nodes then `n-1` edges 
-        - cause `root node` have `2` edges not `3` 
-    - each subset is a tree or sub-tree
+## Binary Tree
+A tree of degree `2` - i.e. max it can have 2 children node, can `have less than 2` but more than 2.
+```
+    degree(T) = 2                       (A)
+    children = {0,1,2}                  / \     [Binary tree]
+                                      (B) (C)
+```
