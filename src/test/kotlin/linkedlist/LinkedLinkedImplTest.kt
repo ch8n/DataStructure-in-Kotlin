@@ -37,6 +37,8 @@ class LinkedLinkedImplTest {
             println(linked.toString())
         }
 
+
+
         @Test
         fun `adding default item list get inserted correctly`() {
             val linked = linkedListOf<Int>(10, 20, 30, 40, 50)
@@ -45,7 +47,7 @@ class LinkedLinkedImplTest {
                 { assertNotNull(linked.firstOrNull) },
                 { assertNotNull(linked.lastOrNull) },
                 { assertEquals(linked.firstOrNull, 10) },
-                { assertEquals(linked.lastOrNull, 50) },
+                { assertEquals(linked.lastOrNull, 50) }
             )
             println(linked.toString())
         }

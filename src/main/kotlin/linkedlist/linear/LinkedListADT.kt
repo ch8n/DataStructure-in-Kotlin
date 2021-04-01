@@ -45,8 +45,8 @@ abstract class Linked<T> {
     data class Node<T>(var value: T, var next: Node<T>? = null)
 }
 
-interface LinkedList<T> :
-    Iterable<T> {
+
+interface LinkedList<T> : Iterable<T> {
     val firstOrNull: T?
     val lastOrNull: T?
     val size: Int
