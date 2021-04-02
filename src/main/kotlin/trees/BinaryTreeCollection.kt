@@ -1,86 +1,92 @@
 package trees
 
-class BinaryTreeCollection<T>(value: T) {
+class BinaryTreeCollection<T>(value: T) :
+    MutableBinaryTree<T>,
+    BinaryTree<T> {
 
-    private val _node = Tree.Node(value)
+    private val _root = Tree.Node(value)
 
-    val root: Tree.Node<T>
-        get() = _node
-
-    fun getDirectChildren(value: T): Pair<T?, T?> {
-        var collector = Pair<T?, T?>(null, null)
+    override fun directChildren(node: Tree.Node<T>): Pair<Tree.Node<T>?, Tree.Node<T>?> {
+        var collector = Pair<Tree.Node<T>?, Tree.Node<T>?>(null, null)
         fun recursiveFind(node: Tree.Node<T>?, targetValue: T) {
             if (node != null) {
                 if (node.value == targetValue) {
-                    collector = collector.copy(first = node.lChild?.value, second = node.rChild?.value)
+                    collector = collector.copy(first = node.lChild, second = node.rChild)
                 } else {
                     recursiveFind(node.lChild, targetValue)
                     recursiveFind(node.rChild, targetValue)
                 }
             }
         }
-
-        recursiveFind(_node, value)
-
+        recursiveFind(_root, node.value)
         return collector
     }
 
     fun left(value: T, branch: BinaryTreeCollection<T>.() -> Unit = {}) {
         val tree = BinaryTreeCollection(value)
         branch.invoke(tree)
-        _node.lChild = tree.root
+        _root.lChild = tree.rootNode
     }
 
     fun right(value: T, branch: BinaryTreeCollection<T>.() -> Unit = {}) {
         val tree = BinaryTreeCollection(value)
         branch.invoke(tree)
-        _node.rChild = tree.root
+        _root.rChild = tree.rootNode
     }
 
-    fun preOrder(): List<T> {
-        val collector = mutableListOf<T>()
+    // ------- Nodes ----------
 
-        fun recursivePreorder(node: Tree.Node<T>?, collector: MutableList<T>) {
+    override val rootNode: Tree.Node<T>
+        get() = _root
+
+    override fun inOrderNodes(): List<Tree.Node<T>> {
+        val collector = mutableListOf<Tree.Node<T>>()
+        fun recursivePreorder(node: Tree.Node<T>?, collector: MutableList<Tree.Node<T>>) {
             if (node != null) {
-                collector.add(node.value)
+                recursivePreorder(node.lChild, collector)
+                collector.add(node)
+                recursivePreorder(node.rChild, collector)
+            }
+        }
+        recursivePreorder(_root, collector)
+        return collector
+    }
+
+    override fun postOrderNodes(): List<Tree.Node<T>> {
+        val collector = mutableListOf<Tree.Node<T>>()
+
+        fun recursivePreorder(node: Tree.Node<T>?, collector: MutableList<Tree.Node<T>>) {
+            if (node != null) {
+                recursivePreorder(node.lChild, collector)
+                recursivePreorder(node.rChild, collector)
+                collector.add(node)
+            }
+        }
+
+        recursivePreorder(_root, collector)
+
+        return collector
+    }
+
+    override fun preOrderNodes(): List<Tree.Node<T>> {
+        val collector = mutableListOf<Tree.Node<T>>()
+        fun recursivePreorder(node: Tree.Node<T>?, collector: MutableList<Tree.Node<T>>) {
+            if (node != null) {
+                collector.add(node)
                 recursivePreorder(node.lChild, collector)
                 recursivePreorder(node.rChild, collector)
             }
         }
-
-        recursivePreorder(_node, collector)
+        recursivePreorder(_root, collector)
         return collector
     }
 
-    fun postOrder(): List<T> {
-        val collector = mutableListOf<T>()
+    // -------- Values --------
 
-        fun recursivePreorder(node: Tree.Node<T>?, collector: MutableList<T>) {
-            if (node != null) {
-                recursivePreorder(node.lChild, collector)
-                recursivePreorder(node.rChild, collector)
-                collector.add(node.value)
-            }
-        }
+    override val root: T
+        get() = _root.value
 
-        recursivePreorder(_node, collector)
-
-        return collector
-    }
-
-    fun inOrder(): List<T> {
-        val collector = mutableListOf<T>()
-
-        fun recursivePreorder(node: Tree.Node<T>?, collector: MutableList<T>) {
-            if (node != null) {
-                recursivePreorder(node.lChild, collector)
-                collector.add(node.value)
-                recursivePreorder(node.rChild, collector)
-            }
-        }
-
-        recursivePreorder(_node, collector)
-
-        return collector
-    }
+    override fun inOrder(): List<T> = inOrderNodes().map { it.value }
+    override fun postOrder(): List<T> = postOrderNodes().map { it.value }
+    override fun preOrder(): List<T> = preOrderNodes().map { it.value }
 }

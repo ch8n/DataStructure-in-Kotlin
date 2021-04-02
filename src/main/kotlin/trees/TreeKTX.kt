@@ -1,10 +1,18 @@
 package trees
 
-fun <T> binaryTree(root: T, buildTree: BinaryTreeCollection<T>.() -> Unit): BinaryTreeCollection<T> {
+fun <T> binaryTree(root: T, buildTree: BinaryTreeCollection<T>.() -> Unit): BinaryTree<T> {
     val tree = BinaryTreeCollection(root)
     buildTree.invoke(tree)
     return tree
 }
+
+fun <T> mutableBinaryTree(root: T, buildTree: BinaryTreeCollection<T>.() -> Unit): MutableBinaryTree<T> {
+    val tree = BinaryTreeCollection(root)
+    buildTree.invoke(tree)
+    return tree
+}
+
+
 
 fun main() {
     val tree = binaryTree("a") {
@@ -20,7 +28,6 @@ fun main() {
     println(tree.preOrder())
     println(tree.postOrder())
     println(tree.inOrder())
-    println(tree.getDirectChildren("z"))
 }
 
 
