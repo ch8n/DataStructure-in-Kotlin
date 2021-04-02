@@ -1,20 +1,40 @@
 package trees
 
-class BTree<T>(value: T) {
+class BinaryTreeCollection<T>(value: T) {
+
     private val _node = Tree.Node(value)
-    val node: Tree.Node<T>
+
+    val root: Tree.Node<T>
         get() = _node
 
-    fun left(value: T, branch: BTree<T>.() -> Unit = {}) {
-        val tree = BTree(value)
-        branch.invoke(tree)
-        _node.lChild = tree.node
+    fun getDirectChildren(value: T): Pair<T?, T?> {
+        var collector = Pair<T?, T?>(null, null)
+        fun recursiveFind(node: Tree.Node<T>?, targetValue: T) {
+            if (node != null) {
+                if (node.value == targetValue) {
+                    collector = collector.copy(first = node.lChild?.value, second = node.rChild?.value)
+                } else {
+                    recursiveFind(node.lChild, targetValue)
+                    recursiveFind(node.rChild, targetValue)
+                }
+            }
+        }
+
+        recursiveFind(_node, value)
+
+        return collector
     }
 
-    fun right(value: T, branch: BTree<T>.() -> Unit = {}) {
-        val tree = BTree(value)
+    fun left(value: T, branch: BinaryTreeCollection<T>.() -> Unit = {}) {
+        val tree = BinaryTreeCollection(value)
         branch.invoke(tree)
-        _node.rChild = tree.node
+        _node.lChild = tree.root
+    }
+
+    fun right(value: T, branch: BinaryTreeCollection<T>.() -> Unit = {}) {
+        val tree = BinaryTreeCollection(value)
+        branch.invoke(tree)
+        _node.rChild = tree.root
     }
 
     fun preOrder(): List<T> {
@@ -29,10 +49,8 @@ class BTree<T>(value: T) {
         }
 
         recursivePreorder(_node, collector)
-
         return collector
     }
-
 
     fun postOrder(): List<T> {
         val collector = mutableListOf<T>()
@@ -58,7 +76,6 @@ class BTree<T>(value: T) {
                 recursivePreorder(node.lChild, collector)
                 collector.add(node.value)
                 recursivePreorder(node.rChild, collector)
-
             }
         }
 
