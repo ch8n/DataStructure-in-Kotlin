@@ -54,7 +54,6 @@ class BinaryTreeCollection<T>(value: T) :
 
     override fun postOrderNodes(): List<Tree.Node<T>> {
         val collector = mutableListOf<Tree.Node<T>>()
-
         fun recursivePreorder(node: Tree.Node<T>?, collector: MutableList<Tree.Node<T>>) {
             if (node != null) {
                 recursivePreorder(node.lChild, collector)
@@ -62,7 +61,6 @@ class BinaryTreeCollection<T>(value: T) :
                 collector.add(node)
             }
         }
-
         recursivePreorder(_root, collector)
 
         return collector
@@ -90,3 +88,4 @@ class BinaryTreeCollection<T>(value: T) :
     override fun postOrder(): List<T> = postOrderNodes().map { it.value }
     override fun preOrder(): List<T> = preOrderNodes().map { it.value }
 }
+

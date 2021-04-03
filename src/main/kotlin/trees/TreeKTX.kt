@@ -12,22 +12,26 @@ fun <T> mutableBinaryTree(root: T, buildTree: BinaryTreeCollection<T>.() -> Unit
     return tree
 }
 
-
-
 fun main() {
     val tree = binaryTree("a") {
         left("b") {
             left("c")
             right("d")
         }
-        right("z"){
+        right("z") {
             right("x")
         }
     }
-    println(tree.root)
-    println(tree.preOrder())
-    println(tree.postOrder())
-    println(tree.inOrder())
+
+    mutableBinaryTree(1){
+
+    }
+
+    println(tree.root) // a
+    println(tree.preOrder()) // [a, b, c, d, z, x]
+    println(tree.postOrder()) // [c, d, b, x, z, a]
+    println(tree.inOrder()) // [c, b, d, a, z, x]
+
 }
 
 
