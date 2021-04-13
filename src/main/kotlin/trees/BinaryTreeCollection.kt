@@ -39,6 +39,26 @@ class BinaryTreeCollection<T>(value: T) :
     override val rootNode: Tree.Node<T>
         get() = _root
 
+    override fun preOrderIterative(): List<T> {
+        val visit = mutableListOf<Tree.Node<T>?>()
+        val preOrder = mutableListOf<T>()
+
+        var current: Tree.Node<T>? = _root
+
+        while (current != null || visit.isNotEmpty()) {
+            val node = current
+            if (node != null) {
+                preOrder.add(node.value)
+                visit.add(node)
+                current = node.lChild
+            } else {
+                val parent = visit.removeLast()
+                current = parent?.rChild
+            }
+        }
+        return preOrder
+    }
+
     override fun inOrderNodes(): List<Tree.Node<T>> {
         val collector = mutableListOf<Tree.Node<T>>()
         fun recursivePreorder(node: Tree.Node<T>?, collector: MutableList<Tree.Node<T>>) {

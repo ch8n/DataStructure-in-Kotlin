@@ -9,6 +9,7 @@ interface BinaryTree<T> {
     fun inOrder(): List<T>
     fun postOrder(): List<T>
     fun preOrder(): List<T>
+    fun preOrderIterative(): List<T>
 }
 
 interface MutableBinaryTree<T> {

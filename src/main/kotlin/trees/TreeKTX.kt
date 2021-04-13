@@ -23,15 +23,11 @@ fun main() {
         }
     }
 
-    mutableBinaryTree(1){
-
-    }
-
-    println(tree.root) // a
+    //println(tree.root) // a
     println(tree.preOrder()) // [a, b, c, d, z, x]
-    println(tree.postOrder()) // [c, d, b, x, z, a]
-    println(tree.inOrder()) // [c, b, d, a, z, x]
-
+    // println(tree.postOrder()) // [c, d, b, x, z, a]
+    // println(tree.inOrder()) // [c, b, d, a, z, x]
+    println(tree.preOrderIterative())
 }
 
 
