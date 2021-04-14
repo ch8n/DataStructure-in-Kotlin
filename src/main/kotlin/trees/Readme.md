@@ -1,10 +1,13 @@
 # TODO
+1. UPDATE Node
+2. DELETE Node
 
-1. CREATE
-2. READ
-3. UPDATE
-4. DELETE
 
+# DSL Preview
+
+<img src="treeDSL.jpeg">
+
+# Notes on Trees
 
 # Tress Data Structure
 - Tree is Collection of `nodes` + `edge`
