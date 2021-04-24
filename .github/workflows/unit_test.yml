@@ -46,8 +46,8 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Build apks for taskie 😘
           body: Build job of ${{github.repository}} completed successfully!
-          to: chetan.garg36@gmail.com,harsh.sidana@gmail.com
-          from: dev.ch8n@gmail.com
+          to: dev.ch8n@gmail.com,harsh.sidana@gmail.com
+          from: ${{secrets.MAIL_FROM}}
           #attachments: '**/build/reports/tests/','**/build/reports/tests/',app/build/outputs/apk/debug/**.apk
 
 
