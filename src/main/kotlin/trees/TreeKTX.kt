@@ -1,33 +1,28 @@
 package trees
 
-fun <T> binaryTree(root: T, buildTree: BinaryTreeCollection<T>.() -> Unit): BinaryTree<T> {
-    val tree = BinaryTreeCollection(root)
-    buildTree.invoke(tree)
-    return tree
-}
-
-fun <T> mutableBinaryTree(root: T, buildTree: BinaryTreeCollection<T>.() -> Unit): MutableBinaryTree<T> {
-    val tree = BinaryTreeCollection(root)
-    buildTree.invoke(tree)
-    return tree
-}
-
 fun main() {
-    val tree = binaryTree("a") {
-        left("b") {
-            left("c")
-            right("d")
-        }
-        right("z") {
-            right("x")
+    /***
+     *  buildTree {
+     *      root(1){
+     *          leftNode = node(1){
+     *              leftNode = node(3) {}
+     *              rightNode = node(4) {}
+     *          }
+     *          rightNode = node(2){
+     *              rightNode = node(5)
+     *          }
+     *      }
+     *  }
+     */
+
+
+    val tree = buildTree {
+        root(1) {
+
         }
     }
 
-    //println(tree.root) // a
-    println(tree.preOrder()) // [a, b, c, d, z, x]
-    // println(tree.postOrder()) // [c, d, b, x, z, a]
-    // println(tree.inOrder()) // [c, b, d, a, z, x]
-    println(tree.preOrderIterative())
-}
+    println(tree.root)
 
+}
 

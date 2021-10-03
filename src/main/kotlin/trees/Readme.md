@@ -84,6 +84,7 @@ A tree of degree `2` - i.e. max it can have 2 children node, can `have less than
               n+1
 ```
 Example : T(3) = __2x3 C 3 / 3+1 = 6 C 3 / 4 = (6x5x4 / 3x 2x 1)/ 4 = 5x4/4 = 5__
+<br>
 Example : T(3) = __T(0)xT(2) + T(1)xT(1) + T(2)xT(0) = 1x2 + 1x1 + 2x1 = 2+1+2 = 5__
 
 
