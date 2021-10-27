@@ -15,13 +15,11 @@ fun main() {
      *  }
      */
 
-
     val tree = buildTree {
         root(1) {
 
         }
     }
-
     println(tree.root)
 
 }

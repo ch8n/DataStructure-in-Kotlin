@@ -31,12 +31,13 @@ configurations {
 
 repositories {
     mavenCentral()
-    jcenter()
+    google()
 }
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.5.2'
     ktlint "com.pinterest:ktlint:0.40.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'com.google.code.gson:gson:2.8.8'
 }
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
